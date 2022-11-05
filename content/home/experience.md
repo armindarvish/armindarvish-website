@@ -58,7 +58,7 @@ experience:
     
   - title: "Nanopore Engineer"
     company: "Two Pore Guys / Ontera"
-    company_logo: org-x
+    company_logo: ontera
     location: "California"
     date_start: "2016-07-01"
     date_end: "2018-06-30"
