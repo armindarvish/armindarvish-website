@@ -8,6 +8,6 @@ weight: 20
 title: Biography
 design:
   background:
-    image: img_8124c.jpg
+    image: img_8124e.jpg
 ---
 About me
