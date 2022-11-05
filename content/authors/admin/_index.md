@@ -1,5 +1,5 @@
 ---
-avatar_filename: img_8124b.png
+avatar_filename: img_8124c.jpg
 bio: My research interests include distributed robotics, mobile computing and
   programmable matter.
 interests:
