@@ -16,41 +16,41 @@ subtitle:
 # - Add/remove as many `feature` blocks below as you like.
 # - For available icons, see: https://wowchemy.com/docs/page-builder/#icons
 feature:
-  - description: 100%
+  - description: 
     icon: microchip
     icon_pack: fas
     name: micro/nanofabrication
     
-  - description: 70%
+  - description: 
     icon: microscope
     icon_pack: fas
     name: biochemistry
     
-  - description: 100%
-    icon: dna
-    icon_pack: fas
-    name: Sequencing Technology
-    
-  - description: 80%
+  - description: 
     icon: python
     icon_pack: fab
-    name: Python
+    name: python
     
-  - description: 70%
+  - description: 
     icon: wave-square
     icon_pack: fas
     name: signal processing
     
     
-  - description: 70%
+  - description: 
     icon: chart-line
     icon_pack: fas
-    name: Statistics
+    name: statistics
     
-  - description: 60%
+  - description: 
+    icon: books
+    icon_pack: fas
+    name: research
+    
+  - description: 
     icon: camera-retro
     icon_pack: fas
-    name: Photography
+    name: photography
     
 # Uncomment to use emoji icons.
 #- icon: ":smile:"
