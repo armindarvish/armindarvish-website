@@ -75,6 +75,6 @@ experience:
     date_end: '2018-06-30'
     description: worked with a team of scientists and engineers with broad range of responsibilities falling under product development category. I was the project lead for transferring the nanopore sensors from lab-scale proof-of-concept to mass-scale production as well as implementing quality control and testing. This included interfacing with manufacturing partners and subcontractors to establish a manufacturing pipeline.
 
-design:
-  columns: '2'
+<!-- design: -->
+<!--   columns: '2' -->
 ---
