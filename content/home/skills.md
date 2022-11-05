@@ -17,6 +17,16 @@ subtitle:
 # - For available icons, see: https://wowchemy.com/docs/page-builder/#icons
 feature:
   - description: 
+    icon: helmet-safety
+    icon_pack: fas
+    name: engineering
+    
+  - description: 
+    icon: book
+    icon_pack: fas
+    name: research
+    
+  - description: 
     icon: microchip
     icon_pack: fas
     name: micro/nanofabrication
@@ -45,11 +55,6 @@ feature:
     icon: chart-line
     icon_pack: fas
     name: statistics
-    
-  - description: 
-    icon: book
-    icon_pack: fas
-    name: research
     
   - description: 
     icon: camera-retro
