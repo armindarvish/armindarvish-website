@@ -25,7 +25,7 @@ experience:
   - title: "Senior Scientist"
     company: "Robert Bosch"
     company_url: "https://www.bosch.us/"
-    company_logo: org-gc
+    <!-- company_logo: org-gc -->
     location: "California"
     date_start: "2021-01-01"
     date_end: ""
@@ -39,7 +39,7 @@ experience:
   - title: "Research Scientist"
     company: "Robert Bosch"
     company_url: "https://www.bosch.us/"
-    company_logo: "quantapore.png"
+    <!-- company_logo: "quantapore.png" -->
     location: "California"
     date_start: "2019-10-15"
     date_end: "2021-01-01"
@@ -49,7 +49,7 @@ experience:
   - title: "Senior Scientist"
     company: "Quantapore"
     company_url: "https://quantapore.com/"
-    company_logo: org-x
+    <!-- company_logo: org-x -->
     location: "California"
     date_start: "2018-07-01"
     date_end: "2019-10-14"
@@ -58,7 +58,7 @@ experience:
     
   - title: "Nanopore Engineer"
     company: "Two Pore Guys / Ontera"
-    company_logo: "ontera"
+    <!-- company_logo: "ontera" -->
     location: "California"
     date_start: "2016-07-01"
     date_end: "2018-06-30"
