@@ -10,7 +10,7 @@ role: Senior Scientist
 
 # Organizations/Affiliations to show in About widget
 organizations:
-  - name: Bosch REsearch
+  - name: Bosch Research USA
     url: "https://www.bosch.com/research"
 
 # Short bio (displayed in user profile at end of posts)
