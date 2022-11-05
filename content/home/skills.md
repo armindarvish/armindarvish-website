@@ -43,7 +43,7 @@ feature:
     name: statistics
     
   - description: 
-    icon: books
+    icon: fa-books
     icon_pack: fas
     name: research
     
