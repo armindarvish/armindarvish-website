@@ -27,6 +27,11 @@ feature:
     name: research
     
   - description: 
+    icon: code
+    icon_pack: fas
+    name: programming
+    
+  - description: 
     icon: microchip
     icon_pack: fas
     name: micro/nanofabrication
