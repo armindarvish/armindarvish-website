@@ -29,15 +29,15 @@ organizations:
     url: https://www.stanford.edu/
 education:
   courses:
-    - course: PhD in Artificial Intelligence
-      institution: Stanford University
+    - course: PhD in Biomedical Engineering
+      institution: Drexel University
+      year: 2016
+    - course: MSc in Biomedical Engineering
+      institution: Drexel University
       year: 2012
-    - course: MEng in Artificial Intelligence
-      institution: Massachusetts Institute of Technology
-      year: 2009
-    - course: BSc in Artificial Intelligence
-      institution: Massachusetts Institute of Technology
-      year: 2008
+    - course: BSc in Biomedical Engineering
+      institution: Amirkabir University of Technology (Tehran Polytechnic)
+      year: 2010
 superuser: true
 last_name: Bighetti
 role: Professor of Artificial Intelligence
