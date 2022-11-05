@@ -41,7 +41,7 @@ education:
       year: 2010
 superuser: true
 last_name: Bighetti
-role: Senior Scientist at Bosch Research
+role: Senior Scientist
 highlight_name: true
 title: Armin Darvish
 first_name: Alice
