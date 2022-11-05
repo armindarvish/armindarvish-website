@@ -14,12 +14,15 @@ organizations:
     url: "https://www.bosch.com/research"
 
 # Short bio (displayed in user profile at end of posts)
-bio: My research interests include ....
+bio: My research interests include nanosensors, nanopores, single-molecule biophysics, dna sequencing, ....
 
 # Interests to show in About widget
 interests:
-  - Nanopores
+  - Nanosensors
+  - Bioelectronics
   - Single Molecule Biophysics
+  - DNA Sequencing / Mapping
+  - Signal / Image Processing 
 
 # Education to show in About widget
 education:
