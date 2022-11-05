@@ -47,8 +47,8 @@ feature:
     name: statistics
     
   - description: 
-    icon: book-open-reader
-    icon_pack: far
+    icon: book
+    icon_pack: fas
     name: research
     
   - description: 
