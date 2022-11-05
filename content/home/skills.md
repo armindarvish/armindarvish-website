@@ -44,7 +44,7 @@ feature:
     
   - description: 
     icon: books
-    icon_pack: fas
+    icon_pack: far
     name: research
     
   - description: 
