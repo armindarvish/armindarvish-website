@@ -20,11 +20,16 @@ feature:
     icon: microchip
     icon_pack: fas
     name: micro/nanofabrication
+
+- description: 
+    icon: vial-virus
+    icon_pack: fas
+    name: biochemistry
     
   - description: 
     icon: microscope
     icon_pack: fas
-    name: biochemistry
+    name: microscopy
     
   - description: 
     icon: python
@@ -42,7 +47,7 @@ feature:
     name: statistics
     
   - description: 
-    icon: book
+    icon: book-open-reader
     icon_pack: far
     name: research
     
