@@ -21,7 +21,7 @@ feature:
     icon_pack: fas
     name: micro/nanofabrication
 
-- description: 
+  - description: 
     icon: vial-virus
     icon_pack: fas
     name: biochemistry
