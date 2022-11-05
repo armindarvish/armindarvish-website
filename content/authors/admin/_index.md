@@ -1,4 +1,5 @@
 ---
+avatar_filename: img_8124b.png
 bio: My research interests include distributed robotics, mobile computing and
   programmable matter.
 interests:
@@ -40,7 +41,7 @@ education:
       year: 2010
 superuser: true
 last_name: Bighetti
-role: Professor of Artificial Intelligence
+role: Senior Scientist at Bosch Research
 highlight_name: true
 title: Armin Darvish
 first_name: Alice
