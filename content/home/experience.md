@@ -39,7 +39,7 @@ experience:
   - title: "Research Scientist"
     company: "Robert Bosch"
     company_url: "https://www.bosch.us/"
-    company_logo: org-gc
+    company_logo: "quantapore.png"
     location: "California"
     date_start: "2019-10-15"
     date_end: "2021-01-01"
