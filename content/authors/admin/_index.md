@@ -26,8 +26,8 @@ social:
     icon_pack: fab
     link: https://www.linkedin.com/
 organizations:
-  - name: Stanford University
-    url: https://www.stanford.edu/
+  - name: Bosch Research
+    url: https://www.bosch.com/research/
 education:
   courses:
     - course: PhD in Biomedical Engineering
