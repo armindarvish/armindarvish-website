@@ -36,14 +36,13 @@ feature:
     icon_pack: fas
     name: signal processing
     
-    
   - description: 
     icon: chart-line
     icon_pack: fas
     name: statistics
     
   - description: 
-    icon: books
+    icon: book
     icon_pack: far
     name: research
     
