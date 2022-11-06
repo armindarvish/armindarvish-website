@@ -15,7 +15,7 @@ hero_media = ""
   gradient_end = "#2b94c3"
   
   # Background image.
-  image = "images/bg0.jpg"  # Name of image in 'assets/media'
+  image = "images/bg1.jpg"  # Name of image in 'assets/media'
   
   # Text color (true=light or false=dark).
   text_color_light = true
@@ -38,4 +38,30 @@ hero_media = ""
   label = ''
 +++
 
+---
 Senior Scientist | Healthcare Tech | Molecular Sensing | Diagnostic Platforms | Data Science
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
