@@ -29,7 +29,7 @@ experience:
     date_start: "2019-10-15"
     date_end: ""
     description: |
-        At Bosch, I am a scientist in the “Bioelectronics” team within the corporate research organization. We design novel biosensors and take them from early stage proof-of-concept to the productization phase before handing them off to other business units within Bosch. My focus has been platform development and integration based on novel electrical nanobiosensors for single- molecule applications. I perform a wide range of tasks from making devices in the clean room to characterizing them using analytical techniques to designing and conducting single-molecule experiments as well as signal processing and data analysis.
+        At Bosch, I am a scientist in the “Bioelectronics” team within the corporate research organization. We design novel biosensors and take them from early stage proof-of-concept to the productization phase before handing them off to other business units within Bosch. My focus has been platform development and integration based on novel electrical nanobiosensors for single-molecule applications. I perform a wide range of tasks from making devices in the clean room to characterizing them using analytical techniques to designing and conducting single-molecule experiments as well as signal processing and data analysis.
 
   - title: "Senior Scientist"
     company: "Quantapore"

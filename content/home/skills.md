@@ -34,7 +34,7 @@ feature:
   - description: 
     icon: microchip
     icon_pack: fas
-    name: micro/nanofabrication
+    name: micro|nanofabrication
 
   - description: 
     icon: vial-virus

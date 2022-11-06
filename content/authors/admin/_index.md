@@ -21,8 +21,8 @@ interests:
   - Nanosensors
   - Bioelectronics
   - Single Molecule Biophysics
-  - DNA Sequencing / Mapping
-  - Signal / Image Processing 
+  - DNA Sequencing | Mapping
+  - Signal | Image Processing 
 
 # Education to show in About widget
 education:
