@@ -27,24 +27,24 @@ content:
   # Contact details (edit or remove options as required)
   email: armindarvish@gmail.com
   address:
-    street: 450 Serra Mall
-    city: Stanford
+    street: 384 Santa Trinita Ave.
+    city: Sunnyvale
     region: CA
-    postcode: '94305'
+    postcode: '94085'
     country: United States
     country_code: US
   coordinates:
-    latitude: '37.4275'
-    longitude: '-122.1697'
+    latitude: '37.382147'
+    longitude: '-121.999532'
   contact_links:
-    - icon: twitter
-      icon_pack: fab
-      name: DM Me
-      link: 'https://twitter.com/Twitter'
-    - icon: video
-      icon_pack: fas
-      name: Zoom Me
-      link: 'https://zoom.com'
+  - icon: linkedin
+    icon_pack: fab
+    name: Linkedin
+    link: 'https://www.linkedin.com/in/adarvish/'
+  - icon: twitter
+    icon_pack: fab
+    name: Twitter
+    link: 'https://twitter.com/ArIVIiIV'
 
 design:
   columns: '2'
