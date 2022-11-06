@@ -24,15 +24,25 @@ date_format: Jan 2006
 #   Begin multi-line descriptions with YAML's `|2-` multi-line prefix.
 item:
   - certificate_url: https://www.coursera.org
-    date_end: ''
-    date_start: '2021-01-25'
+    date_end: '2022-11-05'
+    date_start: ''
+    description: ''
+    organization: Coursera
+    organization_url: https://www.coursera.org
+    title: Biology Meets Programming: Bioinformatics for Beginners
+    url: 'https://coursera.org/share/f53fa728a1487d7c8734acba8f211c89'
+    
+  - certificate_url: https://www.coursera.org
+    date_end: '2022-11-05'
+    date_start: ''
     description: ''
     organization: Coursera
     organization_url: https://www.coursera.org
     title: Neural Networks and Deep Learning
     url: ''
+    
   - certificate_url: https://www.edx.org
-    date_end: ''
+    date_ed: ''
     date_start: '2021-01-01'
     description: Formulated informed blockchain models, hypotheses, and use cases.
     organization: edX
