@@ -15,10 +15,10 @@ hero_media = ""
   gradient_end = "#2b94c3"
   
   # Background image.
-  image = "images/bg1.jpg"  # Name of image in 'assets/media'
+  image = "images/bg0.jpg"  # Name of image in 'assets/media'
   
   # Text color (true=light or false=dark).
-  text_color_light = true
+  text_color_light = false
 
 # Call to action links (optional).
 #   Display link(s) by specifying a URL and label below. Icon is optional for `[cta]`.
@@ -40,6 +40,9 @@ hero_media = ""
 
 ---
 Senior Scientist | Healthcare Tech | Molecular Sensing | Diagnostic Platforms | Data Science
+
+
+<br> </br> <br> </br> <br> </br> <br> </br> <br> </br> <br> </br>
 
 
 
