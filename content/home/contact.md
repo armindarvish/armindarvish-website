@@ -34,8 +34,8 @@ content:
     country: United States
     country_code: US
   coordinates:
-    latitude: '37.382147'
-    longitude: '-121.999532'
+    latitude: '37.381907'
+    longitude: '-121.999045'
   contact_links:
   - icon: linkedin
     icon_pack: fab
