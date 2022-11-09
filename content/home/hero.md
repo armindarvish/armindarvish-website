@@ -15,7 +15,7 @@ hero_media = ""
   gradient_end = "#2b94c3"
   
   # Background image.
-  image = "images/bg3.jpg"  # Name of image in 'assets/media'
+  image = "images/bg9.png"  # Name of image in 'assets/media'
   
   # Text color (true=light or false=dark).
   text_color_light = true
