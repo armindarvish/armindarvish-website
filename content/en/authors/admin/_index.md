@@ -45,8 +45,8 @@ social:
   - icon: envelope
     icon_pack: fas
     link: '/#contact'  # For a direct email link, use "armindarvish@gmail.com".
-  - icon: graduation-cap # Alternatively, use `google-scholar` icon from `ai` icon pack
-    icon_pack: fas
+  - icon: google-scholar # Alternatively, use `google-scholar` icon from `ai` icon pack
+    icon_pack: ai
     link: https://scholar.google.com/citations?user=b5enisEAAAAJ&hl=en
   - icon: github
     icon_pack: fab
