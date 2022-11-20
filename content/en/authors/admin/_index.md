@@ -45,21 +45,27 @@ social:
   - icon: envelope
     icon_pack: fas
     link: '/#contact'  # For a direct email link, use "armindarvish@gmail.com".
-  - icon: google-scholar # Alternatively, use `google-scholar` icon from `ai` icon pack
-    icon_pack: ai
-    link: https://scholar.google.com/citations?user=b5enisEAAAAJ&hl=en
-  - icon: github
-    icon_pack: fab
-    link: https://github.com/armindarvish
   - icon: linkedin
     icon_pack: fab
     link: https://www.linkedin.com/in/adarvish/
   - icon: twitter
     icon_pack: fab
     link: https://twitter.com/ArIVIiIV
+  - icon: github
+    icon_pack: fab
+    link: https://github.com/armindarvish
   - icon: instagram
     icon_pack: fab
     link: https://www.instagram.com/armidar/
+  - icon: google-scholar # Alternatively, use `google-scholar` icon from `ai` icon pack
+    icon_pack: ai
+    link: https://scholar.google.com/citations?user=b5enisEAAAAJ&hl=en
+  - icon: researchgate
+    icon_pack: ai
+    link: https://www.researchgate.net/profile/Armin-Darvish
+  - icon: orcid
+    icon_pack: fab
+    link: https://orcid.org/0000-0002-9202-2316
     
 # Link to a PDF of your resume/CV.
 # To use: copy your resume to `static/uploads/resume.pdf`, enable `ai` icons in `params.toml`,
