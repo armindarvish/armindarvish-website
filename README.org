@@ -1,0 +1,4 @@
+
+* Armin Darvish's Personal Website
+
+Built using the *Academic Resume* template by [[https://wowchemy.com/][Wowchemy]].

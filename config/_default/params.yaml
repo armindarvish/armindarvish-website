@@ -20,8 +20,8 @@ marketing:
     site_type: Person
     local_business_type: ''
     org_name: ''
-    description: 'A highly-customizable Hugo academic resume theme powered by Wowchemy website builder.'
-    twitter: 'wowchemy'
+    description: "Armin Darvish's personal and research profile."
+    twitter: 'ArIVIiIV'
   analytics:
     google_analytics: ''
     baidu_tongji: ''
@@ -36,7 +36,7 @@ header:
     enable: true
     align: l
     show_logo: true
-    show_language: false
+    show_language: true
     show_day_night: true
     show_search: true
     highlight_active_link: true
@@ -66,11 +66,11 @@ features:
     theme_light: github-light
     theme_dark: dracula
   math:
-    enable: false
+    enable: true
   privacy_pack:
-    enable: false
+    enable: true
   repository:
-    url: 'https://github.com/<username>/<repository>'
+    url: 'https://github.com/armindarvish/armindarvish-website'
     content_dir: content
     branch: main
   avatar:

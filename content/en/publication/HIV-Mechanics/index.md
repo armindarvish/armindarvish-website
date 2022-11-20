@@ -1,4 +1,7 @@
 ---
+#allow others to share
+share: true
+
 title: "Mechanical Characterization of HIV-1 with a Solid-State Nanopore Sensor"
 authors:
 - admin

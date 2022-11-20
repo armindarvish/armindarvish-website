@@ -11,8 +11,8 @@ baseURL: 'https://armindarvish.com/' # Website URL
 ############################
 
 defaultContentLanguage: en
-hasCJKLanguage: false
-defaultContentLanguageInSubdir: false
+hasCJKLanguage: true
+defaultContentLanguageInSubdir: true
 removePathAccents: true
 
 ############################
@@ -73,3 +73,9 @@ sitemap:
   _merge: deep
 minify:
   _merge: deep
+
+##########
+## others
+##########
+
+ignoreErrors: ["error-remote-getcsv"]

@@ -9,5 +9,7 @@ title: Biography
 design:
   background:
     image: ""
+#allow others to share
+share: true
 ---
 About me
