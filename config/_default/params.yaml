@@ -9,8 +9,9 @@ appearance:
   #theme_day: minimal
   #theme_night: minimal
   theme_night: dark
-  #font: minimal
-  font: mrrobot
+  #theme_day: dark
+  font: minimal
+  #font: mrrobot
   font_size: L
 
 # SEO

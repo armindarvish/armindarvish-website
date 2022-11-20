@@ -57,7 +57,10 @@ social:
   - icon: twitter
     icon_pack: fab
     link: https://twitter.com/ArIVIiIV
-
+  - icon: instagram
+    icon_pack: fab
+    link: https://www.instagram.com/armidar/
+    
 # Link to a PDF of your resume/CV.
 # To use: copy your resume to `static/uploads/resume.pdf`, enable `ai` icons in `params.toml`,
 # and uncomment the lines below.
