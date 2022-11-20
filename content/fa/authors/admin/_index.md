@@ -1,6 +1,6 @@
 ---
 # Display name
-title: Armin Darvish
+title: آرمین درویش
 
 # Is this the primary user of the site?
 superuser: true

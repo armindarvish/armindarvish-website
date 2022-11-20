@@ -12,9 +12,9 @@ en:
 fa:
   languageCode: fa
   contentDir: content/fa
-  title:
-#  params:
-#    description: Site description in Chinese...
+  title: '|\|r|\/|i\/'
+  params:
+    description: صفحه شخصی آرمین درویش
   menu:
     main:
       - name: درباره

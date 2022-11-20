@@ -2,7 +2,7 @@
 widget: hero
 headless: true
 weight: 10
-title: Armin Darvish
+title: آرمین درویش
 hero_media: ''
 cta:
   label: ''
@@ -22,8 +22,6 @@ advanced:
    css_class: fullscreen
 ---
 
----
-Science and Engineering | Healthcare Technology | Molecular Sensing | Diagnostic Platforms | Data Science
 
 
 
