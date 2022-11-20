@@ -9,14 +9,36 @@ en:
   contentDir: content/en
 
 # Uncomment the lines below to configure your website in a second language.
-#zh:
-#  languageCode: zh-Hans
-#  contentDir: content/zh
-#  title: Chinese website title...
+fa:
+  languageCode: fa
+  contentDir: content/fa
+  title:
 #  params:
 #    description: Site description in Chinese...
-#  menu:
-#    main:
-#      - name: 传
-#        url: '#about'
-#        weight: 1
+  menu:
+    main:
+      - name: درباره
+        url: '#about'
+        weight: 10
+      - name: تجربه
+        url: '#experience'
+        weight: 30
+      - name: پروژه ها
+        url: '#projects'
+        weight: 60
+      - name: مقالات
+        url: '#featured'
+        weight: 80
+      - name: نوشته ها
+        url: '#posts'
+        weight: 90
+      - name: رزومه
+        url: uploads/ArminDarvish_resume.pdf
+        weight: 100
+      - name: گالری
+        url: '#gallery'
+        weight: 120
+      - name: تماس
+        url: '#contact'
+        weight: 130
+      
