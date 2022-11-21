@@ -1,6 +1,6 @@
 ---
 title: Gold Nanodots
-summary: In this project I made fluorescent gold quantum dots otheriwse known as gold nanodots to label HIV entry inhibitors and visualize their interactions with HIv envelope protein. Using amino acids, proteins or alkyl thiols as capping agent, nanodots of various size and optical properties were synthesized. The nanodots were then conjugated to novel HIV entry-inhibitors of the peptide triazole family using EDC-NHS or SMCC chemistry. The peptide-nanodot conjuagte was then used to image and study interactions with cells that expressed HIV envelope proteins. Click on following galleries to see more.
+summary: In this project I made fluorescent gold quantum dots otheriwse known as gold nanodots to label Human Immunodeficiency Virus (HIV) entry inhibitors and visualize their interactions with HIV envelope protein. Using amino acids, proteins or alkyl thiols as capping agent, nanodots of various size and optical properties were synthesized. The nanodots were then conjugated to novel HIV entry-inhibitors of the peptide triazole family using EDC-NHS or SMCC chemistry. The peptide-nanodot conjuagte was then used to image and study interactions with cells that expressed HIV envelope proteins.
 tags:
   - nanodots
   - quantum dots
