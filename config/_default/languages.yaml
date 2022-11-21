@@ -8,13 +8,13 @@ en:
   languageCode: en-us
   # Uncomment for multi-lingual sites, and move English content into `en` sub-folder.
   contentDir: content/en
-  staticDir2: static_en
+  staticDir2: content/en/static
 
 # Uncomment the lines below to configure your website in a second language.
 fa:
   languageCode: fa
   contentDir: content/fa
-  staticDir2: static_fa
+  staticDir2: content/fa/static
   title: '|\|r|\/|i\/'
   params:
     description: صفحه شخصی آرمین درویش
@@ -36,7 +36,7 @@ fa:
         url: '#posts'
         weight: 90
       - name: رزومه
-        url: uploads/ArminDarvish_Resume.pdf
+        url: static_fa/uploads/ArminDarvish_Resume.pdf
         weight: 100
       - name: گالری
         url: '#gallery'
