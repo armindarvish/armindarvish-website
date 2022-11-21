@@ -20,7 +20,7 @@ main:
     url: '#posts'
     weight: 90
   - name: CV
-    url: static_en/uploads/ArminDarvish_Resume.pdf
+    url: static/uploads/ArminDarvish_Resume.pdf
     weight: 100  
   - name: Contact
     url: '#contact'
