@@ -36,7 +36,7 @@ fa:
         url: '#posts'
         weight: 90
       - name: رزومه
-        url: /static/uploads/ArminDarvish_resume.pdf
+        url: uploads/ArminDarvish_Resume.pdf
         weight: 100
       - name: گالری
         url: '#gallery'
@@ -44,5 +44,3 @@ fa:
       - name: تماس
         url: '#contact'
         weight: 130
-      
-staticDir: static
