@@ -19,9 +19,12 @@ main:
   - name: Posts
     url: '#posts'
     weight: 90
+  - name: Photography
+    url: '#photography'
+    weight: 100
   - name: CV
     url: static/uploads/ArminDarvish_Resume.pdf
-    weight: 100  
+    weight: 120  
   - name: Contact
     url: '#contact'
     weight: 130

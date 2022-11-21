@@ -38,8 +38,8 @@ fa:
       - name: رزومه
         url: static/uploads/ArminDarvish_Resume.pdf
         weight: 100
-      - name: گالری
-        url: '#gallery'
+      - name: عکاسی
+        url: '#photography'
         weight: 120
       - name: تماس
         url: '#contact'
