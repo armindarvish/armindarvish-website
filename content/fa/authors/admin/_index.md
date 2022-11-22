@@ -6,11 +6,11 @@ title: آرمین درویش
 superuser: true
 
 # Role/position/tagline
-role: Senior Scientist
+role: پژوهشگر ارشد
 
 # Organizations/Affiliations to show in About widget
 organizations:
-  - name: Bosch Research USA
+  - name: شرکت رابرت بوش آلمان
     url: "https://www.bosch.com/research"
 
 # Short bio (displayed in user profile at end of posts)
@@ -18,24 +18,21 @@ bio: My research interests include nanosensors, nanopores, single-molecule bioph
 
 # Interests to show in About widget
 interests:
-  - Nanosensors
-  - Bioelectronics
-  - Single Molecule Biophysics
-  - DNA Sequencing | Mapping
-  - Signal | Image Processing 
+  - نانو سنسورها
+  - بیوالکترونیک
+  - بیوفیزیک تک ملکولها
+  - توالی یابی و نقشه برداری از دی ان ای
+  - پردازش سیگنال | تصویر
 
 # Education to show in About widget
 education:
   courses:
-    - course: PhD in Biomedical Engineering
-      institution: Drexel University, Philadelphia, PA
-      year: 2016
-    - course: MSc Biomedical Engineering
-      institution: Drexel University, Philadelphia, PA
-      year: 2012
-    - course: BSc Biomedical Engineering
-      institution: Amirkabir University of Technology (Tehran Polytechnic), Tehran, Iran
-      year: 2010
+    - course: دکتری مهندسی پزشکی، ۱۳۹۵
+      institution: دانشگاه درکسل، فیلادلفیا، آمریکا
+    - course: کارشناسی ارشد مهندسی پزشکی، ۱۳۹۱
+      institution: دانشگاه درکسل، فیلادلفیا، آمریکا
+    - course:  کارشناسی مهندسی پزشکی، ۱۳۸۹
+      institution: دانشگاه صنعتی امیرکبیر (پلی تکنیک)، تهران، ایران
 
 # Social/Academic Networking
 # For available icons, see: https://wowchemy.com/docs/getting-started/page-builder/#icons
@@ -81,4 +78,4 @@ email: "armindarvish@gmail.com"
 highlight_name: true
 ---
 
-Hello, my name is Armin Darvish...
+...
