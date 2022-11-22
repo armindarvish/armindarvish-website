@@ -49,18 +49,28 @@ social:
   - icon: envelope
     icon_pack: fas
     link: '/#contact'  # For a direct email link, use "armindarvish@gmail.com".
+    display:
+      header: true
   - icon: linkedin
     icon_pack: fab
     link: https://www.linkedin.com/in/adarvish/
+    display:
+      header: true
   - icon: twitter
     icon_pack: fab
     link: https://twitter.com/ArIVIiIV
+    display:
+      header: true
   - icon: github
     icon_pack: fab
     link: https://github.com/armindarvish
+    display:
+      header: true
   - icon: instagram
     icon_pack: fab
     link: https://www.instagram.com/armidar/
+    display:
+      header: true
   - icon: google-scholar # Alternatively, use `google-scholar` icon from `ai` icon pack
     icon_pack: ai
     link: https://scholar.google.com/citations?user=b5enisEAAAAJ&hl=en
