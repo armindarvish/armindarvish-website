@@ -4,7 +4,7 @@ share: true
 
 title: "Mechanical Characterization of HIV-1 with a Solid-State Nanopore Sensor"
 authors:
-- admin
+- Armin Darvish
 - Jung Soo Lee
 - Bin Peng
 - Jugal Saharia

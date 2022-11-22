@@ -1,5 +1,5 @@
 ---
-title: Publications
+title: مقالات علمی
 cms_exclude: true
 
 # View.

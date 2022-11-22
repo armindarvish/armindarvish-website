@@ -9,7 +9,7 @@ headless: true
 # Order that this section appears on the page.
 weight: 30
 
-title: Experience
+title: تجربیات
 subtitle:
 
 # Date format for experience
@@ -22,27 +22,27 @@ date_format: Jan 2006
 #   Leave `date_end` empty if it's your current employer.
 #   Begin multi-line descriptions with YAML's `|2-` multi-line prefix.
 experience:
-  - title: "Senior Scientist"
-    company: "Bosch"
+  - title: "پژوهشگر ارشد"
+    company: "بوش (Bosch)"
     company_url: "https://www.bosch.us/"
-    location: "California"
-    date_start: "2019-10-15"
+    location: "کالیفرنیا، آمریکا"
+    date_start: "2016-10-15"
     date_end: ""
     description: |
         At Bosch, I am a scientist in the “Bioelectronics” team within the corporate research organization. We design novel biosensors and take them from early stage proof-of-concept to the productization phase before handing them off to other business units within Bosch. My focus has been platform development and integration based on novel electrical nanobiosensors for single-molecule applications. I perform a wide range of tasks from making devices in the clean room to characterizing them using analytical techniques to designing and conducting single-molecule experiments as well as signal processing and data analysis.
 
-  - title: "Senior Scientist"
-    company: "Quantapore"
+  - title: "پژوهشگر ارشد"
+    company: "کوانتاپور (Quantapore)"
     company_url: "https://quantapore.com/"
-    location: "California"
+    location: "کالیفرنیا، آمریکا"
     date_start: "2018-07-01"
     date_end: "2019-10-14"
     description: |
         had a broad range of responsibilities covering development and optimization of Quantapore’s proprietary nanopore-based sequencing technology. This involves process development and integration for nanopore chip design and manufacturing as well as running sequencing experiments to optimize the overall platform, and bring the idea from a proof-of-concept to a market-ready product
     
-  - title: "Nanopore Engineer"
-    company: "Two Pore Guys | Ontera Bio"
-    location: "California"
+  - title: "متخصص نانوحفره"
+    company: "آنترا (Two Pore Guys | Ontera Bio)"
+    location: "کالیفرنیا، آمریکا"
     date_start: "2016-07-01"
     date_end: "2018-06-30"
     description: |

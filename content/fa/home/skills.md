@@ -9,7 +9,7 @@ headless: true
 # Order that this section appears on the page.
 weight: 50
 
-title: Skills
+title: مهارتها و تواناییها
 subtitle:
 
 # Showcase personal skills or business features.
@@ -19,52 +19,52 @@ feature:
   - description: 
     icon: gears
     icon_pack: fas
-    name: engineering
+    name: مهندسی
 
   - description: 
     icon: book
     icon_pack: fas
-    name: research
+    name: پژوهش
 
   - description:
     icon: code
     icon_pack: fas
-    name: programming
+    name: برنامه نویسی
     
   - description: 
     icon: microchip
     icon_pack: fas
-    name: micro|nanofabrication
+    name: میکرو و نانوافزارها 
 
   - description: 
     icon: vial-virus
     icon_pack: fas
-    name: biochemistry
+    name: بیوشیمی
     
   - description: 
     icon: microscope
     icon_pack: fas
-    name: microscopy
+    name: ریزتصویربرداری
     
   - description: 
     icon: python
     icon_pack: fab
-    name: python
+    name: پایتون
     
   - description: 
     icon: wave-square
     icon_pack: fas
-    name: signal processing
+    name: پردازش سیگنال
     
   - description: 
     icon: chart-line
     icon_pack: fas
-    name: statistics
+    name: آمار
     
   - description: 
     icon: camera-retro
     icon_pack: fas
-    name: photography
+    name: عکاسی
     
 # Uncomment to use emoji icons.
 #- icon: ":smile:"

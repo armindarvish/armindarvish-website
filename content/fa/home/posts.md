@@ -9,7 +9,7 @@ headless: true
 # Order that this section appears on the page.
 weight: 90
 
-title: Recent Posts
+title: نوشته های اخیر
 subtitle:
 
 content:

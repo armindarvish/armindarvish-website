@@ -1,7 +1,7 @@
 ---
 title: "PhD Thesis: Electrodeformation in Solid-State Nanopores and its Application for Characterization of Nanoscale Vesicles and Viruses"
 authors:
-- admin
+- Armin Darvish
 date: "2016-05-01T00:00:00Z"
 doi: "10.17918/etd-7797"
 
