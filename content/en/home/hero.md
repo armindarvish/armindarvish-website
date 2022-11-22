@@ -23,7 +23,14 @@ advanced:
 ---
 
 ---
-Science and Engineering | Healthcare Technology | Molecular Sensing | Diagnostic Platforms | Data Science
+
+<p>
+Science and Engineering | Programming | Biotechnology
+</p>
+<p>
+Molecular Sensing | Nanopores | Nanosensors
+</p>
+
 
 <div class="quotebox">
 <p>
