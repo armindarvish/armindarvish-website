@@ -17,7 +17,7 @@ design:
     gradient_end: '#2b94c3'
     gradient_start: '#4bb4e3'
     text_color_light: true
-    image: 'images/bg9.png'
+    image: 'images/bg16.png'
 advanced:
    css_class: fullscreen
 ---

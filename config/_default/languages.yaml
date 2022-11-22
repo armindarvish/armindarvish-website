@@ -18,7 +18,6 @@ fa:
   title: '|\|r|\/|i\/'
   params:
     description: صفحه شخصی آرمین درویش
-    links_authors: false
   menu:
     main:
       - name: درباره
