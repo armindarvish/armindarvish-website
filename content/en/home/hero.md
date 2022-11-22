@@ -2,7 +2,7 @@
 widget: hero
 headless: true
 weight: 10
-title: Armin Darvish
+title: 'Armin Darvish'
 hero_media: ''
 cta:
   label: ''
@@ -25,7 +25,14 @@ advanced:
 ---
 Science and Engineering | Healthcare Technology | Molecular Sensing | Diagnostic Platforms | Data Science
 
+<div class="quotebox">
+<p>
+"As for the future, your task is not to foresee it, but to enable it"
+</p>
+<p>~ Antoine de Saint-Exupéry</p>
+</div>
 
+             
 
 
 

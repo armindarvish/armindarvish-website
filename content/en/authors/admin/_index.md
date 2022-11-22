@@ -4,7 +4,7 @@ title: Armin Darvish
 
 # Is this the primary user of the site?
 superuser: true
-
+  
 # Role/position/tagline
 role: Senior Scientist
 
@@ -14,15 +14,19 @@ organizations:
     url: "https://www.bosch.com/research"
 
 # Short bio (displayed in user profile at end of posts)
-bio: My research interests include nanosensors, nanopores, single-molecule biophysics, dna sequencing, ....
+bio: My research interests include  nanosensors, nanopores, single-molecule biophysics,  bioelectronics, proteomics, genomics, bioinformatics, data science, ...
 
 # Interests to show in About widget
 interests:
   - Nanosensors
   - Bioelectronics
   - Single Molecule Biophysics
-  - DNA Sequencing | Mapping
-  - Signal | Image Processing 
+  - Signal | Image Processing
+  - Genomics
+  - Proteomics
+  - Data Science
+  - Bioinformatics
+  - Computer Science
 
 # Education to show in About widget
 education:
@@ -81,4 +85,8 @@ email: "armindarvish@gmail.com"
 highlight_name: true
 ---
 
-Hello, my name is Armin Darvish...
+I received my PhD in biomedical engineering from Drexel University in 2016, where I studied solid state nanopores as biosensors for novel applications including nucleic acid detection, protein characterization, and sensing/characterization of viruses. Since then, I have worked for multiple companies with a focus on developing integrated biosensing platforms for applications such as molecular diagnostics and DNA sequencing.
+
+I have a broad background in multidisciplinary science and technology, with several years of experience in single-molecule biosensing platforms. In the various projects I have been involved with, I gained hands-on experience in materials science, process engineering, micro/nanofabrication, signal and image processing, multiphysics modeling, experimental design, statistical data analysis, machine learning, data science, and bioinformatics as well as molecular biochemistry. I have also had the opportunity to learn personal and project management skills from working with great inspiring teams both in academia and the industry. 
+
+{{< icon name="download" pack="fas" >}} Download my {{< staticref "en/static/uploads/ArminDarvish_Resume.pdf" "newtab" >}}resumé{{< /staticref >}}.

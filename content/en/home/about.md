@@ -1,8 +1,8 @@
 ---
-widget: about
+widget: "about"
 active: true
 author: admin
-widget_id: About Me
+#widget_id: about
 headless: true
 weight: 20
 title: Biography
@@ -12,4 +12,3 @@ design:
 #allow others to share
 share: true
 ---
-About me

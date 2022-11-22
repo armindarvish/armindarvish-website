@@ -1,0 +1,20 @@
+.quotebox{
+	width: 90%;
+	height: 20%;
+	position: absolute;
+	overflow: visible;
+	top:85%;
+	left:5%;
+	background-color:transparent;
+	font-size: 1.1rem;
+}
+.quotebox p:nth-of-type(1){
+	text-align:center
+}
+
+.quotebox p:nth-of-type(2){
+	//padding-top: 1%;
+	padding-right:10%;
+	text-align:right;
+        font-size: 0.9rem;
+}
