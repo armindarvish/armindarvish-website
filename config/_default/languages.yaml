@@ -35,11 +35,11 @@ fa:
       - name: نوشته ها
         url: '#posts'
         weight: 90
-      - name: رزومه
-        url: static/uploads/ArminDarvish_Resume.pdf
-        weight: 100
       - name: عکاسی
         url: '#photography'
+        weight: 100
+      - name: رزومه
+        url: static/uploads/ArminDarvish_Resume.pdf
         weight: 120
       - name: تماس
         url: '#contact'
