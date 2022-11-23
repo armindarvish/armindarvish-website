@@ -41,7 +41,7 @@ experience:
         had a broad range of responsibilities covering development and optimization of Quantapore’s proprietary nanopore-based sequencing technology. This involves process development and integration for nanopore chip design and manufacturing as well as running sequencing experiments to optimize the overall platform, and bring the idea from a proof-of-concept to a market-ready product
     
   - title: "متخصص نانوحفره"
-    company: "آنترا (Two Pore Guys | Ontera Bio)"
+    company: "آنترا (Two Pore Guys | Ontera)"
     location: "کالیفرنیا، آمریکا"
     date_start: "2016-07-01"
     date_end: "2018-06-30"
