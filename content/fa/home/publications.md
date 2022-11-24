@@ -9,7 +9,7 @@ headless: true
 # Order that this section appears on the page.
 weight: 80
 
-title: مقالات علمی
+title: مقالات علمی و ثبت اختراع
 subtitle: ''
 
 content:
@@ -25,7 +25,7 @@ content:
     exclude_future: false
     exclude_past: false
   # Choose how many pages you would like to display (0 = all pages)
-  count: 0
+  count: 5
   # Choose how many pages you would like to offset by
   offset: 0
   # Page order: descending (desc) or ascending (asc) date.
@@ -37,5 +37,5 @@ design:
 ---
 
 {{% callout note %}}
-برای جستجوی محتوا از این لینک استفاده کنید: [جستجوی محتوا](./publication/).
+[فیلتر و جستجو در مقالات {{< icon name="search" pack="fas" >}}](./publication/).
 {{% /callout %}}

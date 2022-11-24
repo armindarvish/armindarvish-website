@@ -1,5 +1,5 @@
 ---
-title: مقالات علمی
+title: Patents & Publications
 cms_exclude: true
 
 # View.

@@ -1,5 +1,5 @@
 ---
-title: Publications
+title: Patents & Publications
 cms_exclude: true
 
 # View.

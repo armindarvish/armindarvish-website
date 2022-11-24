@@ -44,18 +44,20 @@ abstract: "Enveloped viruses fuse with cells to transfer their genetic materials
 summary: ""
 
 tags:
-- "Solid-State Nanopore"
-- "HIV-1 Virus"
-- "Mechanical Characterization"
-- "Resistive Pulse Sensing"
-- "Viral Maturity"
+- "nanotechnology"
+- "nanosensors"
+- "nanopores"
+- "HIV-1 virus"
+- "mechanical characterization"
+- "resistive pulse sensing"
+- "viral maturity"
 
 featured: true
 
 # links:
 # - name: ""
 #   url: ""
-url_pdf: 'https://analyticalsciencejournals.onlinelibrary.wiley.com/doi/epdf/10.1002/elps.201800311'
+url_pdf: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7400684/pdf/nihms-1607106.pdf'
 url_code: ''
 url_dataset: ''
 url_poster: ''

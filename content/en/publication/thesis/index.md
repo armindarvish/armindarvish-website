@@ -28,7 +28,14 @@ In this dissertation, we focus on proof-of-the-concept experiments and particula
 summary: This thesis lays the groundwork to develop novel enabling technologies based on nanopore resistive pulse sensing for characterization of vesicles’ elastic properties at nanoscale. Our data suggests that such platform can offer significant advantages over current state-of-the-art systems particularly in terms of throughput, costs and operability.
 
 tags:
-- Source Themes
+- "nanotechnology"
+- "nanosensors"
+- "nanopores"
+- "mechanical characterization"
+- "resistive pulse sensing"
+- "electrodeformation"
+- "viral detection"
+
 featured: true
 
 # links:

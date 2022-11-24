@@ -25,14 +25,14 @@ content:
   # To filter by a specific tag, set `tag` to an existing tag name.
   # To remove the toolbar, delete the entire `filter_button` block.
   filter_button:
-    - name: All
+    - name: تمام
       tag: '*'
-    - name: Solid-State Naopores
-      tag: nanopores
-    - name: Gold Nanodots
-      tag: nanodots
-    - name: Other
-      tag: Demo
+    - name: نانوحفره ها
+      tag: نانو حفره ها
+    - name: نقطه کوانتوم طلا
+      tag: نقطه کوانتوم
+    - name: سایر
+      tag: 
 
 design:
   # Choose how many columns the section has. Valid values: '1' or '2'.
