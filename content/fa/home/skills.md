@@ -34,7 +34,7 @@ feature:
   - description: 
     icon: microchip
     icon_pack: fas
-    name: میکرو و نانوافزارها 
+    name: میکرو و نانوتراشه ها 
 
   - description: 
     icon: vial-virus
