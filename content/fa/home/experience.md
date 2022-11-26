@@ -28,8 +28,8 @@ experience:
     location: "کالیفرنیا، آمریکا"
     date_start: "2016-10-15"
     date_end: ""
-    description: |
-        At Bosch, I am a scientist in the “Bioelectronics” team within the corporate research organization. We design novel biosensors and take them from early stage proof-of-concept to the productization phase before handing them off to other business units within Bosch. My focus has been platform development and integration based on novel electrical nanobiosensors for single-molecule applications. I perform a wide range of tasks from making devices in the clean room to characterizing them using analytical techniques to designing and conducting single-molecule experiments as well as signal processing and data analysis.
+    description: |        
+       در مجموعه بوش، من در زیر مجموعه تحقیق و توسعه و عضو گروه تحقیقاتی بیوالکترونیک هستم. در این گروه ما به طراحی و ساخت زیست حسگرهای نوین می پردازیم و پروژه های تحقیقاتی را از مرحله ایده اولیه تا اثبات مفهوم و الگوی نخستین پیش می بریم و سپس آنها را به واحدهای مربوطه در حوزه توسعه محصول و بازاریابی منتقل میکنیم. حوزه تمرکز من در این مجموعه، نانوحسگرهای نوین برای حس تک ملکولها به خصوص برای کاربردهای تشخیص پزشکی است. نقش من در این پروژه شامل وظایف متنوعی از جمله طراحی و ساخت نانوافزارها با استفاده از ابزارهای ساخت ریزافزارها در اتاق تمیز، مشخصه یابی این نانوافزارها با روشهای آنالیز مواد، طراحی و اجرای آزمایشهای حس تک ملکولها و همچنین پردازش سیگنال و تصویر برای تفسیر نتایج این آزمایشها می شود. به عنوان پژوهشگر ارشد، من همچنین به انتشار مقالات علمی و ثبت اختراع بر اساس فعالیت های پژوهشی گروه کمک می کنم. فراتر از وظایف تخصص علمی، من همچنین وظایفی در حیطه تعریف پروژه و مدیریت پروژه به خصوص در همکاری با گروههای پژوهشی دانشگاهی به عنوان مثال در همکاری با دانشگاه استنفورد آمریکا دارم. به علاوه بخشی از وظایف من بر شناخت حوزه تخصصی حسگرها و توسعه پروژه های پژوهشی مرتبط برای انتقال تکنولوژی از دانشگاه به صنعت تمرکز دارد.     
 
   - title: "پژوهشگر ارشد"
     company: "کوانتاپور (Quantapore)"
@@ -37,16 +37,16 @@ experience:
     location: "کالیفرنیا، آمریکا"
     date_start: "2018-07-01"
     date_end: "2019-10-14"
-    description: |
-        had a broad range of responsibilities covering development and optimization of Quantapore’s proprietary nanopore-based sequencing technology. This involves process development and integration for nanopore chip design and manufacturing as well as running sequencing experiments to optimize the overall platform, and bring the idea from a proof-of-concept to a market-ready product
-    
+    description: |س        
+        در کوانتاپور من به واسطه پیشینه تخصصی در حوزه نانوحفره ها به عنوان پژوهشگر ارشد وظایف متنوعی از طراحی و بهینه سازی تکنولوژی نانوحفره ها به ویژی برای کاربرد ردیف یابی دی ان ای داشتم. این وظایف شامل طراحی و ساخت تراشه های نانو حفره، طراحی و اجرای آزمایشهای ردیف یابی و به طور کلی بهینه سازی سیستم ردیف یابی کوانتاپور با استفاده از نانوحفره ها برای تبدیل الگوهای اولیه به محصول آماده ارائه با بازار میشد.
+        
   - title: "متخصص نانوحفره"
     company: "آنترا (Two Pore Guys | Ontera)"
     location: "کالیفرنیا، آمریکا"
     date_start: "2016-07-01"
     date_end: "2018-06-30"
     description: |
-        Worked with a team of scientists and engineers with broad range of responsibilities falling under product development category. I was the project lead for transferring the nanopore sensors from lab-scale proof-of-concept to mass-scale production as well as implementing quality control and testing. This included interfacing with manufacturing partners and subcontractors to establish a manufacturing pipeline.
+        در این نقش، من با گروه متنوعی از پژوهشگران و مهندسین کار می کردم و وظایف گوناگونی در حوزه طراحی محصول داشتم. من به عنوان هادی پروژه در انتقال نانوحفره ها از ایده آزمایشگاهی به اثبات اولیه کاربرد و سپس توسعه صنعتی برای تولید در حجم بالا به همراه ارزیابی و سنجش کیفیت داشتم. این نقش همچنین شامل مذاکره و همکاری با شرکای صنعتی و پیمان کارانی که به ایجاد خط تولید تراشه های نانوحفره ها می کردند میشد.   
 
 design:
   columns: '2'
