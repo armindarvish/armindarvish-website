@@ -34,7 +34,7 @@ content:
   - icon: twitter
     icon_pack: fab
     name: توییتر
-    link: 'https://twitter.com/ArIVIiIV'
+    link: 'https://twitter.com/Armin__Darvish'
 
 design:
   columns: '2'

@@ -56,7 +56,7 @@ social:
       header: true
   - icon: twitter
     icon_pack: fab
-    link: https://twitter.com/ArIVIiIV
+    link: https://twitter.com/Armin__Darvish
     display:
       header: true
   - icon: github

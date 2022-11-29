@@ -22,7 +22,7 @@ marketing:
     local_business_type: ''
     org_name: ''
     description: "Armin Darvish's personal and research profile."
-    twitter: 'ArIVIiIV'
+    twitter: 'Armin__Darvish'
   analytics:
     google_analytics: ''
     baidu_tongji: ''
@@ -75,7 +75,7 @@ features:
     content_dir: content
     branch: main
   avatar:
-    gravatar: false
+    gravatar: true
     shape: circle
   comment:
     provider: ''
