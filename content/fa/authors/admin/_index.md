@@ -10,7 +10,7 @@ role: پژوهشگر ارشد
 
 # Organizations/Affiliations to show in About widget
 organizations:
-  - name: شرکت رابرت بوش آلمان
+  - name: شرکت رابرت بوش
     url: "https://www.bosch.com/research"
 
 # Short bio (displayed in user profile at end of posts)
