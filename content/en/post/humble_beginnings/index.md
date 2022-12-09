@@ -1,0 +1,18 @@
+---
+title: "Humble Beginnings"
+author: ["Armin Darvish"]
+lastmod: 2022-12-08T08:10:14-08:00
+tags: ["hugo", "netlify", "github"]
+categories: ["software", "webdesign"]
+draft: true
+weight: 3001
+subtitle: "How to make a website with hugo, netlify and github"
+summary: "In this post, I show you how you can make a website using hugo, netlify and github"
+authors:
+  - admin
+projects: []
+featured: false
+image:
+  caption: 'This is an art made by midjourney AI and Armin'
+  focal_point: 'center'
+---

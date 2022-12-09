@@ -1,0 +1,59 @@
+#+OPTIONS: author: nil
+#+HUGO_BASE_DIR: ../
+#+HUGO_SECTION: ./
+#+HUGO_WEIGHT: auto
+#+HUGO_AUTO_SET_lastMod: t
+#+hugo_front_matter_format: yaml
+
+* en
+:PROPERTIES:
+:EXPORT_HUGO_SECTION_FRAG: en
+:END:
+** posts
+:PROPERTIES:
+:EXPORT_HUGO_SECTION_FRAG: post
+:END:
+*** DRAFT Humble Beginnings        :@software:@webdesign:hugo:netlify:github:
+:PROPERTIES:
+:EXPORT_HUGO_DRAFT: true
+:EXPORT_HUGO_SECTION_FRAG: humble_beginnings
+:EXPORT_FILE_NAME: index
+:TITLE: Humble Beginnings
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :subtitle How to make a website with hugo, netlify and github
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER+: :summary In this post, I show you how you can make a website using hugo, netlify and github
+:END:
+
+#+begin_src yaml :front_matter_extra t
+authors:
+  - admin
+projects: []
+featured: false
+image:
+  caption: 'This is an art made by midjourney AI and Armin'
+  focal_point: 'center'
+#+end_src
+
+
+
+
+
+* fa
+:PROPERTIES:
+:EXPORT_HUGO_SECTION_FRAG: fa
+:END:
+
+** posts
+:PROPERTIES:
+:EXPORT_HUGO_SECTION_FRAG: post
+:END:
+
+*** DRAFT شروع
+:PROPERTIES:
+:EXPORT_HUGO_DRAFT: true
+:EXPORT_HUGO_SECTION_FRAG: humble_beginnings
+:EXPORT_FILE_NAME: index
+:TITLE: شروع
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :subtitle 
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER+: :summary 
+:END:
+
