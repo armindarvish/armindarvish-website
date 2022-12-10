@@ -78,7 +78,7 @@ features:
     gravatar: true
     shape: circle
   comment:
-    provider: 'disqus'
+    provider: 'commento'
     disqus:
       shortname: 'armindarvish'
       show_count: true
