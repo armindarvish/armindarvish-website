@@ -13,9 +13,10 @@
 :PROPERTIES:
 :EXPORT_HUGO_SECTION_FRAG: post
 :END:
-*** DRAFT Humble Beginnings        :@software:@webdesign:hugo:netlify:github:
+*** PUBLISH Humble Beginnings      :@software:@webdesign:hugo:netlify:github:
+CLOSED: [2022-12-09 Fri 23:42]
 :PROPERTIES:
-:EXPORT_HUGO_DRAFT: true
+:EXPORT_HUGO_DRAFT: false
 :EXPORT_HUGO_SECTION_FRAG: humble_beginnings
 :EXPORT_FILE_NAME: index
 :TITLE: Humble Beginnings
@@ -28,6 +29,7 @@ authors:
   - admin
 projects: []
 featured: false
+commentable: true
 image:
   caption: 'This is an art made by midjourney AI and Armin'
   focal_point: 'center'
@@ -47,7 +49,7 @@ image:
 :EXPORT_HUGO_SECTION_FRAG: post
 :END:
 
-*** DRAFT شروع
+*** DRAFT شروعی ساده
 :PROPERTIES:
 :EXPORT_HUGO_DRAFT: true
 :EXPORT_HUGO_SECTION_FRAG: humble_beginnings
@@ -57,3 +59,13 @@ image:
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER+: :summary 
 :END:
 
+#+begin_src yaml :front_matter_extra t
+authors:
+  - admin
+projects: []
+featured: false
+commentable: true
+image:
+  caption: 'This is an art made by midjourney AI and Armin'
+  focal_point: 'center'
+#+end_src
