@@ -1,10 +1,11 @@
 ---
 title: "Humble Beginnings"
 author: ["Armin Darvish"]
-lastmod: 2022-12-10T03:04:24-08:00
+date: 2022-12-10T04:24:00-08:00
+lastmod: 2022-12-10T04:24:24-08:00
 tags: ["hugo", "netlify", "github"]
 categories: ["software", "webdesign"]
-draft: true
+draft: false
 weight: 3001
 subtitle: "How to make a website with hugo, netlify and github"
 summary: "In this post, I show you how you can make a website using hugo, netlify and github"
