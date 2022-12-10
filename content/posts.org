@@ -13,10 +13,9 @@
 :PROPERTIES:
 :EXPORT_HUGO_SECTION_FRAG: post
 :END:
-*** PUBLISH Humble Beginnings      :@software:@webdesign:hugo:netlify:github:
-CLOSED: [2022-12-09 Fri 23:42]
+*** DRAFT Humble Beginnings        :@software:@webdesign:hugo:netlify:github:
 :PROPERTIES:
-:EXPORT_HUGO_DRAFT: false
+:EXPORT_HUGO_DRAFT: true
 :EXPORT_HUGO_SECTION_FRAG: humble_beginnings
 :EXPORT_FILE_NAME: index
 :TITLE: Humble Beginnings
