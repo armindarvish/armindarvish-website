@@ -71,7 +71,7 @@ While this is going to be a multilinqual blog, not all posts will be available i
 :END:
 
 *** PUBLISH شروعی ساده
-CLOSED: [2023-02-09 Thu 09:40]
+CLOSED: [2023-02-09 Thu 11:44]
 :PROPERTIES:
 :EXPORT_HUGO_DRAFT: false
 :EXPORT_HUGO_SECTION_FRAG: humble_beginnings
