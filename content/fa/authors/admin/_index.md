@@ -14,7 +14,7 @@ organizations:
     url: "https://www.bosch.com/research"
 
 # Short bio (displayed in user profile at end of posts)
-bio: My research interests include nanosensors, nanopores, single-molecule biophysics, dna sequencing, ....
+bio: علایق و حوزه تخصصی تحقیقات من شامل نانوحسگرها، نانوحفره ها، بیوفیزیک تک مولکولی، توالی یابی DNA و ... می باشد.
 
 # Interests to show in About widget
 interests:
