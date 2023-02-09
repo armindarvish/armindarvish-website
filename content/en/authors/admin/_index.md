@@ -6,7 +6,7 @@ title: Armin Darvish
 superuser: true
   
 # Role/position/tagline
-role: Senior Scientist
+role: Lead Scientist
 
 # Organizations/Affiliations to show in About widget
 organizations:
