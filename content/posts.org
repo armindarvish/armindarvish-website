@@ -74,15 +74,8 @@ While this is going to be a multilinqual blog, not all posts will be available i
 :EXPORT_HUGO_SECTION_FRAG: post
 :END:
 
-*** PUBLISH شروعی ساده                       :@نرم افزار:@طراحی وب:@درباره:
-CLOSED: [2023-02-09 Thu 11:54]
-:PROPERTIES:
-:EXPORT_HUGO_DRAFT: false
-:END:
-
-
-
-CLOSED: [2023-02-09 Thu 11:49]
+*** PUBLISH شروعی ساده
+CLOSED: [2023-02-09 Thu 12:01]
 :PROPERTIES:
 :EXPORT_HUGO_DRAFT: false
 :EXPORT_HUGO_SECTION_FRAG: humble_beginnings
@@ -100,6 +93,7 @@ commentable: true
 image:
   caption: 'This is an art made by midjourney AI and Armin'
   focal_point: 'center'
+categories: ["نرم افزار", "طراحی وب", "درباره"]
 #+end_src
 
 **** *در چند جمله*

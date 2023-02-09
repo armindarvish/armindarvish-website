@@ -1,9 +1,8 @@
 ---
 title: "شروعی ساده"
 author: ["Armin Darvish"]
-date: 2023-02-09T11:49:00-08:00
-lastmod: 2023-02-09T11:49:15-08:00
-categories: ["software", "webdesign", "about"]
+date: 2023-02-09T12:01:00-08:00
+lastmod: 2023-02-09T12:02:23-08:00
 draft: false
 weight: 3001
 subtitle: "در مورد وبسایت و وبلاگ"
@@ -16,6 +15,7 @@ commentable: true
 image:
   caption: 'This is an art made by midjourney AI and Armin'
   focal_point: 'center'
+categories: ["نرم افزار", "طراحی وب", "درباره"]
 ---
 
 ## **در چند جمله** {#در-چند-جمله}
