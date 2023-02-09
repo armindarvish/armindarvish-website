@@ -13,8 +13,8 @@
 :PROPERTIES:
 :EXPORT_HUGO_SECTION_FRAG: post
 :END:
-*** PUBLISH Humble Beginnings      :@software:@webdesign:@about:
-CLOSED: [2023-02-09 Thu 09:40]
+*** PUBLISH Humble Beginnings                   :@software:@webdesign:@about:
+CLOSED: [2023-02-09 Thu 11:49]
 :PROPERTIES:
 :EXPORT_HUGO_DRAFT: false
 :EXPORT_HUGO_SECTION_FRAG: humble_beginnings
@@ -75,7 +75,7 @@ While this is going to be a multilinqual blog, not all posts will be available i
 :END:
 
 *** PUBLISH شروعی ساده                          :@software:@webdesign:@about:
-CLOSED: [2023-02-09 Thu 11:44]
+CLOSED: [2023-02-09 Thu 11:49]
 :PROPERTIES:
 :EXPORT_HUGO_DRAFT: false
 :EXPORT_HUGO_SECTION_FRAG: humble_beginnings
