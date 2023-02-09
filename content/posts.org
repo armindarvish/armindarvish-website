@@ -13,7 +13,7 @@
 :PROPERTIES:
 :EXPORT_HUGO_SECTION_FRAG: post
 :END:
-*** PUBLISH Humble Beginnings      :@software:@webdesign:hugo:netlify:github:
+*** PUBLISH Humble Beginnings      :@software:@webdesign:@about:
 CLOSED: [2023-02-09 Thu 09:40]
 :PROPERTIES:
 :EXPORT_HUGO_DRAFT: false
@@ -43,7 +43,11 @@ I first started working on this website back in 2013. At the time, I was a PhD s
 **** *A New Beginning*
 The project was abandoned for years with no updates while I was working for start-up companies in Silicon Valley. Then in 2019, I decided to leave the start-up scene and its ridiculously long working hours for greener pastures in a bigger, more stable company with more humane hours, and once again I found some time to consider personal projects and decided to bring this website back alive. The idea was further reinforced by the fact that the hosting server I was using was shut down by Drexel University. I decided it would be better to use a whole new set of tool chain, since the old website with HTML and CSS was not easy to maintain, plus the fact that this was again a good opportunity to learn new tools and skills. After some brief research I decided that I want to use [[https://gohugo.io/][Hugo]] combined with [[https://www.github.com/][GitHub]] and [[https://www.netlify.com/][Netlify]][fn:Netlify], and after some more browsing, looking at other people's examples (e.g. [[https://www.aidanscannell.com/][Aidan Scannell's Page]]), and reading online instructions (like [[https://www.dsquintana.blog/create-an-academic-website-free-easy-2020/][this one]]), I decided to give [[https://academic-demo.netlify.app/]["Academic Theme"]] from [[https://wowchemy.com/][wowchemy]] a try and the result is what you are looking at.
 
-**** *Going Forward*
+**** PUBLISH *Going Forward*
+CLOSED: [2023-02-09 Thu 11:47]
+:PROPERTIES:
+:EXPORT_HUGO_DRAFT: false
+:END:
 Using Hugo and Netlify, made it really easy to update my website in more than one language as well. In fact it is easy enough to update that I have decided I can keep a blog here. In the past I have written scattered notes here and there on different social media platforms but going forward I'd like to keep everything here on my own website. My new goal in this project is to make a habit of writing short posts on interesting topics and build a collection of thought, ideas, tutorials over time. I will likely write about various topics I am interested in like biotech, nanosensors, and healthcare technology.  In addition, I will be writing posts on some software tools like interesting work flows in emacs including the one I am using to make this very post right now or how to use midjourney to make interesting backgrounds for your website, or using python and NLP to extract detailed technical information from Google Patents, and ...
 
 While this is going to be a multilinqual blog, not all posts will be available in all languages.  My thoughts, experiences and perhaps even my personality is not always identical in environments with different languages, and therefore, the contents of my posts will reflect that reality. 
@@ -70,7 +74,7 @@ While this is going to be a multilinqual blog, not all posts will be available i
 :EXPORT_HUGO_SECTION_FRAG: post
 :END:
 
-*** PUBLISH شروعی ساده
+*** PUBLISH شروعی ساده                          :@software:@webdesign:@about:
 CLOSED: [2023-02-09 Thu 11:44]
 :PROPERTIES:
 :EXPORT_HUGO_DRAFT: false

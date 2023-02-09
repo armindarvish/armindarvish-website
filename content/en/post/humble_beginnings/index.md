@@ -2,9 +2,8 @@
 title: "Humble Beginnings"
 author: ["Armin Darvish"]
 date: 2023-02-09T09:40:00-08:00
-lastmod: 2023-02-09T11:40:49-08:00
-tags: ["hugo", "netlify", "github"]
-categories: ["software", "webdesign"]
+lastmod: 2023-02-09T11:47:55-08:00
+categories: ["software", "webdesign", "about"]
 draft: false
 weight: 3001
 subtitle: "About this Website and Blog"
