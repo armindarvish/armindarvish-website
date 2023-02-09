@@ -27,6 +27,7 @@ interests:
   - Data Science
   - Bioinformatics
   - Computer Science
+  
 
 # Education to show in About widget
 education:
