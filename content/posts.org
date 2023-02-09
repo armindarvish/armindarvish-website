@@ -74,7 +74,14 @@ While this is going to be a multilinqual blog, not all posts will be available i
 :EXPORT_HUGO_SECTION_FRAG: post
 :END:
 
-*** PUBLISH شروعی ساده                          :@software:@webdesign:@about:
+*** PUBLISH شروعی ساده                       :@نرم افزار:@طراحی وب:@درباره:
+CLOSED: [2023-02-09 Thu 11:54]
+:PROPERTIES:
+:EXPORT_HUGO_DRAFT: false
+:END:
+
+
+
 CLOSED: [2023-02-09 Thu 11:49]
 :PROPERTIES:
 :EXPORT_HUGO_DRAFT: false
