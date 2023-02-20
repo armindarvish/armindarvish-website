@@ -2,7 +2,7 @@
 title: "Humble Beginnings"
 author: ["Armin Darvish"]
 date: 2023-02-09T11:49:00-08:00
-lastmod: 2023-02-09T11:49:25-08:00
+lastmod: 2023-02-09T15:01:05-08:00
 categories: ["software", "webdesign", "about"]
 draft: false
 weight: 3001
@@ -10,7 +10,7 @@ subtitle: "About this Website and Blog"
 summary: "The totally necessary \"about this blog...\" post to introduce this website and blog"
 authors:
   - admin
-projects: []
+projects: ["software"]
 featured: false
 commentable: true
 image:

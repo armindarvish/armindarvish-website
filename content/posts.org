@@ -13,7 +13,7 @@
 :PROPERTIES:
 :EXPORT_HUGO_SECTION_FRAG: post
 :END:
-*** PUBLISH Humble Beginnings                   :@software:@webdesign:@about:
+*** PUBLISH Humble Beginnings                  :@software:@webdesign:@about:
 CLOSED: [2023-02-09 Thu 11:49]
 :PROPERTIES:
 :EXPORT_HUGO_DRAFT: false
@@ -27,7 +27,7 @@ CLOSED: [2023-02-09 Thu 11:49]
 #+begin_src yaml :front_matter_extra t
 authors:
   - admin
-projects: []
+projects: ["software"]
 featured: false
 commentable: true
 image:
@@ -62,6 +62,27 @@ While this is going to be a multilinqual blog, not all posts will be available i
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :subtitle 
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER+: :summary 
 :END:
+
+*** DRAFT Why scientists need a website?            :@software:@scientists:web:
+:PROPERTIES:
+ :EXPORT_HUGO_DRAFT: true
+ :EXPORT_HUGO_SECTION_FRAG: why_scientists_need_a_web
+ :EXPORT_FILE_NAME: index
+ :TITLE: Why Scientists Need a Website
+ :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :subtitle 
+ :EXPORT_HUGO_CUSTOM_FRONT_MATTER+: :summary 
+:END:
+
+#+begin_src yaml :front_matter_extra t
+authors:
+  - admin
+projects: []
+featured: false
+commentable: true
+image:
+  caption: 'caption'
+  focal_point: 'center'
+#+end_src
 
 * fa
 :PROPERTIES:
@@ -113,6 +134,29 @@ categories: ["نرم افزار", "طراحی وب", "درباره"]
 
 در حالی که این یک وبلاگ چند زبانه خواهد بود، همه پست ها به همه زبان ها در دسترس نخواهند بود و نوشته های فارسی لزوماً ترجمه نوشته های انگلیسی نیست. افکار، تجربیات و شاید حتی شخصیت من در محیط هایی با زبان های مختلف یکسان نیست و بنابراین، مطالب پست های من نیز انعکاس این تجربیات خواهند بود.
 
+
+
+*** DRAFT چرا پژوهشگران نیاز به وبسایت دارند؟
+:PROPERTIES:
+ :EXPORT_HUGO_DRAFT: true
+ :EXPORT_HUGO_SECTION_FRAG: why_scientists_need_a_web
+ :EXPORT_FILE_NAME: index
+ :TITLE: Why Scientists Need a Website
+ :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :subtitle 
+ :EXPORT_HUGO_CUSTOM_FRONT_MATTER+: :summary 
+:END:
+
+#+begin_src yaml :front_matter_extra t
+authors:
+  - admin
+projects: []
+featured: false
+commentable: true
+image:
+  caption: 'caption'
+  focal_point: 'center'
+categories: []
+#+end_src
 
 * Footnote
 * COMMENT Local Variables                          :ARCHIVE:
