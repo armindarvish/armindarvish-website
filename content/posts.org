@@ -43,7 +43,7 @@ I first started working on this website back in 2013. At the time, I was a PhD s
 **** *A New Beginning*
 The project was abandoned for years with no updates while I was working for start-up companies in Silicon Valley. Then in 2019, I decided to leave the start-up scene and its ridiculously long working hours for greener pastures in a bigger, more stable company with more humane hours, and once again I found some time to consider personal projects and decided to bring this website back alive. The idea was further reinforced by the fact that the hosting server I was using was shut down by Drexel University. I decided it would be better to use a whole new set of tool chain, since the old website with HTML and CSS was not easy to maintain, plus the fact that this was again a good opportunity to learn new tools and skills. After some brief research I decided that I want to use [[https://gohugo.io/][Hugo]] combined with [[https://www.github.com/][GitHub]] and [[https://www.netlify.com/][Netlify]][fn:Netlify], and after some more browsing, looking at other people's examples (e.g. [[https://www.aidanscannell.com/][Aidan Scannell's Page]]), and reading online instructions (like [[https://www.dsquintana.blog/create-an-academic-website-free-easy-2020/][this one]]), I decided to give [[https://academic-demo.netlify.app/]["Academic Theme"]] from [[https://wowchemy.com/][wowchemy]] a try and the result is what you are looking at.
 
-**** PUBLISH *Going Forward*
+**** *Going Forward*
 CLOSED: [2023-02-09 Thu 11:47]
 :PROPERTIES:
 :EXPORT_HUGO_DRAFT: false
@@ -83,6 +83,181 @@ image:
   caption: 'caption'
   focal_point: 'center'
 #+end_src
+
+
+*** DRAFT ChatGPT to the rescue
+:PROPERTIES:
+ :EXPORT_HUGO_DRAFT: true
+ :EXPORT_HUGO_SECTION_FRAG: ChatGPT to the rescue
+ :EXPORT_FILE_NAME: index
+ :TITLE: ChatGPT to the rescue
+ :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :subtitle
+ :EXPORT_HUGO_CUSTOM_FRONT_MATTER+: :summary 
+:END:
+
+#+begin_src yaml :front_matter_extra t
+authors:
+  - admin
+projects: [software, AI]
+featured: true
+commentable: true
+image:
+  caption: 'caption'
+  focal_point: 'center'
+#+end_src
+
+Do you ever find yourself buried in documents you have to read? As a scientist, I am always struggling with staying up to date with the field. Back in Grad School days, I could easily stay up-to-date by following the relevant research in my field. There were perhaps a handful of labs that were working on directly relevant projects and a handful more that were working on related but not directly relevant ideas. So setting up some alerts on PubMed and Google Scholar was more-or-less enough to keep up with all the latest news in the field. But then I left Academia and started working as a scientist in the industry. There, I have to keep up with more than just a few academic labs. Unlike Academia, where I could focus on a single project and a handful of experimental techniques or  applications, etc., in the industry I have to know about every possible way a competitor can achieve what we are researching. I also need to understand how changes in the business or legal landscape will affect our project. Therefore, I have all sorts of alerts and rss-feeds not just to find the latest academic papers but also patents, news articles, business reports, etc. The problem is, this usually means hundreds of new feeds show up on my list every day and just going through them and figuring out which ones are relevant is hard. Of course you might be thinking that an AI-enabled article-suggestion or sorting would be the answer.
+However, there are two general problems with the generic recommender systems, whether it is google news or some feed management apps:
+
+1- They tend to learn about you as a person, but do not know how to separate different aspects of you effectively. For example, my google news recommendation is filled with all sort of things from news that I read about my home country Iran, to personal interests, to hobbies, to recent searches I have done on google,... But, that is essentially useless if i am looking for relevant topics to my project at work. What I need instead is a recommender system that is containerized and knows how to find relevant information and puts them  in their own basket instead of creating a big mish mash of everything.
+
+2- The second problem is that these recommender systems are often not good at finding high-quality technical information. For example, I can subscribe to a topic I am interested in on Google news but that would then mean I will see all sorts of general nonesense that can show up anywhere in the news. As scientist this is completely useless. On the other hand, I can subscribe to email alerts on pubmed, or journal websites to get alerts about new academic papers, but the problem is there are so many of those sources and each have a different interface, etc. Plus the fact that lots of important information about business landscape and legal landscape do not show up in academic papers for a t least a few years. A good recommender system should be able to feed me with the most important technical publications (papers, patents, ...) as well as the latest news articles, discussions,...
+
+
+Of course this not something new. There is a reason there are all sorts of physical and virtual networks for professionals. I happen to follow many forums on twitter, read blogs on topics relevant to my work, ...
+
+
+social 
+what I really need is two things:
+1- A recommender that is containerized. For example, it only focuses on topics related to work during work hours, or can efficiently categorize new information into different projects.
+2- A recommender that knows how to filter all the noise
+Can you write an article about using chatGPT to summarize patent claims?
+n etc.
+
+So, with the recent hypes about chatGPT, I figured it is worth giving it 
+
+to find the latest development
+
+changes
+The field of interest has broaden significantly because
+
+relevant ad School, I could  behind with catching up with the l and and little time to do it?
+Reading patents, digesting and summarizing them can be a daunting tasks. I have alerts set to notify me when new patents or patent applications are published online in my field of research and I review them every week, but with the pace of today's development and the sheer number of new research papers and patents, keeping up with the information is becoming more and more challenging. Recently I decided to ask ChatGPT to summarize some patent claims for me and the result is amazing. Here are some screen shots:
+
+For example, there is this long patent from Oxford Nanopores that is very long and has 62 claims in the international version. Like a lot of other patent documents, it's hard to read.
+
+So, I commited the sin and asked chatGPT to describe it to me in lay language, and here is the results:
+
+"This is a patent application for a method of forming an array of membranes composed of amphipathic molecules. The method involves providing an apparatus that contains an array of compartments with openings for introducing polar medium, and disposing polar medium and apolar medium onto the support to create volumes of polar medium within each compartment. A layer of apolar medium is then provided across the openings in the support to prevent the volumes of polar medium in neighbouring compartments from coming into contact with each other. Polar medium is then flowed across the openings to displace the apolar medium and form a layer of polar medium that contacts the volumes of polar medium in the compartments. This results in the formation of membranes composed of amphipathic molecules at the interfaces between the layer of polar medium and the volumes of polar medium in the compartments. Various additional steps may be included, such as injecting polar medium into each compartment, pre-treating the support with apolar medium, and forming an emulsion of polar medium in apolar medium to introduce the polar medium into the compartments. The support may include partitions with gaps that allow the flow of apolar medium between the compartments, and the volumes of polar medium may form meniscuses across the inner recesses and outer portions of the partitions. Overall, this method provides a way to form arrays of membranes for various applications, such as in sensors and diagnostics."
+
+As you can see the essence of the claims are captured in a short paragraph that is easy to read. With a little bit of automation, I can now have chatGPT read a list of patents and generate short summaries that I can then review and decide if i need to spend time to go over the details!
+
+***** extras
+ChatGPT is a powerful artificial intelligence tool that can be used to efficiently summarize patent claims. Patent claims are a set of statements that define the scope of a patent, and they are often lengthy and complex. Summarizing these claims can be time-consuming and tedious, but with the help of ChatGPT, the process can be streamlined and simplified.
+
+The first step in using ChatGPT to summarize patent claims is to input the text into the tool. This can be done by either copying and pasting the text or uploading a file containing the claims. Once the text is inputted into ChatGPT, the tool uses machine learning algorithms to analyze the language and extract the key points of the claims.
+
+One of the benefits of using ChatGPT is that it can summarize the claims in a concise and readable format. This makes it easier for patent examiners or lawyers to understand the scope of the patent and determine its value. Additionally, ChatGPT can identify any ambiguities or inconsistencies in the claims, helping to ensure that they are clear and accurate.
+
+Another advantage of using ChatGPT to summarize patent claims is that it can save time and resources. Traditionally, patent examiners or lawyers would need to manually read through and analyze the claims, which could take hours or even days. With ChatGPT, the process can be completed in a matter of minutes, freeing up valuable time for other tasks.
+
+In conclusion, ChatGPT is a valuable tool for summarizing patent claims. Its ability to extract key points from lengthy and complex texts can save time and resources while ensuring that the claims are clear and accurate. It is a valuable tool for anyone who works with patents, from patent examiners to lawyers and entrepreneurs.
+
+
+*** POST testing my ai assistant
+:PROPERTIES:
+ :EXPORT_HUGO_DRAFT: true
+ :EXPORT_HUGO_SECTION_FRAG: testing_my_ai_assistant
+ :EXPORT_FILE_NAME: index
+ :TITLE: testing_my_ai_assistant
+ :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :subtitle
+ :EXPORT_HUGO_CUSTOM_FRONT_MATTER+: :summary
+ :header-args: jupyter-python :session mysession :kernel micromaster :exports both
+:END:
+
+#+begin_src yaml :front_matter_extra t
+authors:
+  - admin
+projects: []
+featured: false
+commentable: true
+image:
+  caption: 'caption'
+  focal_point: 'center'
+#+end_src
+
+**** Question
+how do I do a rolling window cross-correlation to find common events in two time-series in python?
+
+**** ChatGPT
+You can use the =numpy.correlate()= function to perform cross-correlation between the two time series. To implement a rolling window, you can slice the two time series into overlapping segments, then perform the correlation on each segment. Here's an example code:
+
+#+begin_src jupyter-python
+import numpy as np
+from scipy import signal as sig
+
+def rolling_corr(x, y, window):
+    # Calculate the length of the output array
+    n = len(x) - window + 1
+    # Initialize the output array
+    out = np.empty(n)
+    # Loop through each rolling window and compute the correlation
+    for i in range(n):
+        x_win = x[i:i+window]
+        y_win = y[i:i+window]
+        # out[i] = np.correlate(x_win, y_win, mode='valid')[0]
+        out[i] = np.corrcoef(x_win, y_win)[0,1]
+    # Return the output array
+    return out
+
+#+end_src
+
+#+RESULTS:
+
+In this function, =x= and =y= are the two time series, and window is the size of the rolling =window=. The function returns an array of length =n=, where =n= is the number of rolling =windows=. Each element of the array represents the correlation coefficient between the two time series for a given window.
+
+To find common events, you can define a threshold for the correlation coefficient and identify the segments where the coefficient exceeds the threshold.
+**** Question
+
+Can you write some code to plot the time series in the previous code for me to visually see the effect
+Assistant:
+
+**** ChatGPt
+Sure! Here's some code that generates two example time series and plots them along with the cross-correlation:
+
+
+#+begin_src jupyter-python :results none :file "./en/post/testing_my_ai_assistant/featured.png"
+import matplotlib.pyplot as plt
+import mplcyberpunk
+
+# plt.style.use("mywebsite-dark")
+plt.style.use("mycyberpunk")
+
+# Generate example time series
+t = np.arange(0, 10, 0.1)
+x = np.sin(t*2) + np.random.normal(scale=0.1, size=len(t))
+# y = np.sin(t*1.1 + 0.5) + np.random.normal(scale=0.1, size=len(t))
+y = np.sin(t*4-np.pi/2) + np.random.normal(scale=0.1, size=len(t))
+# y = -x
+x_n= (x - np.mean(x))/(np.std(x))
+y_n= (y - np.mean(y))/(np.std(y))
+# Calculate rolling cross-correlation with window size 50
+corr = rolling_corr(x_n, y_n, 50)
+
+sel = np.where(corr<-0.1)
+# Plot time series and cross-correlation
+fig, ax = plt.subplots(ncols=2, figsize=(12,4))
+ax[0].plot(t, x, label='x')
+ax[0].plot(t, y, label='y')
+ax[0].set_xlabel('Time')
+ax[0].set_ylabel('Value')
+ax[0].legend()
+
+ax[1].plot(t[:len(corr)], corr)
+ax[1].plot(t[sel], corr[sel], "ro")
+ax[1].set_xlabel('Time lag')
+ax[1].set_ylabel('Cross-correlation')
+ax[1].axhline(0.5, color='red', linestyle='--')
+ax[1].axhline(-0.5, color='red', linestyle='--')
+
+plt.show()
+
+#+end_src
+[[file:featured.png]]
+
+Here, we generate two time series with a similar waveform but slightly different frequencies, and add some random noise to each of them. We then calculate the rolling cross-correlation using a window size of 50, and plot the two time series and the cross-correlation side-by-side. The dashed red lines show the threshold for the correlation coefficient.
+
+You can modify the example code to use your own time series data and parameters.
 
 * fa
 :PROPERTIES:
