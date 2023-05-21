@@ -1,7 +1,7 @@
 ---
 title: "testing my ai assistant"
 author: ["Armin Darvish"]
-lastmod: 2023-04-19T08:10:33-07:00
+lastmod: 2023-05-19T10:32:36-07:00
 draft: true
 weight: 3005
 authors:

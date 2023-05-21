@@ -19,8 +19,8 @@
 /* KeywordType */ .chroma .kt { color: #68aabd }
 /* Name */ .chroma .n { color:  }
 /* NameAttribute */ .chroma .na { color: #1bc7da }
-/* NameBuiltin */ .chroma .nb { color: #8073a0 }
-/* NameBuiltinPseudo */ .chroma .bp { color: #8073a0 }
+/* NameBuiltin */ .chroma .nb { color: #c4a4f9 }
+/* NameBuiltinPseudo */ .chroma .bp { color: #c4a4f9 }
 /* NameClass */ .chroma .nc { color: #fce744 }
 /* NameConstant */ .chroma .no { color: #EA0016 }
 /* NameDecorator */ .chroma .nd { color: #EA0016 }
@@ -33,7 +33,7 @@
 /* NameOther */ .chroma .nx { color: #5eaba5 }
 /* NameProperty */ .chroma .py {  color: #5eaba5 }
 /* NameTag */ .chroma .nt { color: #f66496 }
-/* NameVariable */ .chroma .nv { color: #5eaba5 }
+/* NameVariable */ .chroma .nv { color: #ffffff }
 /* NameVariableClass */ .chroma .vc { color: #5eaba5 }
 /* NameVariableGlobal */ .chroma .vg { color: #5eaba5 }
 /* NameVariableInstance */ .chroma .vi { color:  #5eaba5 }
