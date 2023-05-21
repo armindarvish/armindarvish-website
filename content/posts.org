@@ -259,10 +259,9 @@ Here, we generate two time series with a similar waveform but slightly different
 
 You can modify the example code to use your own time series data and parameters.
 
-*** PUBLISH Emacs Workflow: Dynamically Adding Files to *org-agenda-files*
-CLOSED: [2023-05-21 Sun 13:00]
+*** DRAFT Emacs Workflow: Dynamically Adding Files to *org-agenda-files*
 :PROPERTIES:
-:EXPORT_HUGO_DRAFT: false
+:EXPORT_HUGO_DRAFT: true
 :EXPORT_HUGO_SECTION_FRAG: Emacs_Workflow_Dynamically_Adding_files_to_org-agenda-Files
 :EXPORT_FILE_NAME: index
 :TITLE: dynamically adding files to org-agenda-files in emacs
