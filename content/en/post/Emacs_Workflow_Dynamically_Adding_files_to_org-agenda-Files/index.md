@@ -2,7 +2,7 @@
 title: "Emacs Workflow: Dynamically Adding Files to org-agenda-files"
 author: ["Armin Darvish"]
 date: 2023-05-21T20:46:00-07:00
-lastmod: 2023-05-21T20:46:55-07:00
+lastmod: 2023-05-21T20:57:03-07:00
 draft: false
 weight: 3006
 subtitle: "How to automatically and dynamically build org-agenda-files to include any files with TODO items."
@@ -75,12 +75,12 @@ When I delete some files, I want to make sure it gets removed from `org-agenda-f
 ```emacs-lisp
 (defun ad/org-agenda-cleanup-files (&rest ARG)
   (interactive)
-  (let ((temp:org-agenda-files org-agenda-files))
+  (let ((temp/org-agenda-files org-agenda-files))
   (dolist (file org-agenda-files)
   (if (not (file-exists-p file))
-      (setq temp:org-agenda-files (seq-difference temp:org-agenda-files (list file))))
+      (setq temp/org-agenda-files (seq-difference temp/org-agenda-files (list file))))
     ())
-  (setq org-agenda-files temp:org-agenda-files))
+  (setq org-agenda-files temp/org-agenda-files))
   )
 ```
 
@@ -89,10 +89,9 @@ When I delete some files, I want to make sure it gets removed from `org-agenda-f
 To get my functions to run automatically, I add `hooks` to `org-mode`. I make `lambda` functions that are added as hooks to `find-file-hook` and `before-save-hook` to make sure that `org-agenda-files` gets updated whenever I open an org-mode file and then again when I save the file.
 
 ```emacs-lisp
-(require 'ad-org)
-;; add or remove individual file
-(add-hook 'org-mode-hook (lambda () (add-hook 'find-file-hook #'my:org-agenda-update-files)))
-(add-hook 'org-mode-hook (lambda () (add-hook 'before-save-hook #'my:org-agenda-update-files)))
+;; Add or remove individual file
+(add-hook 'org-mode-hook (lambda () (add-hook 'find-file-hook #'ad/org-agenda-update-files)))
+(add-hook 'org-mode-hook (lambda () (add-hook 'before-save-hook #'ad/org-agenda-update-files)))
 ```
 
 -   Adding advice to functions that use `org-agenda-files` to show `TODO` items.
@@ -101,9 +100,9 @@ Before I run `org-agenda` or `dashboard-get-agenda`, or any other function that 
 
 ```emacs-lisp
 ;; remove non-existing files before building agenda
-(advice-add 'org-agenda :before #'my:org-agenda-cleanup-files)
-(advice-add 'org-todo-list :before #'my:org-agenda-cleanup-files)
-(advice-add 'dashboard-get-agenda :before #'my:org-agenda-cleanup-files)
+(advice-add 'org-agenda :before #'ad/org-agenda-cleanup-files)
+(advice-add 'org-todo-list :before #'ad/org-agenda-cleanup-files)
+(advice-add 'dashboard-get-agenda :before #'ad/org-agenda-cleanup-files)
 ```
 
 -   Make sure `org-agenda-files` is remembered between Emacs sessions.
