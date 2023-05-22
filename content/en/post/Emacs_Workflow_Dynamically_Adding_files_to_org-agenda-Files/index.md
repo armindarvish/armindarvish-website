@@ -1,8 +1,8 @@
 ---
 title: "Emacs Workflow: Dynamically Adding Files to Org Agenda"
 author: ["Armin Darvish"]
-date: 2023-05-21T21:05:00-07:00
-lastmod: 2023-05-21T21:05:53-07:00
+date: 2023-05-21T21:14:00-07:00
+lastmod: 2023-05-21T21:14:52-07:00
 draft: false
 weight: 3006
 subtitle: "How to automatically and dynamically build org-agenda-files to include any files with TODO items."
@@ -114,7 +114,12 @@ I add `org-agenda-files` to `savehis-additional-variables` and make sure that `s
 ```
 
 
-## screenshot {#screenshot}
+## Performance {#performance}
+
+Of course adding files dynamically to the `org-agenda-files` comes with a cost. Make too many files with org-agenda items and it will be very slow. Personally I keep most of my general `TODO` items in one file under my main org directory and only put `TODO` items in other files when having it in the context of the specific project is useful.
+
+
+## Screenshot {#screenshot}
 
 Here is a screenshot showing it in action. I open an org file and a `TODO` item in it and save it and as you can see once I refresh the buffer describing `org-agenda-files` variable, the new file is added to the list. I also show that once I remove the `TODO` item or mark it as DONE, it is automatically removed from the list. Also, you can see that once I have the new file in the org-agenda list, it automatically shows up on my dashboard.
 

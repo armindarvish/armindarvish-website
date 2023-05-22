@@ -260,7 +260,7 @@ Here, we generate two time series with a similar waveform but slightly different
 You can modify the example code to use your own time series data and parameters.
 
 *** PUBLISH Emacs Workflow: Dynamically Adding Files to Org Agenda
-CLOSED: [2023-05-21 Sun 21:05]
+CLOSED: [2023-05-21 Sun 21:14]
 :PROPERTIES:
 :EXPORT_HUGO_DRAFT: false
 :EXPORT_HUGO_SECTION_FRAG: Emacs_Workflow_Dynamically_Adding_files_to_org-agenda-Files
@@ -377,7 +377,10 @@ I add =org-agenda-files= to =savehis-additional-variables= and make sure that =s
 (add-to-list 'savehist-additional-variables 'org-agenda-files)
 #+end_src
 
-**** screenshot
+**** Performance
+Of course adding files dynamically to the =org-agenda-files= comes with a cost. Make too many files with org-agenda items and it will be very slow. Personally I keep most of my general =TODO= items in one file under my main org directory and only put =TODO= items in other files when having it in the context of the specific project is useful.
+
+**** Screenshot
 
 Here is a screenshot showing it in action. I open an org file and a =TODO= item in it and save it and as you can see once I refresh the buffer describing =org-agenda-files= variable, the new file is added to the list. I also show that once I remove the =TODO= item or mark it as DONE, it is automatically removed from the list. Also, you can see that once I have the new file in the org-agenda list, it automatically shows up on my dashboard.
 
