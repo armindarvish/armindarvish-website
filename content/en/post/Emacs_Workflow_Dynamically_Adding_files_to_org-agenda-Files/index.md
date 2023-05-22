@@ -1,8 +1,8 @@
 ---
 title: "Emacs Workflow: Dynamically Adding Files to org-agenda-files"
 author: ["Armin Darvish"]
-date: 2023-05-21T13:00:00-07:00
-lastmod: 2023-05-21T13:02:20-07:00
+date: 2023-05-21T20:46:00-07:00
+lastmod: 2023-05-21T20:46:55-07:00
 draft: false
 weight: 3006
 subtitle: "How to automatically and dynamically build org-agenda-files to include any files with TODO items."
@@ -19,13 +19,12 @@ image:
 
 ## Intro {#intro}
 
-If you use emacs org-mode for task management, you have probably wondered if there is a way to dynamically add files with TODO items to org-agenda-files. A google search will likely get you some initial ideas on how to do it. For example this post: [Boris Buliga - Task management with org-roam Vol. 5: Dynamic and fast agenda](https://d12frosted.io/posts/2021-01-16-task-management-with-roam-vol5.html) covers how to this. But since Boris's post focuses on using org-roam, it may not be the right solution when you use org-roam. So I had to hack my own solution and in this point I'm going to share that with you
-in case anyone is interested.
+If you use Emacs org-mode for task management, you have probably wondered if there is a way to dynamically add files with TODO items to org-agenda-files. A Google search will likely get you some initial ideas on how to do it. For example this post: [Boris Buliga - Task management with org-roam Vol. 5: Dynamic and fast agenda](https://d12frosted.io/posts/2021-01-16-task-management-with-roam-vol5.html) covers how to this. But since Boris's post focuses on using org-roam, it may not be the right solution when you use org-roam. So I had to hack my own solution and in this point I'm going to share that with you in case anyone is interested. You can see a [screenshot](en/post/Emacs_Workflow_Dynamically_Adding_files_to_org-agenda-Files/dynamic_org_agenda.gif) below.
 
 
 ## How does it work {#how-does-it-work}
 
-For the main functionalities, I am using [Org Element API](https://orgmode.org/worg/dev/org-element-api.html) to parse org-mode buffers and find org TODO items. If there is a `TODO` item in the buffer and it is visiting a file, I add the file to `org-agenda-files`. Additionally, I make sure that `org-agenda-files` is remembered between different emacs sessions, I add `org-agenda-files` to `savehist-additional-variables`.
+For the main functionalities, I am using [Org Element API](https://orgmode.org/worg/dev/org-element-api.html) to parse org-mode buffers and find org TODO items. If there is a `TODO` item in the buffer, and it is visiting a file, I add the file to `org-agenda-files`. Additionally, I make sure that `org-agenda-files` is remembered between different Emacs sessions, I add `org-agenda-files` to `savehist-additional-variables`.
 
 Then I define custom functions for and add them as hooks to org-mode to update `org-agenda-files` when an org-mode file is opened as well as when an org-mode file is saved. The redundancy helps make sure that nothing is lost if there is a crash.
 
@@ -34,7 +33,7 @@ Then I define custom functions for and add them as hooks to org-mode to update `
 
 -   Check if the file contains a `TODO` item:
 
-    Use `org-element-map` and `org-element-parse-buffer` to walk the buffer, find all headlines and if return true if there is any headline that is a `TODO` item.
+    Use `org-element-map` and `org-element-parse-buffer` to walk the buffer, find all headlines and return true if there is any headline that is a `TODO` item.
 
 <!--listend-->
 
@@ -51,7 +50,7 @@ Then I define custom functions for and add them as hooks to org-mode to update `
 
 -   make a custom function to update `org-agenda-files` if the current org-mode file contains a `TODO` item:
 
-If the current buffer contains a `TODO` item, I use seq-difference to find out if the files is already in org-agenda-files. if it does not contain `TODO` item, I make sure to remove it from `org-agenda-files`. This is important because when I'm done with a `TODO` item and remove it from the file, I would want the file to be removed from `org-agenda-files`.
+If the current buffer contains a `TODO` item, I use seq-difference to find out if the files are already in org-agenda-files. If it does not contain `TODO` item, I make sure to remove it from `org-agenda-files`. This is important because when I'm done with a `TODO` item and remove it from the file, I would want the file to be removed from `org-agenda-files`.
 
 ```emacs-lisp
 (defun ad/org-agenda-update-files (&rest ARG)
@@ -87,7 +86,7 @@ When I delete some files, I want to make sure it gets removed from `org-agenda-f
 
 -   Adding hooks
 
-To get my functions to run automaticcaly, I add `hooks` to `org-mode`. I make `lambda` functions that are added as hooks to `find-file-hook` and `before-save-hook` to make sure that `org-agenda-files` gets updated whenever I open an org-mode file and then again when I save the file.
+To get my functions to run automatically, I add `hooks` to `org-mode`. I make `lambda` functions that are added as hooks to `find-file-hook` and `before-save-hook` to make sure that `org-agenda-files` gets updated whenever I open an org-mode file and then again when I save the file.
 
 ```emacs-lisp
 (require 'ad-org)
@@ -114,3 +113,10 @@ I add `org-agenda-files` to `savehis-additional-variables` and make sure that `s
 ```emacs-lisp
 (add-to-list 'savehist-additional-variables 'org-agenda-files)
 ```
+
+
+## screenshot {#screenshot}
+
+Here is a screenshot showing it in action. I open an org file and a `TODO` item in it and save it and as you can see once I refresh the buffer describing `org-agenda-files` variable, the new file is added to the list. I also show that once I remove the `TODO` item or mark it as DONE, it is automatically removed from the list. Also, you can see that once I have the new file in the org-agenda list, it automatically shows up on my dashboard.
+
+{{< figure src="/ox-hugo/dynamics_org_agenda.gif" width="800px" height="nil px" >}}
