@@ -1,10 +1,10 @@
 ---
-title: "Emacs Workflow: Dynamically Adding Files to Org Agenda"
+title: "Emacs Workflow: Dynamically Adding Files to Org Agenda :@software:@emacs:@org-mode:"
 author: ["Armin Darvish"]
 date: 2023-05-21T21:14:00-07:00
-lastmod: 2023-05-21T21:40:01-07:00
+lastmod: 2023-05-21T22:18:41-07:00
 draft: false
-weight: 3006
+weight: 3002
 subtitle: "How to automatically and dynamically build org-agenda-files to include any files with TODO items."
 summary: "In this post, I'll show you my workflow for automatically adding files with TODO items to org-agenda-files as soon as we open or save the file."
 authors:
