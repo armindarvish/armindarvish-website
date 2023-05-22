@@ -53,8 +53,8 @@ Using Hugo and Netlify, made it really easy to update my website in more than on
 While this is going to be a multilinqual blog, not all posts will be available in all languages.  My thoughts, experiences and perhaps even my personality is not always identical in environments with different languages, and therefore, the contents of my posts will reflect that reality. 
 
 
-*** PUBLISH Emacs Workflow: Dynamically Adding Files to Org Agenda :@software:@emacs:@org-mode:
-CLOSED: [2023-05-21 Sun 21:14]
+*** PUBLISH Emacs Workflow: Dynamically Adding Files to Org Agenda :@software:@emacs:@orgmode:
+CLOSED: [2023-05-22 Mon 10:32]
 :PROPERTIES:
 :EXPORT_HUGO_DRAFT: false
 :EXPORT_HUGO_SECTION_FRAG: Emacs_Workflow_Dynamically_Adding_files_to_org-agenda-Files
