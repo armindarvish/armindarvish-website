@@ -2,7 +2,7 @@
 title: "Emacs Workflow: Dynamically Adding Files to Org Agenda"
 author: ["Armin Darvish"]
 date: 2023-05-21T21:14:00-07:00
-lastmod: 2023-05-21T21:14:52-07:00
+lastmod: 2023-05-21T21:40:01-07:00
 draft: false
 weight: 3006
 subtitle: "How to automatically and dynamically build org-agenda-files to include any files with TODO items."
@@ -33,7 +33,7 @@ Then I define custom functions for and add them as hooks to org-mode to update `
 
 -   Check if the file contains a `TODO` item:
 
-    Use `org-element-map` and `org-element-parse-buffer` to walk the buffer, find all headlines and return true if there is any headline that is a `TODO` item.
+    Use `org-element-map` and `org-element-parse-buffer` to walk the buffer, find all headlines and return true if there is any headline that is a `TODO` item. Note that I am looking for any heading that is a `TODO` item. Alternatively you can check for specific `TODO` types by looking at `:todo-keyword` instead of `:todo-type` e.g. `(org-element-property :todo-keyword h)...`
 
 <!--listend-->
 
