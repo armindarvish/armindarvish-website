@@ -20,8 +20,6 @@
 
 {{ $resource := partial "functions/get_featured_image.html" $item }}
 
-<!-- I changed this to support Gifs from -->
-<!-- https://github.com/wowchemy/wowchemy-hugo-themes/blob/859b57464242bd76227ac3db8cf2f08ce2147ee5/modules/wowchemy/layouts/partials/views/masonry.html#L23 -->
 <div class="card">
   {{ with $resource }}
     {{ $image := . }}
