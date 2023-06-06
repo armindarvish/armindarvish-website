@@ -8,8 +8,9 @@
 appearance:
   #theme_day: minimal
   #theme_night: minimal
-  theme_night: dark
-  # theme_day: dark
+  # theme_night: my-main-dark
+  theme_night: my-main-dark
+  #theme_day: my-main-dark
   # font: minimal
   font: mrrobot
   font_size: L

@@ -16,7 +16,7 @@ main:
   - name: Publications
     url: '#featured'
     weight: 80
-  - name: Posts
+  - name: Blog
     url: '#posts'
     weight: 90
   - name: Photography

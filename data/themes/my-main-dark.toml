@@ -1,16 +1,53 @@
 # Theme metadata
-name = "Dark"
+name = "My Main Dark"
 
-[dark]
+  [dark]
+
   # Primary
   primary = "hsl(322, 57%, 68%)"
-
+  #primary = "hsl(339, 90%, 68%)"
+  
+  # link = "#fdd78b"
+  # link_hover = "#fdd78b"
+  
+  link = "#f76498"
+  link_hover = "#f76498"
+  
+  
   # Menu
   menu_primary = "rgb(20, 22, 34)"
   menu_text = "rgba(255,255,255,0.6)"
-  Menu_text_active = "rgba(255,255,255,1)"
+  menu_text_active = "rgba(255,255,255,1)"
   menu_title = "#fff"
 
+  
   # Home sections
   home_section_odd = "hsla(231, 15%, 18%, 1)"
   home_section_even = "hsla(231, 15%, 16%, 1)"
+  
+  
+# [light]
+#   # Primary
+#   primary = "#1565c0"
+
+#   # link = "#f76498"
+#   link = "#fdd78b"
+#   link_hover = "#fdd78b"
+#   #link_hover = "#f76498"
+  
+
+#   # Menu
+#   menu_primary = "#fff"
+#   menu_text = "#34495e"
+#   #menu_text_active = "#047d74"
+#   menu_text_active = "#fdd78b"
+#   menu_title = "#047d74"
+
+#   # Home sections
+#   home_section_odd = "rgb(255, 255, 255)"
+#   home_section_even = "rgb(247, 247, 247)"
+
+
+
+
+  

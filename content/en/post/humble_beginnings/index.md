@@ -2,7 +2,7 @@
 title: "Humble Beginnings"
 author: ["Armin Darvish"]
 date: 2023-02-09T11:49:00-08:00
-lastmod: 2023-05-21T22:16:55-07:00
+lastmod: 2023-06-06T07:38:19-07:00
 categories: ["software", "webdesign", "about"]
 draft: false
 weight: 3001
