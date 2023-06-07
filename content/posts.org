@@ -411,6 +411,9 @@ image:
   focal_point: 'center'
   #+end_src
 
+
+file:~/projects/armindarvish-website/content/en/post/Building_An_Efficient_Blogging_Workflow_in_Emacs/featured.gif
+
 In the previous post, I showed you how to automatically add files to your org-agenda. In this post I am going to show you how you can then use org-todo tasks beyond just tasks and todo-items and use it to build custom work flows that takes an idea through different stages. As an example I am going to show you my blogging workflow which I am using right now to use this posts.
 
 **** Using =org-todo= keywords

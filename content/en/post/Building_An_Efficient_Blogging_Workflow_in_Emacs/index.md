@@ -1,7 +1,7 @@
 ---
 title: "How to Efficiently Write Blogs in Emacs Org-Mode in 2023"
 author: ["Armin Darvish"]
-lastmod: 2023-06-06T14:55:36-07:00
+lastmod: 2023-06-06T16:49:28-07:00
 categories: ["software", "emacs", "orgmode", "blogging"]
 draft: true
 weight: 3007
@@ -17,6 +17,8 @@ image:
   caption:
   focal_point: 'center'
 ---
+
+{{< figure src="/ox-hugo/featured.gif" >}}
 
 In the previous post, I showed you how to automatically add files to your org-agenda. In this post I am going to show you how you can then use org-todo tasks beyond just tasks and todo-items and use it to build custom work flows that takes an idea through different stages. As an example I am going to show you my blogging workflow which I am using right now to use this posts.
 
