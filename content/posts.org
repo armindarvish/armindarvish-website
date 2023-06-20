@@ -13,6 +13,7 @@
 :PROPERTIES:
 :EXPORT_HUGO_SECTION_FRAG: post
 :END:
+
 *** PUBLISH Humble Beginnings                  :@software:@webdesign:@about:
 CLOSED: [2023-02-09 Thu 11:49]
 :PROPERTIES:
@@ -183,15 +184,458 @@ Here is a screenshot showing it in action. I open an org file and a =TODO= item 
 #+ATTR_HTML: :width 800px :height nil px
 [[file:~/projects/armindarvish-website/content/en/post/Emacs_Workflow_Dynamically_Adding_files_to_org-agenda-Files/dynamics_org_agenda.gif]]
 
-*** DRAFT If ChatGPT can get a Wharton's MBA, why should you? :@software:@AI:chatGPT: 
+*** PUBLISH Building the Best Blog Editor with Emacs Org-Mode in 2023?
+CLOSED: [2023-06-20 Tue 01:23]
+:PROPERTIES:
+:EXPORT_HUGO_DRAFT: false
+:EXPORT_HUGO_SECTION_FRAG: Building_An_Efficient_Blogging_Workflow_in_Emacs
+:EXPORT_FILE_NAME: index
+:TITLE: Building An Efficient Blogging Workflow in Emacs
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :subtitle How to use org-mode and ox-hugo along with org-todo items and org-agenda to manage your blog posts
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER+: :summary In this post, I will show you my custom workflow in Emacs for writing blog posts. I use org-mode for writing the text and ox-hugo for exporting to markdown files. The post focuses on how to create a custom workflow starting with capturing the initial idea with org-capture, then using org-todo and org-agenda to track the post as you take it from idea to an initial draft through different stages of editing to finally publishing it on your website.
+:END:
+
+#+begin_src yaml :front_matter_extra t
+authors:
+  - admin
+projects: ["software"]
+categories: ["software", "emacs", "org mode", "blogging"]
+featured: false
+commentable: true
+image:
+  caption:
+  focal_point: 'center'
+#+end_src
+
+In the previous post, I showed you how to automatically add files to your org-agenda. In this post I am going to expand on that and show you how to use =org-todo= items beyond tasks and todo lists and build custom workflows. As an example, I am going to show you my blogging workflow. This is what I am using right now to write this post, and in my opinion, it showcases the true power of Emacs and org-mode. If you want to know why Emacs is the one of the best tools for writing blogs in 2023, read on.
+
+But before we get down to the point, let me make one thing clear: This is not a post about the basics of Emacs or org-mode and won't be giving you any configurations for writing text in Emacs either (although I will share some tips and tools as needed), instead it focuses on creating efficient workflows with automation using org-mode features that make Emacs superior to other available tools. Specifically I will show you:
+1. Dynamic org-capture templates using Yasnippet snippets
+2. Defining functions that are auto-triggered when an org-todo keyword is changed.
+3. Some tips on custom org-agenda views to only look at items in a specific workflow
+4. Extra tips for improving the look and feel and creating an intuitive user-friendly experience in org-mode
+If you don't know much about Emacs or org-mode, or all you are looking for is a list of packages and settings that are useful for wiring non-programming text in Emacs, then I suggest to start elsewhere (You can find lots of good resources here:  [[https://github.com/thinkhuman/writingwithemacs][thinkhuman/writingwithemacs: Tips, Examples, and Resources for Writing with Emacs]]) and come back to this post later, when you feel the need to take your workflow to the next level.
+
+Also, note that while I am using a blog post as an example here, this general approach can be applied to many other scenarios, for example a bunch of flash cards you want to memorize; a selection of books you want to read, digest or summarize; a list of companies you want to apply for a job at; a bunch of projects you want to work on; and so on.
+
+**** Using =org-todo= keywords
+By default [[https://orgmode.org/][Emacs Org mode]] comes with two =org-todo= keywords ="TODO"= and ="DONE"= but you can add any custom keyword and use them to track different objects and category of items such as notes, flashcards, ideas, drafts, etc. You can do this by adding the labels to =org-todo-keywords= in a sequence following [[https://orgmode.org/manual/Workflow-states.html][Workflow states (The Org Manual)]]. For example for a blogging workflow I use =(sequence "DRAFT(d)" "POST(p)" "|" "PUBLISH(b)")= as shown below. Note that by putting *PUBLISH* after "|", we are setting *PUBLISH* as the done label for this workflow, which can be used for other useful functions such as logging time, etc. (see the section on automating workflow [[Automating the Workflow][below]] for how I use it to automate logging times).
+
+#+begin_src emacs-lisp
+(add-to-list 'org-todo-keywords '(sequence "DRAFT(d)" "POST(p)" "|" "PUBLISH(b)"))
+#+end_src
+
+Now, we can label org headings as a blog post by adding *DRAFT* todo keyword. This will serve as an entry point to capture ideas for a blog and add it to my agenda to edit later. As I edit the post and decide to publish it on my website, I'll change the label to *POST* or *PUBLISH*. I am going to show you how to use this to create some automated workflow but before that I am going to introduce another tool, Ox-Hugo, that makes it easy to write blog posts in org-mode if you use the static site generator, [[https://gohugo.io/][Hugo]].
+
+**** Ox-Hugo
+Next, we look at [[https://github.com/jethrokuan/ox-hugo][Ox-Hugo]] that allows you to export texts written in org-mode to markdown files that are used by the [[https://gohugo.io/][Hugo]] static generator. If you use Hugo to build your blog, and want to write your posts in org-mode (which you should!), then [[https://github.com/jethrokuan/ox-hugo][Ox-Hugo]] is a natural choice. There are other options such as =org-publish= as well, but I think Ox-Hugo is a better approach.
+
+I recommend you go through Ox-Hugo's [[https://ox-hugo.scripter.co/][manual]] for setting it up and find the specific settings that fit your need. But here are some ideas and tips to consider:
+
+You can organize your blog posts either in separate files (one post per file) or all in one file under different org headings (one post per heading). Personally I am using one post per heading right now because I like to see all my posts in the same file next to each other. But if you prefer having the blog posts in different files, then you may want to consider my previous post [[https://www.armindarvish.com/en/post/emacs_workflow_dynamically_adding_files_to_org-agenda-files/][to dynamically add files to org-agendas]] so that every file gets added to your =org-agenda-files= automatically. Then you can use org-agenda views to browse through all your posts (see [[Bonus 1: Quickly see all Your Posts with Custom-Agenda-Views or Consult-Agenda][below]] for more on that).
+
+Currently, I am using [[https://wowchemy.com/templates/][Wowchemy]]'s [[https://academic-demo.netlify.app/][Academic]] template for my website, so in my ox-hugo configuration, I set everything up according to the structure defined by that template. I use one org file for all my blog posts, and since I have a multilingual site, I put this file in my hugo website's folders under content alongside separate folders for each language. I then set up my ox-hugo to save each post in the appropriate folder by setting =:EXPORT_HUGO_SECTION_FRAG:= property. Because the properties are inherited, I can then use the same property in the subheadings of each post to point ox-hugo to save the post in the appropriate folder. For example for English posts I have something like the following in my file. As you can see I also add =YAML= source blocks for Wowchemy's settings following the documentation here: [[https://wowchemy.com/docs/][Hugo Documentation for Wowchemy]].
+
+#+begin_src org
+,* en
+:PROPERTIES:
+:EXPORT_HUGO_SECTION_FRAG: en
+:END:
+,** posts
+:PROPERTIES:
+:EXPORT_HUGO_SECTION_FRAG: post
+:END:
+
+## Here I enter new posts##
+
+,* DRAFT Title of the post
+
 :PROPERTIES:
 :EXPORT_HUGO_DRAFT: true
-:EXPORT_HUGO_SECTION_FRAG: chatGPT_MBA
+:EXPORT_HUGO_SECTION_FRAG: Title_of_the_post
 :EXPORT_FILE_NAME: index
-:TITLE: If ChatGPT can get a Wharton's MBA, why should you?
-:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :subtitle 
-:EXPORT_HUGO_CUSTOM_FRONT_MATTER+: :summary 
+:TITLE: Title of the post
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :subtitle subtitle goes here
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER+: :summary summary goes here
 :END:
+
+,#+begin_src yaml :front_matter_extra t
+authors:
+  - admin
+projects: [project]
+categories: [tags]
+featured: false
+commentable: true
+image:
+  caption:
+  focal_point: 'center'
+,#+end_src
+
+#+end_src
+
+I have a separate similar heading tree for other languages. With this setup I can use org-export with ox-hugo to automatically make the markdown files for each post.
+Also, since my website is in a git repository, I keep a symlink copy of that file somewhere more convenient in my home folder such as ="~/blog/"= so I can quickly find my posts without navigating through the folder structure of my website.
+
+Other than that there are some site-specific settings that I define in =:PROPERTIES:= drawers following Ox-Hugo's [[https://ox-hugo.scripter.co/][manual]]. I also set up [[https://ox-hugo.scripter.co/doc/auto-export-on-saving/][auto export on saving.]]
+
+
+**** Automating the Workflow
+While the setup above is already great for writing posts in org-mode and quickly exporting them to markdown, we can do much more with org-mode =TODO= items. For example, we can create some automation flow by hooking functions to =org-after-todo-state-change-hook=, so your draft turns into a post on your hugo website automatically when you change the keyword. As a result, you can just focus on writing the contents rather than maintaining the blog files. This is what makes this workflow superior to a lot of other tools, because it brings the automation (that tools like WordPress offer) to a great text-editing environment like org-mode all within Emacs where I personally do a lot of other things (like coding, reading feeds, keeping notes, managing projects and ideas, ...).
+
+*Here is my automated workflow (You can see a screenshot at the end of this post):*
+
+I capture new ideas with org-capture (The next section, [[Using Org-Capture For Blog Ideas][Using Org Capture For Blog Ideas]], will cover how to set this up) under the *DRAFT* keyword and quickly add some rough ideas of what I want to add later. At this point, I rather not have it converted to markdown yet because maybe I end up deciding the topic is not right, and I don't even want to work on it until some other time. Later, when I find time to actually sit down and write up something, I go to my org-agenda list and find the blog post I want to work on and add some more contents and ideas and organize the post. I keep doing this over the next few days or weeks depending on availability until I get to a point when I feel that the content is indeed suitable for a blog post. At this point, I bump the heading to *POST* keyword, which automatically creates the markdown files. I am still not ready to publish this post because I probably don't have figures, and there are still minor details that need fixing. Therefore, in the markdown file, this is still marked as draft (determined by =:EXPORT_HUGO_DRAFT: true= in the properties' drawer), which allows me to see the post on my local web server (e.g. by running =hugo server -D= in the terminal) and decide how to polish and finalize it. Finally, when I'm done with editing the post and want to publish it on my website, I bump the heading up to *PUBLISH* and it automatically flags the post for publishing.
+
+*Here is the code that enables the workflow:*
+
+I have defined a function that changes =:EXPORT_HUGO_DRAFT:= property and also runs =(org-hugo-export-wim-to-md)= for me when I change the keyword.
+
+#+begin_src emacs-lisp
+(defun ad/org-change-draft-when-blog-state-changes ()
+  (interactive)
+  (pcase (org-get-todo-state)
+    ("PUBLISH" (org-set-property "EXPORT_HUGO_DRAFT" "false")
+     (org-hugo-export-wim-to-md))
+    ("DRAFT" (org-set-property "EXPORT_HUGO_DRAFT" "true"))
+    ("POST" (org-set-property "EXPORT_HUGO_DRAFT" "true")
+            (org-hugo-export-wim-to-md))
+    (_ ())
+    )
+  )
+
+(add-hook 'org-after-todo-state-change-hook
+'my/org-change-draft-when-state-changes-to-publish)
+#+end_src
+
+In the code above I am adding a function, =ad/org-change-draft-when-state-changes-to-publis= as a hook to run whenever a =TODO= keyword changes. This function runs =(org-hugo-export-wim-to-md)= to create the markdown files and also sets the =:EXPORT_HUGO_DRAFT:= to =true= or =false= depending on the status. Note that I have hooked the custom function to ='org-after-todo-state-change-hook= which runs on any =TODO= changes but since I am checking the todo state by =(org-get-todo-state)= this hook will only do something when the heading is one of *DRAFT*, *POST* or *PUBLISH*.
+
+There are two more settings for my ideal setup to work as intended:
+#+begin_src emacs-lisp
+(setq org-log-done 'time
+      org-log-into-drawer t)
+
+(setq-default org-export-with-todo-keywords nil)
+#+end_src
+
+The code above makes sure that whenever a todo item is set as done (defined by putting the specific =TODO= keyword after ="|"= in the ='org-todo-keywords= list as mentioned [[*Using =org-todo= keywords][above]]). This is useful because ox-hugo uses this log time drawer to add the /"last updated timestamp"/ to markdown files.
+Also, I make sure that =org-export-with-todo-keywords= is set to =nil=.
+
+With this setup, I don't need to worry about anything but writing the content. As I change the =TODO= keyword, everything happens automatically in the background. In addition, I have everything set up with [[https://www.netlify.com/?utm_medium=paid_search&utm_source=google&utm_campaign=12755510784&utm_term=netlify][Netlify]] and [[https://github.com/][GitHub]], to automatically update my website when I push new changes to my git repository. As a result, the blogging workflow is as simple as capturing an idea and editing it in org-mode whenever I have time. Everything else happens magically in the background without me having to think or worry about it. Here is a screenshot showing how the new post gets added to the website when I change the keyword from *DRAFT* to *POST*.
+
+#+ATTR_ORG: :width 800px :height nilpx
+#+ATTR_LATEX: :width 800px :height nilpx
+#+ATTR_HTML: :width 800px :height nilpx
+[[file:~/projects/armindarvish-website/content/en/post/Building_An_Efficient_Blogging_Workflow_in_Emacs/automatic_posting.gif]]
+
+**** Using Org-Capture For Blog Ideas
+
+The next useful step to take is to set up org-capture to quickly save new ideas. Often times blog ideas come to you randomly in the middle of something else, and you don't want to lose them. The org-mode ability to quickly fire up org-capture and write the idea down is therefore a crucial functionality that makes this workflow superior to a lot of other editors. To do this, I use the org-capture with a custom template. You can do this in different ways from minimal setup to more advanced ones, depending on your needs, as I show below.
+
+***** Minimal Setup
+You can add a simple template to your org-capture templates following the official instructions: [[https://orgmode.org/manual/Capture-templates.html][Capture templates (The Org Manual)]]. For example, the code below creates a new heading in the ="Blog.org"= file in default org directory under the Heading ="* Posts"=.
+
+#+begin_src emacs-lisp
+(add-to-list 'org-capture-templates
+      `("b" "Blog Post" entry
+         (file+olp ,(file-truename (expand-file-name "Blog.org" org-directory)) "Posts")
+         "* DRAFT %i %?\n"))
+#+end_src
+
+***** Better Set Up that Adds Ox-Hugo
+The simple template above is sufficient for most basic workflows, but I personally like to use something a bit more advanced with automation and add capabilities for ox-hugo. Here is a better template which adds ox-hugo settings:
+
+#+begin_src emacs-lisp
+ (add-to-list 'org-capture-templates
+      `(("b" "Blog Post" entry
+         (file+olp ,(file-truename (expand-file-name "Blog.org" org-directory)) "Posts")
+         "* DRAFT %i %?\n:PROPERTIES:\n :EXPORT_HUGO_DRAFT: true\n :EXPORT_HUGO_SECTION_FRAG: \n :EXPORT_FILE_NAME: index\n :TITLE: \n :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :subtitle \n :EXPORT_HUGO_CUSTOM_FRONT_MATTER+: :summary \n:END:\n\n#+begin_src yaml :front_matter_extra t\nauthors:\n  - admin\nprojects: []\nfeatured: false\ncommentable: true\nimage:\n  caption: 'caption'\n  focal_point: 'center'\n#+end_src\n"
+         :empty-lines 1
+         :prepend t
+         :jump-to-captured t)
+#+end_src
+
+The code above adds the ox-hugo settings as =:PROPERTIES:= drawer to your entry and also adds some settings for convenience by =:prepend t= and =:jump-to-captured t=. It jumps to the file narrowed to the heading you just created in case you want to add some more text before finishing the capture process.
+
+***** Advanced Setup with Ox-Hugo + Yasnippet
+The template above covers provides all the essentials for an automated workflow, but it is still not the ideal version because but it is not dynamic enough, and some manual editing is still required. For example, I do not want to manually enter the file path for the markdown files. Therefore, in my own setup I take a different approach by using [[https://github.com/joaotavora/yasnippet][Yasnippet]] to do some auto-completion for me. Of course, this means that you need to install Yasnippet and set it up, which may not be what you want and hence the settings above, but in my case I am using Yasnippet for other things anyway, so I might as well use it here.
+
+I define a capture function that calls org-capture but also enables yasnippet and inserts my snippet as a template. This is essentially a from with metadata fields that I can quickly jump to and fill by using the tab button.
+
+#+begin_src emacs-lisp
+(defun ad/blog-capture-new (&optional text)
+(interactive "sTitle: ")
+  (let* ((org-capture-templates `(("d" "default" entry
+                                   (file+olp ,(file-truename (expand-file-name "Blog.org" org-directory)) "Posts")
+                                   "* DRAFT %?"
+                                   :empty-lines 1
+                                   :prepend t
+                                   :jump-to-captured t)
+                                  ))
+         (yas-wrap-around-region t))
+    (org-capture nil "d")
+    (let ((draft (and (yas-reload-all) (yas-lookup-snippet "hugo draft" 'org-mode t))))
+        (yas-minor-mode-on)
+        (yas-expand-snippet draft)
+        (insert (format "%s" text)))
+      ))
+#+end_src
+In the code above I use let-bindings to temporarily define a rather simple =org-capture-template= and call =(org-capture nil "d")= to get the org-capture buffer. Then I achieve the rest of what I need by loading and expanding a yasnippet snippet that contains the following:
+
+#+begin_src emacs-lisp
+# -*- mode: snippet -*-
+# name: blog post template
+# key:
+# --
+${1:title}
+:PROPERTIES:
+ :EXPORT_HUGO_DRAFT: true
+ :EXPORT_HUGO_SECTION_FRAG: ${1:$(string-replace "\s" "_" yas-text)}
+ :EXPORT_FILE_NAME: index
+ :TITLE: $1
+ :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :subtitle $2
+ :EXPORT_HUGO_CUSTOM_FRONT_MATTER+: :summary $3
+:END:
+
+,#+begin_src yaml :front_matter_extra t
+authors:
+  - admin
+projects: [$4]
+categories: [$5]
+featured: false
+commentable: true
+image:
+  caption: $6
+  focal_point: 'center'
+,#+end_src
+$0
+#+end_src
+
+Note how the snippet takes the title and automatically generates the path for the markdown files using =:EXPORT_HUGO_SECTION_FRAG:=. In the screenshot below, you can see my capture process:
+
+#+ATTR_ORG: :width 800px :height nilpx
+#+ATTR_LATEX: :width 800px :height nilpx
+#+ATTR_HTML: :width 800px :height nilpx
+[[file:en/post/Building_An_Efficient_Blogging_Workflow_in_Emacs/org-capture.gif]]
+
+
+**** Bonus 1: Quickly see all Your Posts with Custom-Agenda-Views or Consult-Agenda
+An advantage of using org-todo keywords for items such as blog posts is that you can then quickly find all your items using [[https://orgmode.org/manual/Agenda-Views.html][Agenda Views]].
+
+#+begin_src emacs-lisp
+(add-to-list 'org-agenda-custom-commands
+     '("b" "Blog"
+        ((agenda)
+         (todo "DRAFT\\|POST\\|PUBLISH"
+               ((org-agenda-overriding-header "Blog Posts: "))))))
+#+end_src
+
+
+Alternatively, you can use the awesome [[https://github.com/minad/consult][Consult Package]] by Alexander Miller and use =consult-org-agenda= to quickly search through your blog posts in the minibuffer. Here is some example code you can use after you install consult:
+
+#+begin_src emacs-lisp
+(consult-org-agenda "TODO={DRAFT\\|POST\\|PUBLISH}")
+#+end_src
+
+Personally, I have built some custom functions based on consult-agenda just for my blog posts that lists all my old posts with status and date, etc. and allows me to add new posts by entering a new title as well. I don't get into all that extra stuff in this post, but it is simply a custom setup for completing-read based on [[https://github.com/minad/consult][Consult]]. It allows me to see my previous posts or start new ones by entering a new title. Here is a screenshot:
+
+#+ATTR_ORG: :width 800px :height nilpx
+#+ATTR_LATEX: :width 800px :height nilpx
+#+ATTR_HTML: :width 800px :height nilpx
+[[file:~/projects/armindarvish-website/content/en/post/Building_An_Efficient_Blogging_Workflow_in_Emacs/consult-blog.gif]]
+
+**** Bonus 2: Better looks for org-todo keywords
+If you want to have some better looks for your org todo keywords, you can check the [[https://github.com/minad/org-modern][Org-Modern]] by Alexander Miller. If you want to have different faces or colors for different labels, you can set =org-todo-keyword-faces= per official instruction: [[https://orgmode.org/manual/Faces-for-TODO-keywords.html][Faces for TODO keywords (The Org Manual)]]. Here is an example:
+
+#+begin_src emacs-lisp
+(add-to-list 'org-todo-keyword-faces
+      '("DRAFT" . '((t :foreground "pink"))))
+#+end_src
+
+
+**** Bonus 3: Better Writing Environment inside Emacs
+Don't forget to check out other packages that improve the actual content creation and writing texts in Emacs. [[https://github.com/thinkhuman/writingwithemacs][thinkhuman/writingwithemacs: Tips, Examples, and Resources for Writing with Emacs]] is a good collection of articles. Different people have obviously different opinions and take different approaches. [[https://explog.in/notes/writingsetup.html][explog's wirting setup]] is probably a good starting point for any user. Jacob Moena's post on [[https://jacmoes.wordpress.com/2019/09/24/creative-writing-with-emacs/][Creative Writing with Emacs]] provides a more comprehensive intro including some useful extra packages [[https://jacmoes.wordpress.com/2019/09/24/creative-writing-with-emacs/#Extras][here]].
+
+Personally, I think you have to try different packages and find the settings that is appealing to you and your use-case. But here are some suggestions based on my experience.
+1. Toggle frame to full screen and hide all other Windows
+2. Hide the =properties drawers= that are used for ox-hugo settings, by using =org-fold-hide-drawer-all=.
+3. Use [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Spelling.html][flyspell-mode]] for spell checking.
+
+Put all of that in an interactive command, and can call it whenever you want to focus on writing:
+#+begin_src emacs-lisp
+(defun ad/blog-focus-writing ()
+(interactive)
+(toggle-frame-fullscreen)
+(delete-other-windows nil)
+(org-fold-hide-drawer-all)
+(flyspell-mode 1)
+)
+#+end_src
+You can also add more settings to this function depending on your preferences. Here are some packages I suggest you try:
+1. Consider [[https://github.com/d12frosted/flyspell-correct][flyspell-correct]] and [[https://gitlab.com/OlMon/consult-flyspell][consult-flyspell]] for better, more user-friendly interactive commands with flyspell.
+2. Consider [[https://github.com/mhayashi1120/Emacs-langtool][Emacs-langtool]] for checking grammars etc.
+3. Consider [[https://github.com/larstvei/Focus][Focus]] mode to get an effect similar to what WordPress calls spotlight.
+4. Consider [[https://github.com/cyrus-and/zoom][zoom]] if you open multiple buffers and want the width to adjust dynamically
+5. Try out other packages such as [[https://github.com/bnbeckwith/writegood-mode][writegood-mode]] or [[https://github.com/sachac/artbollocks-mode][artbollocks-mode]].
+
+Here is a screenshot of my setup with flyspell, olivetti and focus-mode.
+
+#+ATTR_ORG: :width 800px :height nilpx
+#+ATTR_LATEX: :width 800px :height nilpx
+#+ATTR_HTML: :width 800px :height nilpx
+[[file:~/projects/armindarvish-website/content/en/post/Building_An_Efficient_Blogging_Workflow_in_Emacs/focus.gif]]
+
+
+**** Bonus 4: Seeing Previews with =Hugo Server=
+Obviously no good blog editor would be complete without a way to preview the post. If you use Hugo, you can see a preview by running =hugo server= in the terminal which fires up a local server (server default address is http://localhost:1313/). You can achieve the same by using a package like [[https://github.com/masasam/emacs-easy-hugo][emacs-easy-hugo]] from inside Emacs. However, that might be too overkill given that we can already do most of the functionality with org-mode and ox-hugo. Personally, I have defined a function that calls =hugo server= as a process within Emacs and a second function to kill the process.
+
+#+begin_src emacs-lisp
+(defun ad/blog-start-hugo-server ()
+  (interactive)
+  (let ((default-directory "/path/to/your/blog-hugo-server/directory") ;;change the path to your website
+        (buffer (get-buffer-create "*blog-hugo-server*")))
+    (apply 'start-process "hugo-server" buffer "hugo" "server" '("--buildDrafts" "--navigateToChanged"))
+    )
+  )
+
+(defun ad/blog-kill-hugo-server ()
+  (interactive)
+  (when-let ((proc (get-buffer-process (get-buffer "*blog-hugo-server*"))))
+    (delete-process proc))
+  )
+#+end_src
+
+Note that the arguments =-buildDrafts= and =--navigateToChanged= are passed to =hugo server= to make sure you see your drafts and also automatically navigate to the most recent changes.
+If you also have xwidget-webkit in your Emacs, then you may want to create another interactive command to open the page in a second buffer like below. If you don't have xwidget, you can use any other browsers for example by invoking =browse-url= to open the link in an external browser.
+
+#+begin_src emacs-lisp
+(defun ad/blog-preview ()
+(interactive)
+(unless (get-buffer-process (get-buffer "*blog-hugo-server*"))
+  (ad/blog-start-hugo-server))
+(let* ((post-url (downcase (org-hugo--entry-get-concat (point-marker) "EXPORT_HUGO_SECTION_FRAG" "/"))))
+(delete-other-windows nil)
+(split-window-right nil)
+(other-window 1)
+(xwidget-webkit-browse-url (concat "http://localhost:1313/" post-url))
+))
+#+end_src
+
+This opens the local hugo server and navigates to the page for the post in the current buffer. Since we have =--navigateToChanged= turned on, as we edit the text we can see the changes right away. Here is a screenshot:
+
+#+ATTR_ORG: :width 800px :height nilpx
+#+ATTR_LATEX: :width 800px :height nilpx
+#+ATTR_HTML: :width 800px :height nilpx
+[[file:~/projects/armindarvish-website/content/en/post/Building_An_Efficient_Blogging_Workflow_in_Emacs/preview.gif]]
+
+
+**** Putting everything together: Code and Screenshot
+
+Here is a screenshot that shows the complete workflow:
+
+#+ATTR_ORG: :width 800px :height nilpx
+#+ATTR_LATEX: :width 800px :height nilpx
+#+ATTR_HTML: :width 800px :height nilpx
+[[file:~/projects/armindarvish-website/content/en/post/Building_An_Efficient_Blogging_Workflow_in_Emacs/full_workflow.gif]]
+
+
+and here is my preferred entire code (see the post for some alternatives if you don't have/want all the required extra packages below):
+
+#+begin_src emacs-lisp
+
+;; org-todo keywords
+(add-to-list 'org-todo-keywords '(sequence "DRAFT(d)" "POST(p)" "|" "PUBLISH(b)"))
+
+;; org-todo faces
+(add-to-list 'org-todo-keyword-faces
+      '("DRAFT" . '((t :foreground "pink"))))
+
+
+;; function(s) to run on changing state
+(defun ad/org-change-draft-when-blog-state-changes ()
+  (interactive)
+  (pcase (org-get-todo-state)
+    ("PUBLISH" (org-set-property "EXPORT_HUGO_DRAFT" "false")
+     (org-hugo-export-wim-to-md))
+    ("DRAFT" (org-set-property "EXPORT_HUGO_DRAFT" "true"))
+    ("POST" (org-set-property "EXPORT_HUGO_DRAFT" "true")
+            (org-hugo-export-wim-to-md))
+    (_ ())
+    )
+  )
+
+(add-hook 'org-after-todo-state-change-hook
+'my/org-change-draft-when-state-changes-to-publish)
+
+
+(setq org-log-done 'time
+      org-log-into-drawer t)
+
+;; make sure org-todo keywords don't get exported
+(setq-default org-export-with-todo-keywords nil)
+
+;; capture function for blog posts
+(defun ad/blog-capture-new (&optional text)
+(interactive "sTitle: ")
+  (let* ((org-capture-templates `(("d" "default" entry
+                                   (file+olp ,(file-truename (expand-file-name "Blog.org" org-directory)) "Posts")
+                                   "* DRAFT %?"
+                                   :empty-lines 1
+                                   :prepend t
+                                   :jump-to-captured t)
+                                  ))
+         (yas-wrap-around-region t))
+    (org-capture nil "d")
+    (let ((draft (and (yas-reload-all) (yas-lookup-snippet "hugo draft" 'org-mode t))))
+        (yas-minor-mode-on)
+        (yas-expand-snippet draft)
+        (insert (format "%s" text)))
+      ))
+
+;; custom org-agenda view
+(add-to-list 'org-agenda-custom-commands
+     '("b" "Blog"
+        ((agenda)
+         (todo "DRAFT\\|POST\\|PUBLISH"
+               ((org-agenda-overriding-header "Blog Posts: "))))))
+
+;; enable extra packages for focusing on writing
+(defun ad/blog-focus-writing ()
+(interactive)
+(toggle-frame-fullscreen)
+(delete-other-windows nil)
+(org-fold-hide-drawer-all)
+(flyspell-mode 1)
+)
+
+;; start the hugo server with Drafts and navigateToChanged
+(defun ad/blog-start-hugo-server ()
+  (interactive)
+  (let ((default-directory "/path/to/your/blog-hugo-server/directory") ;;change the path to your website
+        (buffer (get-buffer-create "*blog-hugo-server*")))
+    (apply 'start-process "hugo-server" buffer "hugo" "server" '("--buildDrafts" "--navigateToChanged"))
+    )
+  )
+
+;; stop the hugo server process
+(defun ad/blog-kill-hugo-server ()
+  (interactive)
+  (when-let ((proc (get-buffer-process (get-buffer "*blog-hugo-server*"))))
+    (delete-process proc))
+  )
+
+;; get a preview of new drafts
+(defun ad/blog-preview ()
+(interactive)
+(unless (get-buffer-process (get-buffer "*blog-hugo-server*"))
+  (ad/blog-start-hugo-server))
+(let* ((post-url (downcase (org-hugo--entry-get-concat (point-marker) "EXPORT_HUGO_SECTION_FRAG" "/"))))
+(delete-other-windows nil)
+(split-window-right nil)
+(other-window 1)
+(xwidget-webkit-browse-url (concat "http://localhost:1313/" post-url))
+))
+#+end_src
+
 
 *** DRAFT Why scientists need a website?            :@software:@scientists:web:
 :PROPERTIES:
@@ -215,195 +659,21 @@ image:
 #+end_src
 
 
-*** DRAFT ChatGPT to the rescue
-:PROPERTIES:
- :EXPORT_HUGO_DRAFT: true
- :EXPORT_HUGO_SECTION_FRAG: ChatGPT to the rescue
- :EXPORT_FILE_NAME: index
- :TITLE: ChatGPT to the rescue
- :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :subtitle
- :EXPORT_HUGO_CUSTOM_FRONT_MATTER+: :summary 
-:END:
-
-#+begin_src yaml :front_matter_extra t
-authors:
-  - admin
-projects: [software, AI]
-featured: true
-commentable: true
-image:
-  caption: 'caption'
-  focal_point: 'center'
-#+end_src
-
-Do you ever find yourself buried in documents you have to read? As a scientist, I am always struggling with staying up to date with the field. Back in Grad School days, I could easily stay up-to-date by following the relevant research in my field. There were perhaps a handful of labs that were working on directly relevant projects and a handful more that were working on related but not directly relevant ideas. So setting up some alerts on PubMed and Google Scholar was more-or-less enough to keep up with all the latest news in the field. But then I left Academia and started working as a scientist in the industry. There, I have to keep up with more than just a few academic labs. Unlike Academia, where I could focus on a single project and a handful of experimental techniques or  applications, etc., in the industry I have to know about every possible way a competitor can achieve what we are researching. I also need to understand how changes in the business or legal landscape will affect our project. Therefore, I have all sorts of alerts and rss-feeds not just to find the latest academic papers but also patents, news articles, business reports, etc. The problem is, this usually means hundreds of new feeds show up on my list every day and just going through them and figuring out which ones are relevant is hard. Of course you might be thinking that an AI-enabled article-suggestion or sorting would be the answer.
-However, there are two general problems with the generic recommender systems, whether it is google news or some feed management apps:
-
-1- They tend to learn about you as a person, but do not know how to separate different aspects of you effectively. For example, my google news recommendation is filled with all sort of things from news that I read about my home country Iran, to personal interests, to hobbies, to recent searches I have done on google,... But, that is essentially useless if i am looking for relevant topics to my project at work. What I need instead is a recommender system that is containerized and knows how to find relevant information and puts them  in their own basket instead of creating a big mish mash of everything.
-
-2- The second problem is that these recommender systems are often not good at finding high-quality technical information. For example, I can subscribe to a topic I am interested in on Google news but that would then mean I will see all sorts of general nonesense that can show up anywhere in the news. As scientist this is completely useless. On the other hand, I can subscribe to email alerts on pubmed, or journal websites to get alerts about new academic papers, but the problem is there are so many of those sources and each have a different interface, etc. Plus the fact that lots of important information about business landscape and legal landscape do not show up in academic papers for a t least a few years. A good recommender system should be able to feed me with the most important technical publications (papers, patents, ...) as well as the latest news articles, discussions,...
-
-
-Of course this not something new. There is a reason there are all sorts of physical and virtual networks for professionals. I happen to follow many forums on twitter, read blogs on topics relevant to my work, ...
-
-
-social 
-what I really need is two things:
-1- A recommender that is containerized. For example, it only focuses on topics related to work during work hours, or can efficiently categorize new information into different projects.
-2- A recommender that knows how to filter all the noise
-Can you write an article about using chatGPT to summarize patent claims?
-n etc.
-
-So, with the recent hypes about chatGPT, I figured it is worth giving it 
-
-to find the latest development
-
-changes
-The field of interest has broaden significantly because
-
-relevant ad School, I could  behind with catching up with the l and and little time to do it?
-Reading patents, digesting and summarizing them can be a daunting tasks. I have alerts set to notify me when new patents or patent applications are published online in my field of research and I review them every week, but with the pace of today's development and the sheer number of new research papers and patents, keeping up with the information is becoming more and more challenging. Recently I decided to ask ChatGPT to summarize some patent claims for me and the result is amazing. Here are some screen shots:
-
-For example, there is this long patent from Oxford Nanopores that is very long and has 62 claims in the international version. Like a lot of other patent documents, it's hard to read.
-
-So, I commited the sin and asked chatGPT to describe it to me in lay language, and here is the results:
-
-"This is a patent application for a method of forming an array of membranes composed of amphipathic molecules. The method involves providing an apparatus that contains an array of compartments with openings for introducing polar medium, and disposing polar medium and apolar medium onto the support to create volumes of polar medium within each compartment. A layer of apolar medium is then provided across the openings in the support to prevent the volumes of polar medium in neighbouring compartments from coming into contact with each other. Polar medium is then flowed across the openings to displace the apolar medium and form a layer of polar medium that contacts the volumes of polar medium in the compartments. This results in the formation of membranes composed of amphipathic molecules at the interfaces between the layer of polar medium and the volumes of polar medium in the compartments. Various additional steps may be included, such as injecting polar medium into each compartment, pre-treating the support with apolar medium, and forming an emulsion of polar medium in apolar medium to introduce the polar medium into the compartments. The support may include partitions with gaps that allow the flow of apolar medium between the compartments, and the volumes of polar medium may form meniscuses across the inner recesses and outer portions of the partitions. Overall, this method provides a way to form arrays of membranes for various applications, such as in sensors and diagnostics."
-
-As you can see the essence of the claims are captured in a short paragraph that is easy to read. With a little bit of automation, I can now have chatGPT read a list of patents and generate short summaries that I can then review and decide if i need to spend time to go over the details!
-
-***** extras
-ChatGPT is a powerful artificial intelligence tool that can be used to efficiently summarize patent claims. Patent claims are a set of statements that define the scope of a patent, and they are often lengthy and complex. Summarizing these claims can be time-consuming and tedious, but with the help of ChatGPT, the process can be streamlined and simplified.
-
-The first step in using ChatGPT to summarize patent claims is to input the text into the tool. This can be done by either copying and pasting the text or uploading a file containing the claims. Once the text is inputted into ChatGPT, the tool uses machine learning algorithms to analyze the language and extract the key points of the claims.
-
-One of the benefits of using ChatGPT is that it can summarize the claims in a concise and readable format. This makes it easier for patent examiners or lawyers to understand the scope of the patent and determine its value. Additionally, ChatGPT can identify any ambiguities or inconsistencies in the claims, helping to ensure that they are clear and accurate.
-
-Another advantage of using ChatGPT to summarize patent claims is that it can save time and resources. Traditionally, patent examiners or lawyers would need to manually read through and analyze the claims, which could take hours or even days. With ChatGPT, the process can be completed in a matter of minutes, freeing up valuable time for other tasks.
-
-In conclusion, ChatGPT is a valuable tool for summarizing patent claims. Its ability to extract key points from lengthy and complex texts can save time and resources while ensuring that the claims are clear and accurate. It is a valuable tool for anyone who works with patents, from patent examiners to lawyers and entrepreneurs.
-
-
-*** DRAFT testing my ai assistant
-:PROPERTIES:
- :EXPORT_HUGO_DRAFT: true
- :EXPORT_HUGO_SECTION_FRAG: testing_my_ai_assistant
- :EXPORT_FILE_NAME: index
- :TITLE: testing_my_ai_assistant
- :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :subtitle
- :EXPORT_HUGO_CUSTOM_FRONT_MATTER+: :summary
- :header-args: jupyter-python :session mysession :kernel micromaster :exports both
-:END:
-
-#+begin_src yaml :front_matter_extra t
-authors:
-  - admin
-projects: []
-featured: false
-commentable: true
-image:
-  caption: 'caption'
-  focal_point: 'center'
-#+end_src
-
-**** Question
-how do I do a rolling window cross-correlation to find common events in two time-series in python?
-
-**** ChatGPT
-You can use the =numpy.correlate()= function to perform cross-correlation between the two time series. To implement a rolling window, you can slice the two time series into overlapping segments, then perform the correlation on each segment. Here's an example code:
-
-#+begin_src jupyter-python
-import numpy as np
-from scipy import signal as sig
-
-def rolling_corr(x, y, window):
-    # Calculate the length of the output array
-    n = len(x) - window + 1
-    # Initialize the output array
-    out = np.empty(n)
-    # Loop through each rolling window and compute the correlation
-    for i in range(n):
-        x_win = x[i:i+window]
-        y_win = y[i:i+window]
-        # out[i] = np.correlate(x_win, y_win, mode='valid')[0]
-        out[i] = np.corrcoef(x_win, y_win)[0,1]
-    # Return the output array
-    return out
-
-#+end_src
-
-#+RESULTS:
-
-In this function, =x= and =y= are the two time series, and window is the size of the rolling =window=. The function returns an array of length =n=, where =n= is the number of rolling =windows=. Each element of the array represents the correlation coefficient between the two time series for a given window.
-
-To find common events, you can define a threshold for the correlation coefficient and identify the segments where the coefficient exceeds the threshold.
-**** Question
-
-Can you write some code to plot the time series in the previous code for me to visually see the effect
-Assistant:
-
-**** ChatGPt
-Sure! Here's some code that generates two example time series and plots them along with the cross-correlation:
-
-
-#+begin_src jupyter-python :results none :file "./en/post/testing_my_ai_assistant/featured.png"
-import matplotlib.pyplot as plt
-import mplcyberpunk
-
-# plt.style.use("mywebsite-dark")
-plt.style.use("mycyberpunk")
-
-# Generate example time series
-t = np.arange(0, 10, 0.1)
-x = np.sin(t*2) + np.random.normal(scale=0.1, size=len(t))
-# y = np.sin(t*1.1 + 0.5) + np.random.normal(scale=0.1, size=len(t))
-y = np.sin(t*4-np.pi/2) + np.random.normal(scale=0.1, size=len(t))
-# y = -x
-x_n= (x - np.mean(x))/(np.std(x))
-y_n= (y - np.mean(y))/(np.std(y))
-# Calculate rolling cross-correlation with window size 50
-corr = rolling_corr(x_n, y_n, 50)
-
-sel = np.where(corr<-0.1)
-# Plot time series and cross-correlation
-fig, ax = plt.subplots(ncols=2, figsize=(12,4))
-ax[0].plot(t, x, label='x')
-ax[0].plot(t, y, label='y')
-ax[0].set_xlabel('Time')
-ax[0].set_ylabel('Value')
-ax[0].legend()
-
-ax[1].plot(t[:len(corr)], corr)
-ax[1].plot(t[sel], corr[sel], "ro")
-ax[1].set_xlabel('Time lag')
-ax[1].set_ylabel('Cross-correlation')
-ax[1].axhline(0.5, color='red', linestyle='--')
-ax[1].axhline(-0.5, color='red', linestyle='--')
-
-plt.show()
-
-#+end_src
-[[file:featured.png]]
-
-Here, we generate two time series with a similar waveform but slightly different frequencies, and add some random noise to each of them. We then calculate the rolling cross-correlation using a window size of 50, and plot the two time series and the cross-correlation side-by-side. The dashed red lines show the threshold for the correlation coefficient.
-
-You can modify the example code to use your own time series data and parameters.
-
-*** DRAFT How to Efficiently Write Blogs in Emacs Org-Mode in 2023 :@software:@emacs:@orgmode:@blogging:
+*** DRAFT Consult-GH: Working with GitHub inside Emacs in 2023
 :PROPERTIES:
 :EXPORT_HUGO_DRAFT: true
-:EXPORT_HUGO_SECTION_FRAG: Building_An_Efficient_Blogging_Workflow_in_Emacs
+:EXPORT_HUGO_SECTION_FRAG: Consult-GH:_Working_with_GitHub_inside_Emacs_in_2023_
 :EXPORT_FILE_NAME: index
-:TITLE: Building An Efficient Blogging Workflow in Emacs
-:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :subtitle How to use org-mode and ox-hugo along with org-todo items and org-agenda to manage your blog posts
-:EXPORT_HUGO_CUSTOM_FRONT_MATTER+: :summary In this post I show you my custom workflow in Emacs for writing blogposts. I use org-capture for capturing initial ideas, then I use org-todo and org-agenda to track the post as I take it from idea to an initial draft and to publishing it on my website. I wtie my posts in org-mode and use ox-hugo to turn them into a post.In this post I show you how I use
+:TITLE: Consult-GH: Working with GitHub inside Emacs in 2023
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :subtitle Introducing a new package for using GitHub interactively inside Emacs based on Consult and Embark
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER+: :summary This post introduces my new Emacs package that uses the fabulous Consult and Embrak along with GitHub CLI tool to create an intuitive user-friendly interface for GitHub inside Emacs
 :END:
 
 #+begin_src yaml :front_matter_extra t
 authors:
   - admin
-projects: ["software"]
-categories: ["software", "emacs", "org mode", "blogging"]
+projects: [software]
+tage:
 featured: false
 commentable: true
 image:
@@ -411,238 +681,134 @@ image:
   focal_point: 'center'
   #+end_src
 
+**** Introduction or some food for thought
 
-file:~/projects/armindarvish-website/content/en/post/Building_An_Efficient_Blogging_Workflow_in_Emacs/featured.gif
+***** What is the need? Why make a new package?
+I often find myself going back to the same github pages for various reasons. Sometimes I go back to a package repo to read the documentation/manuals for installing or troubleshooting. Other times I browse the repositories by users whose works are of interest to me (for example [[https://github.com/purcell/emacs.d][Steve Purcell's Emacs Config]] or [[https://github.com/alphapapa][alphapapa (Adam Porter)]]'s packages for org-mode workflows). This is often done by doing a Google search finding the relevant GitHub Page and navigating from there to find the right content. It would have been great if I could do all of that from inside Emacs especially if I could then take some code from those repositories, paste it in an org-mode source block and see how it works. But, as far as I know, no emacs package provides a user-friendly intuitive interface for such functionality. While there are multiple packages that interface with github api like [[https://github.com/sigma/gh.el][gh.el]], [[https://github.com/magit/ghub][magit/ghub]], [[https://github.com/magit/forge][magit/forge]], [[https://github.com/sshaw/git-link][git-link]], [[https://github.com/rmuslimov/browse-at-remote][browse-at-remote]] and ... None of them provide the kind of functionality I am looking for. Let's take a closer look at some of these to better understand why there is a need for something better. On one end of the spectrum, we have a package like [[https://github.com/sigma/gh.el][gh.el]] which seems to be an interesting option with a huge code base possibly covering a lot of low-level API calls to GitHub but there is not a single line of documentation on how to use it! The repo seems to be abandoned years ago, and the owner mentions on one of the issues that *"the whole thing was a gigantic experiment around the viability of eieio, and I'm pretty disappointed by the amount of suffering it generates, so I'm not sure I should push people to use it..."*  On the other end of the spectrum we have packages like git-link and browse-at-remote that are relatively small (<1000 lines of code) but the functionality is very limited, getting the URL links for files and commits, etc. While these are very useful, especially because they cover sources other than GitHub too, they don't really provide a way to browse repositories or issues. Then there is of course magit packages, that are indeed incredibly useful. magit/forge for example provides a great interface with issues and pull requests on multiple repository sources. However, this is geared toward repositories you actively work on and not so much toward browsing any random repository. Let's also not forget these packages were started several years ago, and since then there has been updates in Emacs as well as other tools like GitHub CLI that provide new opportunities for how we can interface with GitHub from inside Emacs. This is exactly what Consult-GH is trying to do.
 
-In the previous post, I showed you how to automatically add files to your org-agenda. In this post I am going to show you how you can then use org-todo tasks beyond just tasks and todo-items and use it to build custom work flows that takes an idea through different stages. As an example I am going to show you my blogging workflow which I am using right now to use this posts.
+***** What is the right way to address the need?
+The principle idea behind consult-gh is that there is already tools that provide the basic functionalities for us and we can leave the heavy lifting part of the job to those and only provide the parts that are missing. For example, the GitHub CLI is the right tool to use for interfacing with GitHub. By leaving jobs such as authentication and api calls to =gh= command tools we simplify the code and make it really easy to setup and use. In addition we make the code more secure since we don't have to handle authentication tokens and secure information and at the same we keep it more maintainable because we don't have to worry about keeping up to date with the api. The official GitHub CLI will ensure that for us. For comparison, if you setup magit/forge and go through all the steps you need to do to interface with GitHub, you'll see while leaving this job to a tool like =gh= might be a better approach. On the other hand, =completing-read= inside emacs provides a perfect tool for interfacing with users and runing queries, etc. and in the recent years, there has been great improvements especially with a package like [[https://github.com/minad/consult][consult]] that wraps aeound completing read and provides easy to use functionalities. Along with the rest of completion framework packages ([[https://github.com/minad/vertico][vertico]], [[https://github.com/oantolin/embark][embark]], [[https://github.com/oantolin/orderless][orderless]], ...) it provides a great toolset for functions that need input form users. Therefore by bringing =consult= and =gh= together, we can easily provide a concise yet powerfool tool that improves on the current alternatives for interacting with GitHub inside Emacs. That said, let's keep in mind that the goal here is not replace the existing functionalities with yet another tool but fill the gaps between the current tools. For example, consult-gh does not provide (at least not yet) a way to edit issues or pull requests because that functionality is available in magit/forge for not just github but also other sources so I don't see any benefit in yet another tool for it.
 
-**** Using =org-todo= keywords
-By default [[https://orgmode.org/][Emacs Org mode]] comes with two =org-todo= keywords ="TODO"= and ="DONE"=, but you can add any custom keyword and use them to track different objects and category of items such as notes, flashcards, ideas, drafts, ... You can do this by adding the labels to =org-todo-keywords= in a sequence following [[https://orgmode.org/manual/Workflow-states.html][Workflow states (The Org Manual)]]. For example for a blogging workflow I use =(sequence "DRAFT(d)" "POST(p)" "PUBLISH(b)")= as shown below. Note that by putting *PUBLISH* after "|", we are setting *PUBLISH* as the done label for this workflow, which can be used for other useful functions such as logging time, and etc. see the section on automating workflow [[Automating the Workflow][below]] for how I use it to automate logging times.
-
-#+begin_src emacs-lisp
-(add-to-list 'org-todo-keywords '(sequence "DRAFT(d)" "POST(p)" "|" "PUBLISH(b)"))
-#+end_src
-
-Now, we can label org headings as a blog post by adding *DRAFT* todo keyword.
+   we should leave the main jobs to functionalities and allows achieving great functionality with a minimal code base (currently less than a 1000 lines of code).   behind consult-gh that makes it what it is:
 
 
-#+begin_src emacs-lisp
-(add-to-list 'org-capture-templates
-      `("b" "Blog Post" entry
-         (file+olp ,(file-truename (expand-file-name "BlogPosts.org" org-directory)) "Blog Posts")
-         "* DRAFT %i %?\n:PROPERTIES:\n :EXPORT_HUGO_DRAFT: true\n :EXPORT_HUGO_SECTION_FRAG: ${title}\n :EXPORT_FILE_NAME: index\n :TITLE: ${title}\n :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :subtitle \n :EXPORT_HUGO_CUSTOM_FRONT_MATTER+: :summary \n:END:\n\n#+begin_src yaml :front_matter_extra t\nauthors:\n  - admin\nprojects: []\nfeatured: false\ncommentable: true\nimage:\n  caption: 'caption'\n  focal_point: 'center'\n#+end_src\n"
-         :empty-lines 1
-         :prepend t
-         :jump-to-captured t)
+However,the workflows are often highly customized and specific, and naturally it is difficult to come up with a one-size-fits-all solution and practically speaking going back to the browser becomes the natural choice again.
 
-#+end_src
+As shown above, Consult-GH tries to balance between usability (a.k.a. having many commands) and utility (being practically more efficient for custom work flows) by providing *only a handful of interactive commands* to keep things simple, intuitive and and easy to use, but offering a range of customization to tweak the behavior so that the user can pick what is most useful in their common work flows. For example, =consult-gh-search-repos= simply returns possible matches for the search term and allows the user to customize the default action when a repository is selected. Whether that is opening the url in a browser, or viewing the README in an emacs buffer, or cloning the repository, it's up to the user to pick what is the default action. If the user needs more than one action, then they can use the [[https://github.com/oantolin/embark][Embark]] integration.
 
+In this section I'll showcase some interesting examples that I find useful and efficient enough that is now my first choice for interacting with GitHub as opposed to using a browser.
 
+**** Can you show me examples on how this is useful?
+***** Following the users I like
+There are a few GitHub accounts that I tend to keep going back to both for  finding new interesting work and also for learning from their code and approach. Before making Consult-GH My work flow was to do a goole search for example for "emacs operating system" or "steve purcell emacs config" and then finding the github page and browsing through recent updates and changes, etc. This is not very efficient because syntax highlighting inside a browser is sub par and there is no help/docs inside a browser, but if this is done inside Emacs, helps and documentations are just a "C-h key" away and subsections of the code can be evaluated for example inside an org-mode source block to probe the behavior and functionalities. Of course the question is how do you get [[https://github.com/purcell/emacs.d/][Steve Purcell's Emacs Config]] inside emacs without going to the browser. You can of course keep a local copy by cloning the repository and then pulling the latest updates every time you want to browse it, but that would waste some space on your local drive and often times you might not be interested in the whole repo anyway. In other cases, you may want to see people's new work, e.g. new repositories, and without knowing the name and links of the repo, you still have to go to the browser to find those. Consult-GH provides an easy way to see the repositories from people you want to follow and quickly browse single files or clone entire repositories.
 
-**** Ox-Hugo
-If you use [[https://gohugo.io/][Hugo]] to build your blog, then [[https://github.com/jethrokuan/ox-hugo][Ox-Hugo]] is a great package to use. It allows you to write your blog posts in Org-Mode and export them to the Hugo-compatible markdown. You can organize your  blog posts either in separate files (one post per file) or all in one file under different org headings (one post per heading). I personally am using one post per heading right now because I like to see all my posts in the same file next to each other. But if you prefer having the blog posts in different files, then using my previous post [[https://www.armindarvish.com/en/post/emacs_workflow_dynamically_adding_files_to_org-agenda-files/][to dynamically add files to org-agendas]] will be very useful because you can just label the heading with *DRAFT* todo-keyword and it will automatically get added to your =org-agenda-files=. Then you can use org-agenda views to browse through all your posts (see below for more on that).
-
-I recommend you go through Ox-Hugo's [[https://ox-hugo.scripter.co/][manual]] for setting up Ox-Hugo since it can be different depending on your specific settings. But here are some ideas for consideration:
-
-1. Since I am using [[https://wowchemy.com/templates/][Wowchemy]]'s [[https://academic-demo.netlify.app/][Academic]] template for my website, I set everything up according to the structure defined by that template. I use one org file for all my blog posts, and since I have a multilingual site, I put this file in my hugo website's folders under content along side separate folders for each language. I then set up my ox-hugo to save each post in the appropriate folder by setting =:EXPORT_HUGO_SECTION_FRAAG:= property. Because the properties are inherited, I can then use the same property in the subheadings of each post to point Ox-Hugo to save the post in the appropriate folder. For example for English posts I have something like the following in my file. I also add =yaml= source blocks for Wowchemy's settings following the documentation here: [[https://wowchemy.com/docs/][Hugo Documentation for Wowchemy]].
-
-#+begin_src org
-,* en
-:PROPERTIES:
-:EXPORT_HUGO_SECTION_FRAG: en
-:END:
-,** posts
-:PROPERTIES:
-:EXPORT_HUGO_SECTION_FRAG: post
-:END:
-
-## Here I enter new posts##
-
-,* DRAFT Building An Efficient Blogging Workflow in Emacs
-
-:PROPERTIES:
-:EXPORT_HUGO_DRAFT: true
-:EXPORT_HUGO_SECTION_FRAG: Building_An_Efficient_Blogging_Workflow_in_Emacs
-:EXPORT_FILE_NAME: index
-:TITLE: Building An Efficient Blogging Workflow in Emacs
-:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :subtitle How to use org-mode and ox-hugo along with org-todo items and org-agenda to manage your blog posts
-:EXPORT_HUGO_CUSTOM_FRONT_MATTER+: :summary In this post I show you my custom workflow in Emacs for writing blogposts. I use org-capture for capturing initial ideas, then I use org-todo and org-agenda to track the post as I take it from idea to an initial draft and to publishing it on my website. I wtie my posts in org-mode and use ox-hugo to turn them into a post.In this post I show you how I use
-:END:
-
-,#+begin_src yaml :front_matter_extra t
-authors:
-  - admin
-projects: [software, emacs]
-featured: false
-commentable: true
-image:
-  caption:
-  focal_point: 'center'
-,#+end_src
-
-#+end_src
-
-I have a separate similar heading tree for other languages. With this setup I can use org-export with ox-hugo to automatically make the markdown files for each post.
-Also, since my website is in a git repository, I keep a symlink copy of that file somewhere more convenient in my home folder such as ="~/blog/"= so i can quickly find my posts without navigating through the folder structure of my website.
-
-Other than that there are some site-specific settings that I define in org-mode =:PROPERTIES:= drawers following Ox-Hugo's [[https://ox-hugo.scripter.co/][manual]].
-
-
-**** Automating the Workflow
-While the setup above is great for writing blogposts in org-mode and quickly exporting them to markdown. We can do more with org-mode =TODO= items to further automate the workflow so we can just focus on writing the posts rather than maintaining the blog posts. For example, I have my workflow setup that whenever I start a new posts it goes under *DRAFT* keyword. Then after I add some content and I want to view the draft on the website (without publishing it yet), I bump the heading to *POST* keyword and finally when I'm done with editing the post and want to publish it on my website I bump the heading up to =POST=. Then  I have defined a custom function that changes =:EXPORT_HUGO_DRAFT:= property and also runs =(org-hugo-export-wim-to-md)= for me.
-#+begin_src emacs-lisp
-(defun ad/org-change-draft-when-state-changes-to-publish ()
-  (interactive)
-  (pcase (org-get-todo-state)
-    ("PUBLISH" (org-set-property "EXPORT_HUGO_DRAFT" "false")
-     (org-hugo-export-wim-to-md))
-    ("DRAFT" (org-set-property "EXPORT_HUGO_DRAFT" "true"))
-    ("POST" (org-set-property "EXPORT_HUGO_DRAFT" "true")
-            (org-hugo-export-wim-to-md))
-    (_ ())
-    )
-  )
-
-(add-hook 'org-after-todo-state-change-hook
-'my/org-change-draft-when-state-changes-to-publish)
-#+end_src
-
-Here is the explanation. When I start a *DRAFT* I rather not have it converted to markdown because may be I end up deciding the topic is not right and I don't even want to work on it anymore. But if I do work on the topic and get it to a point where I want to put it on my website, I probably would want to view it on my website as before publishing it publicly so I bump the keyword to *POST* which automatically runs automatically runs =(org-hugo-export-wim-to-md)= to create the markdown files while making sure that =:EXPORT_HUGO_DRAFT:= is still =true= so the post does not get published yet. This way I can view the post as a draft by running ="hugo server -D --navigateToChanged"= in terminal and decide if it is ready for publishing. Finally when I am done with writing and editing my post I change the keyword to *PUBLISH*, which sets =:EXPORT_HUGO_DRAFT:= to =false= and reruns =(org-hugo-export-wim-to-md)= to update the markdown files.
-
-Note that I have hooked the custom function =ad/org-change-draft-when-state-changes-to-publis= to ='org-after-todo-state-change-hook= but since I am checking the todo state by =(org-get-todo-state)= this hook will only do things when the heading is one of *DRAFT*, *POST* or *PUBLISH*.
-
-
-There are two more important settings for this to work.
-#+begin_src emacs-lisp
-(setq org-log-done 'time
-      org-log-into-drawer t)
-
-(setq-default org-export-with-todo-keywords nil)
-#+end_src
-
-The code above makes sure that whenever a todo item is set done (defined by putting the specific =TODO= keyword after ="|"= in the ='org-todo-keywords= list as mentioned [[*Using =org-todo= keywords][above]]). This is useful because Ox-Hugo uses this log time drawer to add the date of the post to markdown files, so whenever I change the =TODO= keyword to *PUBLISH*, the date of the post gets updated automatically.
-Also I make sure that =org-export-with-todo-keywords= is set to =nil= so my todo labels do not show up on my blog posts.
-
-With this setup, I don't need to worry about anything but writing the post. As I change the =TODO= keyword. I have everything setup with [[https://www.netlify.com/?utm_medium=paid_search&utm_source=google&utm_campaign=12755510784&utm_term=netlify][Netlify]] and [[https://github.com/][GitHub]], so whenever I push the changes to my git repository everything gets automatically uploaded to my website. As a result the blogging workflow is as simple of capturing an idea and editing it in org-mode. Everything else happens magically in the background without me having to think or worry about it.
-
-**** Using Org Capture For Blog Ideas
-
-The next useful step to do is to setup org-capture to quickly save new ideas. Often times blog ideas come to you randomly in the middle of something else and you don';t want to lose them so you can quickly fire org-capture and write the idea down before going back to whatever you were doing. To do this we use the awesome org-capture-templates. You can add a simple template to your org-capture templates following the official instructions: [[https://orgmode.org/manual/Capture-templates.html][Capture templates (The Org Manual)]]  For example the code below creates a new heading in the ="Blog.org"= file in default org directory under the Heading ="* Posts"=.
-
-***** Minimal Setup
-#+begin_src emacs-lisp
-(add-to-list 'org-capture-templates
-      `("b" "Blog Post" entry
-         (file+olp ,(file-truename (expand-file-name "Blog.org" org-directory)) "Posts")
-         "* DRAFT %i %?\n"))
-#+end_src
-
-Note that is you don't have =org-capture-templates= set up, you may want to use =setq= instead of add-to-list
-#+begin_src emacs-lisp
-(setq org-capture-templates
-      `(("b" "Blog Post" entry
-         (file+olp ,(file-truename (expand-file-name "Blog.org" org-directory)) "Posts")
-         "* DRAFT %i %?\n")))
-#+end_src
-
-While this simple template is good enough for most basic workflows, I personally like to use something a bit more advanced and add capabilities for ox-hugo (see more details further below). So, in my setup I use something like this
-
-***** Better Set Up that Adds Ox-Hugo
-#+begin_src emacs-lisp
- (add-to-list 'org-capture-templates
-      `(("b" "Blog Post" entry
-         (file+olp ,(file-truename (expand-file-name "Blog.org" org-directory)) "Posts")
-         "* DRAFT %i %?\n:PROPERTIES:\n :EXPORT_HUGO_DRAFT: true\n :EXPORT_HUGO_SECTION_FRAG: \n :EXPORT_FILE_NAME: index\n :TITLE: \n :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :subtitle \n :EXPORT_HUGO_CUSTOM_FRONT_MATTER+: :summary \n:END:\n\n#+begin_src yaml :front_matter_extra t\nauthors:\n  - admin\nprojects: []\nfeatured: false\ncommentable: true\nimage:\n  caption: 'caption'\n  focal_point: 'center'\n#+end_src\n"
-         :empty-lines 1
-         :prepend t
-         :jump-to-captured t)
-#+end_src
-
-The code above adds some template settings for ox-hugo to be able to export the post later and also by doing =:prepend t= I makes sure that the latest blog posts are on top of the file and by =:jump-to-captured t= I make sure that after I am done with the capture buffer I jump to the file and narrowed to that heading. This is useful for adding more details when you initially capture the idea.
-
-***** Advanced Setup with Ox-Hugo + Yasnippet
-While the capture template above works great, it is still not dynamic enough, for example, I do not want to repeat entering the title of the post in my ox-hugo settings. Therefore in my own setup I take a different approach by using Yasnippet to do some auto completion for me. I define a capture function that calls org-capture but also enables yasnippet and insert my template:
-#+begin_src emacs-lisp
-(defun ad/blog-capture-new ()
-(lambda (text)
-  (let* ((org-capture-templates `(("d" "default" entry
-                                   (file+olp ,(file-truename (expand-file-name "Blog.org" org-directory)) "Posts")
-                                   "* DRAFT %?"
-                                   :empty-lines 1
-                                   :prepend t
-                                   :jump-to-captured t)
-                                  ))
-         (yas-wrap-around-region t))
-    (org-capture nil "d")
-    (let ((draft (and (yas-reload-all) (yas-lookup-snippet "hugo draft" 'org-mode t))))
-        (yas-minor-mode-on)
-        (yas-expand-snippet draft)
-        (insert (format "%s" text)))
-      )))
-#+end_src
-In the code above I use let-bindings to temporary define a rather simple =org-capture-template= and call =(org-capture nil "d")= to get the org-capture buffer. Then I achieve the rest of what I need using loading and expanding a yasnippet snippet that contains the following:
+As seen in the screenshot below, the command =consult-gh-orgs= allows you to search GitHub users and see their repositories. Importantly, you can also search for multiple users at the same time. By default your search history is saved and accounts but only the search terms that produce any results will be stored in =consult-gh--known-orgs-list=. As  a result you will have quick access to user accounts you have looked up before, and if you want to preserve that between emacs sessions, you can turn =savehist-mode= on and add =consult-gh--known-orgs-list= to =savehist-additional-variables=:
 
 #+begin_src emacs-lisp
-# -*- mode: snippet -*-
-# name: hugo draft
-# key: hd
-# --
-${1:title}
-
-:PROPERTIES:
- :EXPORT_HUGO_DRAFT: true
- :EXPORT_HUGO_SECTION_FRAG: ${1:$(string-replace "\s" "_" yas-text)}
- :EXPORT_FILE_NAME: index
- :TITLE: $1
- :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :subtitle $2
- :EXPORT_HUGO_CUSTOM_FRONT_MATTER+: :summary $3
-:END:
-
-,#+begin_src yaml :front_matter_extra t
-authors:
-  - admin
-projects: [$4]
-featured: false
-commentable: true
-image:
-  caption: $5
-  focal_point: 'center'
-,#+end_src
-$0
-
+(add-to-list 'savehist-additional-variables 'consult-gh--known-orgs-list)
 #+end_src
 
-The snippet takes the title and automatically generates the folder name to be used with =:EXPORT_HUGO_SECTION_FRAG:= making sure that space characters are replaces with "_".
-With this setup, whenever I have an idea for a blog I can just run =ad/blog-capture-new= which I have bound to some key bindings and write everything down and save it for later.
 
+***** Features and Examples
+More often than looking for specific users, I have to look up specific packages (e.g. org-roam, lsp-mode, ...) to check manudals and documentation. This would have been done with Google and browing GitHub before Consult-GH, but now I prefer consult-gh because it is much faster and more efficient for my work flows. There are important features that make this more efficient and I am going to showcase some of the important ones for a typical work flow below. I will use an example and will show you configurations and screenshots of how you cna do each.
 
-**** Bonus 1: Better looks for org-todo keywords
-If you want to have some better looks for your org todo keywords, you can check the [[https://github.com/minad/org-modern][Org-Modern]] by Alexander Miller. You can also change the face of the org-todo keywords by setting /'org-todo-keyword-face/.
+Let's say I want to look up a repo (such as org-roam, or ox-hugo) but I don't remember the name of the user/org on GitHub, so instead of looking up the user, I run the interactive command =consult-gh-search-repos= and search for them. In case of =org-roam= the first result is ="org-roam/org-roam"=. From here I can run a range of different functions depending on what I want to do. Here are some examples:
+
+****** previewing a single repo
+By default, previews are off because previewing a repo requires downloading the README file and that can be slow depending on your environment and network speed, etc. But in my config, I have turned consult-gh's previews on. I have also set the preview-mode to ='org-mode=. By default this is set to ='markdown= to preserve the contents since most README files are =.md= format but I trun it to org-mode because this makes it much easier for me to see source-blocks, etc. and evaluate them inside Emacs.
 
 #+begin_src emacs-lisp
-(add-to-list 'org-todo-keyword-faces
-      '("DRAFT" . '((t :foreground "pink"))))
+(consult-gh-show-preview t)
+(consult-gh-preview-buffer-mode 'org-mode)
 #+end_src
 
-**** Bonus 2: Quickly see all Your Posts with Custom-Agenda-Views or Consult-Agenda
-An advantage of using org-todo keywords for items such as blog posts is that you can then quickly find all your items using [[https://orgmode.org/manual/Agenda-Views.html][Agenda Views]].
+With this setting, when I move the cursor to ="org-roam/org-roam"= in minibuffer I see the README in org format in a preview buffer and I can and read the contents, evaluate source blocks, etc. without leaving Emacs.
+
+****** Seeing the files contents of a repo
+Now if I hit enter to select this repo, then the default action function that is bound to the variable =consult-gh-repo-action= is run. By thedefault this is bound to the function =consult-gh--repo-browse-url-action= which opens the github page in the browser. This is again to optimize the performance, but if performance is not a concern, you can change the default function to something more useful for your work flow. Personally, I have changed it to =consult-gh--repo-browse-files-action= which allows me to browse the files inside Emacs. Here is my config
+#+begin_src emacs-lisp
+(consult-gh-repo-action #'consult-gh--repo-browse-files-action)
+#+end_src
+
+Note that this only fetches the file tree and does not download the files until you open the file (or a preview buffer). This way, you will only download the contents you want to see. Also, the files are stored in the system's default temporary directory so once you restart your computer, the space that is used to store the files is restored. Moreover, in a resource-limited environment where performance is of concern, you can turn the preview on but enable it on demand by setting the =consult-gh-preview-key= to a key binding like the code below
 
 #+begin_src emacs-lisp
-(add-to-list 'org-agenda-custom-commands
-     '("b" "Blog"
-        ((agenda)
-         (todo "DRAFT\\|POST\\|PUBLISH"
-               ((org-agenda-overriding-header "Blog Posts: "))))))
+(setq consult-gh-show-preview t)
+(setq consult-gh-preview-key "M-o")
 #+end_src
 
+The code above turns the preview on for consult-gh but sets the preview key to ="M-o"=, so you can see the preview of a file or repo when you hit ="M-o"=. This is likely the ideal setup for both performance and usability.
 
-Alternatively, you can use the awesome [[https://github.com/minad/consult][Consult Package]] by Alexander Miller and use =consult-org-agenda= to quickly search through your blog posts in the minibuffer. Here is some example code you can use after you install consult:
+****** Additional commands to run on a repo such as cloning or forking
+In addition to seeing the file contents, you may want to run other commands such cloning a repo or copying the url link to kill-ring or ... These commands are provided as separate functions that can also be bound to the default repo action or alternatively can be used by the consult-gh-embark integration. The consult-gh-embrak.el provides some examples of how to set embark up for this. In the screen shot below you can see me cloning a repository by using embark. You can also define other custom functions and bound them to the embark keymap following the same patterns as those provided.
+
+There are some additional functions provided for example to view the issues or to copy relevant links (homepage, https or ssh links for cloning, and and org-mode link) to kill-ring. In addition I provide an example that copies a drop-in snippet with =straight.el= and =use-package= to kill ring. I can paste this snippet in my emacs config to install the package! As you can see, this is very flexible and you can append the embark actions following the built-in examples provided to create any other custom work flow you need.
+
+****** Commands to run on files
+Similarly to what was mentioned for repos, you can also run different functions on files. By default consult-gh opens the file url on github when you select it, but you can configure it to open the file in emacs in the appropriate major mode. This makes an API call and downloads the file contents, so it may be slow for large files but in my tests so far the speed has been great even for some large files. Here is a configuration to will set consult-gh to open files inside emacs.
 
 #+begin_src emacs-lisp
-(consult-org-agenda "TODO={DRAFT\\|POST\\|PUBLISH}")
+(consult-gh-file-action #'consult-gh--files-view-action)
 #+end_src
 
-Personally, I have built some custom functions based on consult-agenda just for my blog posts that allows me to add new posts by entering a new title and takes me to the org-capture buffer shown above. I have this bound to some key bindings. So whenever I have an idea or want to edit my posts, I just hit this key binding and I can quickly jump to editing an old post or create a new one from scratch. I don't get into all that extra stuff in this post, but here is a screen shot of everything in my final setup:
+As mentioned above, previewing a file will also fetch the contents and therefore you may want to limit previews to on-demand only by setting a preview key.
+
+Similar to what I said for repos you can use other funcitons such as =consult-gh--files-save-file-action=  to save a file locally as opposed to opening it in a temporary buffer. This might be especially of interest if you are selecting multiple files (see below).
+
+
+****** Working with multiple repos or files
+Moreover the integration with embark allows some more complex functionalities such as working on multiple repos or files. Let's say I want to look at all the repos by alphapapa and clone a few of them that are related to org-mode. Now since alphapapa has over 700 repositories in his account, I first need to increase the maximum number of results I normally get:
+
+#+begin_src emacs-lisp
+(setq consult-gh--repo-maxnum 1000)
+#+end_src
+
+Then I can run =consult-gh-orgs= and look for =alphapapa=. This takes some time to load all the repositories but this is way faster than browsing through GitHub to find the repositories manually. Then in the result I search for ="org-"= and run embark select (in my case this is bound to SPC so in my case this is ="C-. SPC"=) and ocne I select everything I am
+looking for, I run embark act on all ("C-. A") plus the consult-gh-embark-repo-clone (bound to "c" in my setup). By default, consult-gh wil lgo through every repository and confirms the repo I want to clone and the path, etc. But if you happen to do this often, you can configure consult-gh to always clone the repositories in a folder where you kep your repositories (e.g. "~/code" or "~/projects") and then set =consult-gh-confirm-before-clone= to nil:
+
+#+begin_src emacs-lisp
+(setq consult-gh-default-clone-directory "~/code")
+(setq consult-gh-confirm-before-clone nil)
+#+end_src
+
+With this setting consult-gh just clones the repositories with the repo's default name under ="~/code"= folder. Browsing GitHub in the browser or using gh in the command line will never be this fast!
+
+Similarly you can use embark-select and embark-act-all to run commands on multiple files possibly even from different repos or from different branches of the same repo.
+
+For example in the screenshot below I download the README files from two different repos vertico from minad and selectrum from radian software accounts.
+
+
+
+One interesting example is to run a diff on the same file in two different branches of the same repo withouc cloning the repo and runing git diff. In the screen shot below, I search for the repo "minad/consult" then I select it twice (separated by my default crm-separator in this case ",") and select two different branches, then I see the file trees for the two branches. I search for a file (e.g. "README")that narrow downs the items in both branches and I select the and I open previews for both branches by hiting "M-o". Now I have both files in an open buffer. I quit consult-gh and run vdiff-buffer and select the two buffers visiting those files. Of course you can achieve this by cloning the repo and running git diff but this is much faster especially if you don't want to clone the entire repo.
+
+
+****** Viewing Issues
+In addition to repos and files, you can also browse issues with =consult-gh-search-issues=. You then need to select a repo or possibly multiple repos and enter a search term. If you want to see all the issues you can pass an empty string to the search term. You can set the =consult-gh--issues-state-to-show= to =open=, =closed= or =all= to change the issues that are shown. Note that this is different from the behavior of =gh search issues= in the command line where you only have the option =open= or =closed=. Similar to what was mentioned for repos, and files you can then run different actions on issues. By default the action is set to =consult-gh--issue-browse-url-action= that opens the url in a browser but you can also change that to =consult-gh--issue-view-action= to see the issue inside an emacs buffer.
+
+
+**** Future Ideas
+There are a few other ideas that i have in mind and I may implement them in the future as time allows and would welcome anybody that would like to contribute to these or potentially other interesting ideas:
+
+1. I would like to provide a simple interface for multiple profiles. This should be easily achievable using enviroment variable like GH-CONFIG-DIR, but I still need to decide what would be the right way of implementing it. Should be a global variable in consult-gh or shall we dfine local pe buffer variables, etc.
+
+2. I think we can improve the current interface of =consult-gh-find-file= to make it behave more like find-file in emacs where folders are expanded dynamically as the user makes step-by-step selections to navigate the folders. This is however not the best approach for looking at files in multiple repos, so I may have to keep the current aproach for multiple repos, but I'd love to hear suggestions on that. I briefly talked to minad (the owner of the consult repo) and it seems that there are good ways of implementing a dynamic completion table for file-names with consult. But so far between my limited elisp skills and lack of good in-detail documentation on emacs completion tables, I have only had partial success with it and there are still many quirks to deal with. So this may take some time to implement.
+
+3. The =gh= command in the terminal provides additional arguments to further filter search results for example to filter issues by date or tags, etc. This is not yet implemented in consult-gh. I think it can be added by some minimal effort if I enable extra arguments in some of the calls to gh (that I can of course turn into a rabbit hole that takes weeks but I think it'd be doable at the end anyway). However, I am not yet convinced that this will add much value. I think having too many options can negatively affect the user-friendliness and efficiency of the package. There is always going to be some use-cases where jumping to the browser would be a better option after all. I'd be interested to hear counter arguments if any though especially if there are ideas for clean and simple interface that allows using such options with an intuitive interface.
+
+
+
+
+That converts markdown-files to 'org-mode
+you can trun previews on if I select that, it will open the GitHub page in the browser, but in my setting, I have changed the default action for repos to =#'consult-gh--repo-browse-files-action= that means when I select a repo, a new minibuffer menu opens and allows me to browse file contents of the repo. Furthermore I can customize consult-gh to open the "HEAD" branch, ask me to select the branch, or confirm whether I want to open "HEAD" or select another branch (This last option is useful for browsing multiple repos, see below).  So with this setting, I have quick access to files in any repositories from within Emacs.
+
+
+
+
+
+ quick way to evaluate parts of the code and understand the behavior. Also no help available in a browser
+
+
+ For an example I would search for
 
 
 
@@ -699,41 +865,6 @@ categories: ["نرم افزار", "طراحی وب", "درباره"]
 
 
 
-*** DRAFT چرا پژوهشگران نیاز به وبسایت دارند؟
-:PROPERTIES:
- :EXPORT_HUGO_DRAFT: true
- :EXPORT_HUGO_SECTION_FRAG: why_scientists_need_a_web
- :EXPORT_FILE_NAME: index
- :TITLE: Why Scientists Need a Website
- :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :subtitle 
- :EXPORT_HUGO_CUSTOM_FRONT_MATTER+: :summary 
-:END:
-
-#+begin_src yaml :front_matter_extra t
-authors:
-  - admin
-projects: []
-featured: false
-commentable: true
-image:
-  caption: 'caption'
-  focal_point: 'center'
-categories: []
-#+end_src
-
-* Footnote
-* COMMENT Local Variables                          :ARCHIVE:
-
-# Local Variables:
-# eval: (org-hugo-auto-export-mode t)
-# End:
-
-
-
-
-
-
-
 * Footnotes
 [fn:mywork] The only exception was the map widget
 
@@ -758,3 +889,10 @@ categories: []
 
 
 #+end_src
+
+* COMMENT Local Variables                                             :ARCHIVE:
+
+# Local Variables:
+# eval: (org-hugo-auto-export-mode t)
+# eval: (my:blog-minor-mode +1)
+# End:

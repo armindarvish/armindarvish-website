@@ -1,5 +1,5 @@
 ---
-title: "new new test"
+title: ""
 author: ["Armin Darvish"]
 lastmod: 2023-02-09T14:54:30-08:00
 draft: true

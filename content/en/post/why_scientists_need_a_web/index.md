@@ -1,7 +1,7 @@
 ---
 title: "Why scientists need a website?"
 author: ["Armin Darvish"]
-lastmod: 2023-05-21T10:59:00-07:00
+lastmod: 2023-06-19T10:49:46-07:00
 tags: ["web"]
 categories: ["software", "scientists"]
 draft: true

@@ -1,9 +1,9 @@
 ---
 title: "testing my ai assistant"
 author: ["Armin Darvish"]
-lastmod: 2023-05-19T10:32:36-07:00
+lastmod: 2023-06-20T00:37:22-07:00
 draft: true
-weight: 3005
+weight: 3007
 authors:
   - admin
 projects: []
