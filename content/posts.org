@@ -14,8 +14,8 @@
 :EXPORT_HUGO_SECTION_FRAG: post
 :END:
 
-*** PUBLISH Humble Beginnings                   :@software:@webdesign:@about:
-CLOSED: [2023-06-22 Thu 08:04]
+*** PUBLISH Humble Beginnings                  :@software:@webdesign:@about:
+CLOSED: [2023-02-09 Thu 11:49]
 :PROPERTIES:
 :EXPORT_HUGO_DRAFT: false
 :EXPORT_HUGO_SECTION_FRAG: humble_beginnings
