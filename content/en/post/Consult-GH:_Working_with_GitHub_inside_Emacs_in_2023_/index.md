@@ -1,9 +1,8 @@
 ---
 title: "consult-gh: Working with GitHub inside Emacs in 2023"
 author: ["Armin Darvish"]
-date: 2023-06-23T11:39:00-07:00
-lastmod: 2023-06-23T11:39:30-07:00
-draft: false
+lastmod: 2023-06-23T11:42:23-07:00
+draft: true
 weight: 3004
 subtitle: "Introducing a new package for using GitHub interactively inside Emacs based on Consult and Embark"
 summary: "This post introduces my new Emacs package that uses the fabulous Consult and Embrak along with GitHub CLI tool to create an intuitive user-friendly interface for GitHub inside Emacs"
