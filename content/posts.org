@@ -637,7 +637,8 @@ and here is my preferred entire code (see the post for some alternatives if you 
 #+end_src
 
 
-*** POST consult-gh: Working with GitHub inside Emacs in 2023
+*** PUBLISH consult-gh: Working with GitHub inside Emacs in 2023
+CLOSED: [2023-06-23 Fri 13:58]
 :PROPERTIES:
 :EXPORT_HUGO_DRAFT: false
 :EXPORT_HUGO_SECTION_FRAG: consult-gh:_Working_with_GitHub_inside_Emacs_in_2023_
@@ -718,8 +719,7 @@ Then depending on configuration (see the next section for details), you can do a
 
 #+attr_html: :width 320 :height 240 :controls t
 #+begin_video
-<source src="/assets/media/videos/test.mp4" type="video/mp4">
-[[file:~/projects/armindarvish-website/assets/media/videos/test.mp4]]
+<source src="search-orgs.mp4" type="video/mp4">
 #+end_video
 
 

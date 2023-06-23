@@ -1,8 +1,9 @@
 ---
 title: "consult-gh: Working with GitHub inside Emacs in 2023"
 author: ["Armin Darvish"]
-lastmod: 2023-06-23T11:42:23-07:00
-draft: true
+date: 2023-06-23T13:58:00-07:00
+lastmod: 2023-06-23T13:58:48-07:00
+draft: false
 weight: 3004
 subtitle: "Introducing a new package for using GitHub interactively inside Emacs based on Consult and Embark"
 summary: "This post introduces my new Emacs package that uses the fabulous Consult and Embrak along with GitHub CLI tool to create an intuitive user-friendly interface for GitHub inside Emacs"
@@ -81,8 +82,7 @@ In the previous section I mentioned an example of looking at [alphapapa](https:/
 
 Then depending on configuration (see the next section for details), you can do a number of different actions. For example, you can choose to see a preview (a.k.a. the README file inside an emacs buffer), or see the file contents inside Emacs. In the screenshot below I have turned preview on and set the action to show the file contents. I'll show you how to do that in the next section but for now here is a screen shot of how it looks.
 
-<video width="320" height="240" controls><source src="/assets/media/videos/test.mp4" type="video/mp4">
-[[file:~/projects/armindarvish-website/assets/media/videos/test.mp4]]</video>
+<video width="320" height="240" controls><source src="search-orgs.mp4" type="video/mp4"></video>
 
 In the screenshot above, I first searched for the user `minad` and looked at the preview (a.k.a. **README** file) of some repos. As you can see I can copy code or even evaluate source blocks from the preview buffer without even cloning or saving files! Then I searched for multiple accounts using comma as crm-separator (e.g. `systemcrafters, minad`). Then I searched for `alphapap`. As you can see, it takes some time to load more than 700 repositories from alphapa, but then you can easily narrow down by completion in minibuffer as I did for repos that start with `org-` . Most of the time, users won't have that many repos and therefore performance is not an issue but if it is, you can always set the max number of results for repositories (per account not total) by setting `consult-gh-repo-maxnum`.
 
