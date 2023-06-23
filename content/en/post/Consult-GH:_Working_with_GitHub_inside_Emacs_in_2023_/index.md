@@ -1,9 +1,9 @@
 ---
 title: "Consult-GH: Working with GitHub inside Emacs in 2023"
 author: ["Armin Darvish"]
-lastmod: 2023-06-21T18:11:00-07:00
+lastmod: 2023-06-22T16:45:05-07:00
 draft: true
-weight: 3005
+weight: 3004
 subtitle: "Introducing a new package for using GitHub interactively inside Emacs based on Consult and Embark"
 summary: "This post introduces my new Emacs package that uses the fabulous Consult and Embrak along with GitHub CLI tool to create an intuitive user-friendly interface for GitHub inside Emacs"
 authors:
@@ -55,7 +55,7 @@ This is not very efficient because the tools I was using were not specifically d
 Moreover, when I finally find the source and content of interest, I am likely looking at some code in a browser, where syntax highlighting is often sub-optimal; no IDE or REPL is available to run and explore the code. Help and documentation is not available to parse different pieces of the code. Compare this with looking at code inside Emacs, where you can easily run snippets of codes to test and understand functionalities either by jumping to a REPL or by running code inside an org-mode source-block. In addition, at least in case of elisp code, help and documentation is always just a `C-h` key away! Such documentation is often proven extremely useful especially if you you use a package such as [helpful](https://github.com/Wilfred/helpful). For non-elisp code, the chances are you can also find documentation, debugging and other tools inside Emacs by installing the right packages. Finally, when it comes to implementing my own solution, this would mean either copying code from the browser into a local file or forking/cloning the repository and then editing the code which means I would leave the browser and would go to an IDE tool such as Emacs. Wouldn't it be great if I could do all of that inside Emacs to begin with? For example, let's say I am looking at [Steve Purcell's Emacs Config](https://github.com/purcell/emacs.d/) but instead of doing that in the browser, I can pull up the relevant repository and browse the files all from inside the emacs. If I see a piece of code I am interested in I can copy it to and org-mode source block and see what it does. If I need help and docs I can look things up in Emacs. I can do all of that without even cloning the repo. For another example, consider the scenario where I want to look at recent works from [alphapapa](https://github.com/alphapapa), see what new projects and repositories he has been working on. I can open his GitHub page in the browser and manually go over his more than 700 repos top find out, but wouldn't it be great if I could get a list of all his repos within Emacs, and search through them and interactively see README files and if I see something of interest browse the files or clone the repo and take things for a test drive all from within Emacs? If your answer to this question is yes or any of this rings a bell, then you will likely be interested in Consult-GH and what I am about to show you in the next sections.
 
 
-## That's enough talking, just show me the real examples of features and use cases {#that-s-enough-talking-just-show-me-the-real-examples-of-features-and-use-cases}
+## Features and Demo {#features-and-demo}
 
 In this section, I will show you (of course with screenshots as well as explanation) examples of using Consult-GH to interact with GitHub from within Emacs. The goal is to show the basic features and explain how things work and then provide examples of meaningful workflows that are more efficiently done with Consult-GH than opening a browser or using other tools. Please note that I do not intend to go through all the details of installation, customization, configuration etc. here. Instead, I focus on showing the functionality. For instructions please refer to the documentation on the official [consult-gh repo](https://github.com/armindarvish/consult-gh).
 
