@@ -637,11 +637,10 @@ and here is my preferred entire code (see the post for some alternatives if you 
 #+end_src
 
 
-*** PUBLISH consult-gh: Working with GitHub inside Emacs in 2023
-CLOSED: [2023-06-23 Fri 13:58]
+*** POST consult-gh Working with GitHub inside Emacs in 2023
 :PROPERTIES:
-:EXPORT_HUGO_DRAFT: false
-:EXPORT_HUGO_SECTION_FRAG: consult-gh:_Working_with_GitHub_inside_Emacs_in_2023_
+:EXPORT_HUGO_DRAFT: true
+:EXPORT_HUGO_SECTION_FRAG: consult-gh_Working_with_gitHub_inside_emacs_in_2023_
 :EXPORT_FILE_NAME: index
 :TITLE: consult-gh: Working with GitHub inside Emacs in 2023
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :subtitle Introducing a new package for using GitHub interactively inside Emacs based on Consult and Embark
@@ -716,15 +715,11 @@ In the previous section I mentioned an example of looking at [[https://github.co
 
 Then depending on configuration (see the next section for details), you can do a number of different actions. For example, you can choose to see a preview (a.k.a. the README file inside an emacs buffer), or see the file contents inside Emacs. In the screenshot below I have turned preview on and set the action to show the file contents. I'll show you how to do that in the next section but for now here is a screen shot of how it looks.
 
+#+begin_export hugo
+{{< youtube id="hSIqElbJlV8" title="Search GitHub Users and See Their Repos" >}}
+#+end_export
 
-#+attr_html: :width 320 :height 240 :controls t
-#+begin_video
-<source src="search-orgs.mp4" type="video/mp4">
-#+end_video
-
-
-In the screenshot above, I first searched for the user =minad= and looked at the preview (a.k.a. *README* file) of some repos. As you can see I can copy code or even evaluate source blocks from the preview buffer without even cloning or saving files! Then I searched for multiple accounts using comma as crm-separator (e.g. =systemcrafters, minad=). Then I searched for =alphapap=. As you can see, it takes some time to load more than 700 repositories from alphapa, but then you can easily narrow down by completion in minibuffer as I did for repos that start with =org-= . Most of the time, users won't have that many repos and therefore performance is not an issue but if it is, you can always set the max number of results for repositories (per account not total) by setting =consult-gh-repo-maxnum=.
-
+In the video above, I show a few examples of searching user accounts to retrieve their repositories. I first show searching for single or multiple user names and seeing previews of repos (a.k.a. *README* file) inside Emacs. Then I show the completion in minibuffer can make it faster to find relevant repos especially from users who have many repositories. Keep in mind that if loading a lot of repositories slows things down, you can always set the max number of results for repositories (per account not total) by setting =consult-gh-repo-maxnum=.
 
 
 
@@ -754,9 +749,15 @@ With this setting, when I move the cursor to ="kaushalmodi/ox-hugo"= in the mini
 (setq consult-gh-preview-key "M-o")
 #+end_src
 
+Here is a video to show the preview on demand functionality.
+
+#+begin_export hugo
+{{< youtube id=mqsFIP_j_kg title="consult-gh: preview on demand" >}}
+#+end_export
 
 ****** The Default Action and Some Options
 Now if I hit enter to select a repo, then the default action function that is bound to the variable =consult-gh-repo-action= is run. By default, this is bound to the function =consult-gh--repo-browse-url-action= which opens the github page in the browser. This is again to optimize the performance, but if performance is not a concern, you can change the default function to something more useful for your workflow. Personally, I have changed it to =consult-gh--repo-browse-files-action= which allows me to browse the files inside Emacs. Here is my config
+
 #+begin_src emacs-lisp
 (consult-gh-repo-action #'consult-gh--repo-browse-files-action)
 #+end_src
@@ -764,6 +765,11 @@ Now if I hit enter to select a repo, then the default action function that is bo
 Note that this only fetches the file tree and does not download the files until you open the file (or preview it in a buffer). This way, you will only download the contents you want to see. Also, the files are stored in the system's default temporary directory so once you restart your computer, the space that is used to store the files is restored. Here is a screen shot where I search for the repo =minad/vertico= and then browse the file contents. In this case the preview is on and automatic.
 
 There are other actions that are provided by default and you can use them as default action by setting =consult-gh-repo-action=. These actions include cloning or forking a repo, copying relevant links to kill-ring (e.g. homepage, https or ssh links for cloning, and and org-mode link). In addition I provide an example that copies a drop-in snippet with =straight.el= and =use-package= to kill ring. I can paste this snippet in my emacs config to install the package!
+
+#+begin_export hugo
+{{< youtube id="B8hxrMLx1TM" title="consult-gH: repo actions" >}}
+#+end_export
+
 
 ****** Embrak Integration
 In addition to the default action, you can use alternative actions by using [[https://github.com/oantolin/embark][embark]]. The [[https://github.com/armindarvish/consult-gh/blob/main/consult-gh-embark.el][consult-gh-embark.el]] file provide some example of how to do this. Here is an example showing how to bounc =c= to embark action for cloning the repo:
