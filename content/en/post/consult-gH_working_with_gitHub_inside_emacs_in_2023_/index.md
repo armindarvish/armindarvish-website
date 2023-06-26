@@ -2,7 +2,7 @@
 title: "Consult-GH: Working with GitHub inside Emacs in 2023"
 author: ["Armin Darvish"]
 date: 2023-06-26T04:49:00-07:00
-lastmod: 2023-06-26T04:49:20-07:00
+lastmod: 2023-06-26T09:55:54-07:00
 draft: false
 weight: 3004
 subtitle: "Introducing a new package for using GitHub interactively inside Emacs based on Consult and Embark"
@@ -20,7 +20,7 @@ image:
 
 ## Introduction {#introduction}
 
-This section is essentially the philosophy behind this work addressing the question of "why do we need yet another package?" If this is not of interest to you, you can skip to the next section and look at the examples and demos.
+This section is essentially the philosophy behind this work addressing the question of "why do we need yet another package?" If this is not of interest to you, skip to the next section and look at the examples and demos.
 
 
 ### What is the need? Why make a new package? {#what-is-the-need-why-make-a-new-package}
