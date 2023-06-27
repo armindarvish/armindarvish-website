@@ -644,7 +644,7 @@ CLOSED: [2023-06-26 Mon 04:49]
 :EXPORT_HUGO_SECTION_FRAG: consult-gH_working_with_gitHub_inside_emacs_in_2023_
 :EXPORT_FILE_NAME: index
 :TITLE: Consult-GH: Working with GitHub inside Emacs in 2023
-:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :subtitle Introducing a new package for using GitHub interactively inside Emacs based on Consult and Embark
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :subtitle Introducing a new package for using GitHub interactively inside Emacs based on Consult, Embark and GitHub CLI
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER+: :summary This post introduces my new Emacs package that uses the fabulous Consult and Embrak along with GitHub CLI tool to create an intuitive user-friendly interface for GitHub inside Emacs
 :END:
 
@@ -661,7 +661,7 @@ image:
   #+end_src
 
 **** Introduction
-This section is essentially the philosophy behind this work addressing the question of "why do we need yet another package?" If this is not of interest to you, skip to the next section and look at the examples and demos.
+This section addresses the question of "why do we need yet another package?" If that is not of interest to you, skip to the next section and look at the examples and demos.
 
 ***** What is the need? Why make a new package?
 I often find myself browsing GitHub for various reasons. Sometimes I go back to a package repo to read the documentation/manuals for installing or troubleshooting. Other times I browse the repositories by users whose works are of interest to me (for example [[https://github.com/purcell/emacs.d][Steve Purcell's Emacs Config]] or [[https://github.com/alphapapa][alphapapa (Adam Porter)]]'s packages for org-mode workflows). This is often done by doing a Google search finding the relevant GitHub Page and navigating from there to find the right content. It would have been great if I could do all of that from inside Emacs especially if I could then take some code from those repositories, paste it in an org-mode source block or a REPL and see how it works. But, as far as I know, no Emacs package provides a user-friendly intuitive interface for such functionality. While there are multiple packages that interface with GitHub API like [[https://github.com/sigma/gh.el][gh.el]], [[https://github.com/magit/ghub][magit/ghub]], [[https://github.com/magit/forge][magit/forge]], [[https://github.com/sshaw/git-link][git-link]], [[https://github.com/rmuslimov/browse-at-remote][browse-at-remote]] and ..., none of them provide the kind of functionality I am looking for.
@@ -697,7 +697,6 @@ There are a few GitHub accounts that I tend to keep going back to either because
 2. _Find the relevant content_: For example by browsing through the files on a GitHub repo or looking at recent updates, commits, etc.
 3. _Understand the Content_: This would usually require, copying code from the browser back to a REPL or IDE and interact with it and run examples to figure out what each part does etc.
 4. _Implement my own solution_: Finally, I have to decide if I would like to use the content I just learned in my own projects. For example, after looking at "Steve Purcell's Config" I need to decide whether I want to use some parts of it in my own config and if so how do I need to adjust and use it.
-
 
 This is not very efficient because the tools I was using were not specifically designed for this. For example, Google is a great "general" search engine but if I want to go back to the same page on *eos* GitHub repo then, I probably have to bookmark that page. But as you may have experienced that would mean that I end up with many bookmarks, and now I need another tool to search through my bookmarks to find the right page, and sometimes I don't remember which bookmark was the right one, and I perhaps have to go back and look at my notes if I took any and so on.
 Moreover, when I finally find the source and content of interest, I am likely looking at some code in a browser, where syntax highlighting is often suboptimal; no IDE or REPL is available to run and explore the code; help and documentation is not available to parse different pieces of the code; etc. Compare this with looking at code inside Emacs, where you can easily run snippets of codes to test and understand functionalities either by jumping to a REPL or by running code inside an org-mode source-block. In addition, at least in case of elisp code, help and documentation is always just a =C-h= key away! Such documentation is often proven extremely useful especially if you also use a package like [[https://github.com/Wilfred/helpful][helpful]]. For non-elisp code, the chances are you can also find documentation, debugging and other tools inside Emacs by installing the right packages. Finally, when it comes to implementing my own solution, this would mean either copying code from the browser into a local file or forking/cloning the repository and then editing the code which means I would leave the browser and would go to an IDE tool such as Emacs.
