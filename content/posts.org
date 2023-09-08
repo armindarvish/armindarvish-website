@@ -76,6 +76,8 @@ image:
   focal_point: 'center'
   #+end_src
 
+**** UPDATE Sept. 8 2023
+Since I wrote this post, Nicolas Graves has made a GitHub repository that implements this in a package and has potentially improved on it by using =org-ql= and etc. You can check it out here: [[https://github.com/nicolas-graves/org-dynamic-agenda][org-dynamic-agenda]].
 
 **** Intro
 

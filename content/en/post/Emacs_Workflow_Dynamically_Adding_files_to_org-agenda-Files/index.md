@@ -2,7 +2,7 @@
 title: "Emacs Workflow: Dynamically Adding Files to Org Agenda"
 author: ["Armin Darvish"]
 date: 2023-05-22T10:32:00-07:00
-lastmod: 2023-05-22T10:32:38-07:00
+lastmod: 2023-09-08T05:39:51-07:00
 categories: ["software", "emacs", "orgmode"]
 draft: false
 weight: 3002
@@ -10,13 +10,18 @@ subtitle: "How to automatically and dynamically build org-agenda-files to includ
 summary: "In this post, I'll show you my workflow for automatically adding files with TODO items to org-agenda-files as soon as we open or save the file."
 authors:
   - admin
-projects: [software]
+projects: ["software"]
 featured: false
 commentable: true
 image:
   caption:
   focal_point: 'center'
 ---
+
+## UPDATE Sept. 8 2023 {#update-sept-dot-8-2023}
+
+Since I wrote this post, Nicolas Graves has made a GitHub repository that implements this in a package and has potentially improved on it by using `org-ql` and etc. You can check it out here: [org-dynamic-agenda](https://github.com/nicolas-graves/org-dynamic-agenda).
+
 
 ## Intro {#intro}
 
