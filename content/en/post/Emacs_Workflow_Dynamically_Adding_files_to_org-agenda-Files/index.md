@@ -2,7 +2,7 @@
 title: "Emacs Workflow: Dynamically Adding Files to Org Agenda"
 author: ["Armin Darvish"]
 date: 2023-05-22T10:32:00-07:00
-lastmod: 2023-09-08T05:43:50-07:00
+lastmod: 2023-09-08T05:55:42-07:00
 categories: ["software", "emacs", "orgmode"]
 draft: false
 weight: 3002
@@ -25,7 +25,7 @@ Since I wrote this post, Nicolas Graves has made a GitHub repository that implem
 
 ## Intro {#intro}
 
-If you use Emacs org-mode for task management, you have probably wondered if there is a way to dynamically add files with TODO items to org-agenda-files. A Google search will likely get you some initial ideas on how to do it. For example this post: [Boris Buliga - Task management with org-roam Vol. 5: Dynamic and fast agenda](https://d12frosted.io/posts/2021-01-16-task-management-with-roam-vol5.html) covers how to this. But since Boris's post focuses on using org-roam, it may not be the right solution when you use org-roam. So I had to hack my own solution and in this point I'm going to share that with you in case anyone is interested. You can see a [screenshot](en/post/Emacs_Workflow_Dynamically_Adding_files_to_org-agenda-Files/dynamic_org_agenda.gif) below.
+If you use Emacs org-mode for task management, you have probably wondered if there is a way to dynamically add files with TODO items to org-agenda-files. A Google search will likely get you some initial ideas on how to do it. For example this post: [Boris Buliga - Task management with org-roam Vol. 5: Dynamic and fast agenda](https://d12frosted.io/posts/2021-01-16-task-management-with-roam-vol5.html) covers a good approach, but since Boris's post focuses on using org-roam, it may not be the right solution when you don't use org-roam. So I had to hack my own solution and in this point I'm going to share that with you in case anyone is interested. You can see a [screenshot](en/post/Emacs_Workflow_Dynamically_Adding_files_to_org-agenda-Files/dynamic_org_agenda.gif) below.
 
 
 ## How does it work {#how-does-it-work}
