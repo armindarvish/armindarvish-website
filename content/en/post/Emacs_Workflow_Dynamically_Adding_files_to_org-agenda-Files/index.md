@@ -2,7 +2,7 @@
 title: "Emacs Workflow: Dynamically Adding Files to Org Agenda"
 author: ["Armin Darvish"]
 date: 2023-05-22T10:32:00-07:00
-lastmod: 2023-09-08T05:39:51-07:00
+lastmod: 2023-09-08T05:43:50-07:00
 categories: ["software", "emacs", "orgmode"]
 draft: false
 weight: 3002
@@ -20,7 +20,7 @@ image:
 
 ## UPDATE Sept. 8 2023 {#update-sept-dot-8-2023}
 
-Since I wrote this post, Nicolas Graves has made a GitHub repository that implements this in a package and has potentially improved on it by using `org-ql` and etc. You can check it out here: [org-dynamic-agenda](https://github.com/nicolas-graves/org-dynamic-agenda).
+Since I wrote this post, Nicolas Graves has made a GitHub repository that implements this with some improvements using `org-ql` and etc. You can check it out here: [org-dynamic-agenda](https://github.com/nicolas-graves/org-dynamic-agenda).
 
 
 ## Intro {#intro}
