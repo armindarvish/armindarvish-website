@@ -77,6 +77,7 @@ image:
   #+end_src
 
 **** UPDATE Sept. 8 2023
+
 Since I wrote this post, Nicolas Graves has made a GitHub repository that implements this with some improvements using =org-ql= and etc. You can check it out here: [[https://github.com/nicolas-graves/org-dynamic-agenda][org-dynamic-agenda]].
 
 **** Intro
@@ -175,6 +176,7 @@ I add =org-agenda-files= to =savehis-additional-variables= and make sure that =s
 #+end_src
 
 **** Performance
+
 Of course adding files dynamically to the =org-agenda-files= comes with a cost. Make too many files with org-agenda items and it will be very slow. Personally I keep most of my general =TODO= items in one file under my main org directory and only put =TODO= items in other files when having it in the context of the specific project is useful.
 
 **** Screenshot
@@ -221,6 +223,7 @@ If you don't know much about Emacs or org-mode, or all you are looking for is a 
 Also, note that while I am using a blog post as an example here, this general approach can be applied to many other scenarios, for example a bunch of flash cards you want to memorize; a selection of books you want to read, digest or summarize; a list of companies you want to apply for a job at; a bunch of projects you want to work on; and so on.
 
 **** Using =org-todo= keywords
+
 By default [[https://orgmode.org/][Emacs Org mode]] comes with two =org-todo= keywords ="TODO"= and ="DONE"= but you can add any custom keyword and use them to track different objects and category of items such as notes, flashcards, ideas, drafts, etc. You can do this by adding the labels to =org-todo-keywords= in a sequence following [[https://orgmode.org/manual/Workflow-states.html][Workflow states (The Org Manual)]]. For example for a blogging workflow I use =(sequence "DRAFT(d)" "POST(p)" "|" "PUBLISH(b)")= as shown below. Note that by putting *PUBLISH* after "|", we are setting *PUBLISH* as the done label for this workflow, which can be used for other useful functions such as logging time, etc. (see the section on automating workflow [[Automating the Workflow][below]] for how I use it to automate logging times).
 
 #+begin_src emacs-lisp
@@ -230,6 +233,7 @@ By default [[https://orgmode.org/][Emacs Org mode]] comes with two =org-todo= ke
 Now, we can label org headings as a blog post by adding *DRAFT* todo keyword. This will serve as an entry point to capture ideas for a blog and add it to my agenda to edit later. As I edit the post and decide to publish it on my website, I'll change the label to *POST* or *PUBLISH*. I am going to show you how to use this to create some automated workflow but before that I am going to introduce another tool, Ox-Hugo, that makes it easy to write blog posts in org-mode if you use the static site generator, [[https://gohugo.io/][Hugo]].
 
 **** Ox-Hugo
+
 Next, we look at [[https://github.com/jethrokuan/ox-hugo][Ox-Hugo]] that allows you to export texts written in org-mode to markdown files that are used by the [[https://gohugo.io/][Hugo]] static generator. If you use Hugo to build your blog, and want to write your posts in org-mode (which you should!), then [[https://github.com/jethrokuan/ox-hugo][Ox-Hugo]] is a natural choice. There are other options such as =org-publish= as well, but I think Ox-Hugo is a better approach.
 
 I recommend you go through Ox-Hugo's [[https://ox-hugo.scripter.co/][manual]] for setting it up and find the specific settings that fit your need. But here are some ideas and tips to consider:
@@ -282,6 +286,7 @@ Other than that there are some site-specific settings that I define in =:PROPERT
 
 
 **** Automating the Workflow
+
 While the setup above is already great for writing posts in org-mode and quickly exporting them to markdown, we can do much more with org-mode =TODO= items. For example, we can create some automation flow by hooking functions to =org-after-todo-state-change-hook=, so your draft turns into a post on your hugo website automatically when you change the keyword. As a result, you can just focus on writing the contents rather than maintaining the blog files. This is what makes this workflow superior to a lot of other tools, because it brings the automation (that tools like WordPress offer) to a great text-editing environment like org-mode all within Emacs where I personally do a lot of other things (like coding, reading feeds, keeping notes, managing projects and ideas, ...).
 
 *Here is my automated workflow (You can see a screenshot at the end of this post):*
@@ -334,6 +339,7 @@ With this setup, I don't need to worry about anything but writing the content. A
 The next useful step to take is to set up org-capture to quickly save new ideas. Often times blog ideas come to you randomly in the middle of something else, and you don't want to lose them. The org-mode ability to quickly fire up org-capture and write the idea down is therefore a crucial functionality that makes this workflow superior to a lot of other editors. To do this, I use the org-capture with a custom template. You can do this in different ways from minimal setup to more advanced ones, depending on your needs, as I show below.
 
 ***** Minimal Setup
+
 You can add a simple template to your org-capture templates following the official instructions: [[https://orgmode.org/manual/Capture-templates.html][Capture templates (The Org Manual)]]. For example, the code below creates a new heading in the ="Blog.org"= file in default org directory under the Heading ="* Posts"=.
 
 #+begin_src emacs-lisp
@@ -344,6 +350,7 @@ You can add a simple template to your org-capture templates following the offici
 #+end_src
 
 ***** Better Set Up that Adds Ox-Hugo
+
 The simple template above is sufficient for most basic workflows, but I personally like to use something a bit more advanced with automation and add capabilities for ox-hugo. Here is a better template which adds ox-hugo settings:
 
 #+begin_src emacs-lisp
@@ -359,6 +366,7 @@ The simple template above is sufficient for most basic workflows, but I personal
 The code above adds the ox-hugo settings as =:PROPERTIES:= drawer to your entry and also adds some settings for convenience by =:prepend t= and =:jump-to-captured t=. It jumps to the file narrowed to the heading you just created in case you want to add some more text before finishing the capture process.
 
 ***** Advanced Setup with Ox-Hugo + Yasnippet
+
 The template above covers provides all the essentials for an automated workflow, but it is still not the ideal version because but it is not dynamic enough, and some manual editing is still required. For example, I do not want to manually enter the file path for the markdown files. Therefore, in my own setup I take a different approach by using [[https://github.com/joaotavora/yasnippet][Yasnippet]] to do some auto-completion for me. Of course, this means that you need to install Yasnippet and set it up, which may not be what you want and hence the settings above, but in my case I am using Yasnippet for other things anyway, so I might as well use it here.
 
 I define a capture function that calls org-capture but also enables yasnippet and inserts my snippet as a template. This is essentially a from with metadata fields that I can quickly jump to and fill by using the tab button.
@@ -421,6 +429,7 @@ Note how the snippet takes the title and automatically generates the path for th
 
 
 **** Bonus 1: Quickly see all Your Posts with Custom-Agenda-Views or Consult-Agenda
+
 An advantage of using org-todo keywords for items such as blog posts is that you can then quickly find all your items using [[https://orgmode.org/manual/Agenda-Views.html][Agenda Views]].
 
 #+begin_src emacs-lisp
@@ -446,6 +455,7 @@ Personally, I have built some custom functions based on consult-agenda just for 
 [[file:~/projects/armindarvish-website/content/en/post/Building_An_Efficient_Blogging_Workflow_in_Emacs/consult-blog.gif]]
 
 **** Bonus 2: Better looks for org-todo keywords
+
 If you want to have some better looks for your org todo keywords, you can check the [[https://github.com/minad/org-modern][Org-Modern]] by Alexander Miller. If you want to have different faces or colors for different labels, you can set =org-todo-keyword-faces= per official instruction: [[https://orgmode.org/manual/Faces-for-TODO-keywords.html][Faces for TODO keywords (The Org Manual)]]. Here is an example:
 
 #+begin_src emacs-lisp
@@ -455,6 +465,7 @@ If you want to have some better looks for your org todo keywords, you can check 
 
 
 **** Bonus 3: Better Writing Environment inside Emacs
+
 Don't forget to check out other packages that improve the actual content creation and writing texts in Emacs. [[https://github.com/thinkhuman/writingwithemacs][thinkhuman/writingwithemacs: Tips, Examples, and Resources for Writing with Emacs]] is a good collection of articles. Different people have obviously different opinions and take different approaches. [[https://explog.in/notes/writingsetup.html][explog's wirting setup]] is probably a good starting point for any user. Jacob Moena's post on [[https://jacmoes.wordpress.com/2019/09/24/creative-writing-with-emacs/][Creative Writing with Emacs]] provides a more comprehensive intro including some useful extra packages [[https://jacmoes.wordpress.com/2019/09/24/creative-writing-with-emacs/#Extras][here]].
 
 Personally, I think you have to try different packages and find the settings that is appealing to you and your use-case. But here are some suggestions based on my experience.
@@ -488,6 +499,7 @@ Here is a screenshot of my setup with flyspell, olivetti and focus-mode.
 
 
 **** Bonus 4: Seeing Previews with =Hugo Server=
+
 Obviously no good blog editor would be complete without a way to preview the post. If you use Hugo, you can see a preview by running =hugo server= in the terminal which fires up a local server (server default address is http://localhost:1313/). You can achieve the same by using a package like [[https://github.com/masasam/emacs-easy-hugo][emacs-easy-hugo]] from inside Emacs. However, that might be too overkill given that we can already do most of the functionality with org-mode and ox-hugo. Personally, I have defined a function that calls =hugo server= as a process within Emacs and a second function to kill the process.
 
 #+begin_src emacs-lisp
@@ -663,9 +675,11 @@ image:
   #+end_src
 
 **** Introduction
+
 This section addresses the question of "why do we need yet another package?" If that is not of interest to you, skip to the next section and look at the examples and demos.
 
 ***** What is the need? Why make a new package?
+
 I often find myself browsing GitHub for various reasons. Sometimes I go back to a package repo to read the documentation/manuals for installing or troubleshooting. Other times I browse the repositories by users whose works are of interest to me (for example [[https://github.com/purcell/emacs.d][Steve Purcell's Emacs Config]] or [[https://github.com/alphapapa][alphapapa (Adam Porter)]]'s packages for org-mode workflows). This is often done by doing a Google search finding the relevant GitHub Page and navigating from there to find the right content. It would have been great if I could do all of that from inside Emacs especially if I could then take some code from those repositories, paste it in an org-mode source block or a REPL and see how it works. But, as far as I know, no Emacs package provides a user-friendly intuitive interface for such functionality. While there are multiple packages that interface with GitHub API like [[https://github.com/sigma/gh.el][gh.el]], [[https://github.com/magit/ghub][magit/ghub]], [[https://github.com/magit/forge][magit/forge]], [[https://github.com/sshaw/git-link][git-link]], [[https://github.com/rmuslimov/browse-at-remote][browse-at-remote]] and ..., none of them provide the kind of functionality I am looking for.
 
 Let's take a closer look at some of these to better understand where the gap is.
@@ -679,6 +693,7 @@ Then there is of course magit packages, that are indeed incredibly useful for do
 In addition, all of these packages were started several years ago, and since then there has been updates in Emacs as well as other tools like GitHub CLI that provide new opportunities for how we can interface with GitHub from inside Emacs. This is exactly what consult-gh is trying to do.
 
 ***** How does consult-gh do it?
+
 The principle idea in consult-gh is that I only focus on providing what is missing and leave the rest to existing tools that provide the basic functionalities. For example, the [[https://github.com/cli/cli][GitHub CLI]] (=gh= commands in the terminal) is the right tool to use for interfacing with GitHub. After all it is the official CLI tool. By leaving jobs such as authentication and API calls to =gh=, we simplify the code and make it really easy to set up and use. In addition, we make the code more secure since we don't have to handle authentication tokens and at the same time we keep the code more maintainable because we don't have to worry about keeping up to date with the API, etc.
 For comparison, if you set up magit/forge and go through all the steps you need to do to interface with GitHub, you'll see while leaving this job to a tool like =gh= might be a better approach for consult-gh (obviously in case of magit/forge that's not an option since it supports sources other than GitHub).
 
@@ -691,6 +706,7 @@ Another important factor to consider is that when it comes to interacting with r
 This is what I am trying to create with consult-gh. To do so, I am trying to balance between usability (a.k.a. having many commands for different use-cases and scenarios) and utility (being more efficient in practice for typical workflows than using a browser for example). To do so, I am providing *only a handful of interactive commands* to keep things simple, intuitive and easy to use, yet I am offering a range of customization to tweak the behavior so that the user can pick what is most useful in their day-to-day use. For example, the user can fetch a list of repositories matching a search term by running the command =consult-gh-search-repos=, but the action that happens after selecting a target repository is customizable. By default, I provide a few useful functions for typical users, and allow advanced users to define their own custom commands if they wish to do so. If all the user wants is to open the URL of a repository in the browser, that is provided by default. If they want to view the README in an Emacs buffer, or see branches and browse the files they can do so by adding one line to their configuration. They can also choose to clone or fork the repository with one line of configuration. I also provide examples of [[https://github.com/oantolin/embark][Embark]] actions that can be used to do multiple commands on repositories and more. This should cover most of the typical use-cases, but if the user still needs something more complex beyond those actions, they can write their own custom commands and set them as default action to run when a target repository is selected. In other words, typical users can get the typical functionalities they use on a daily basis in a browser inside Emacs, hence better efficiency and customization. Advanced users, can come up with actions that are not possible in a browser and are hard to dynamically implement without a lot of scripting from scratch. Therefore, the balance between usability and utility should always be met no matter what the user is looking for.
 
 **** How is Consult-GH Useful
+
 If you read the Intro, you may be thinking, that is a lot of vague ideas that sound interesting on paper but in reality what can consult-gh do that is better than using a browser or just =gh= itself. "Can you convince me that this is not just another shiny tool that looks nice but does not provide any meaningful new feature or functionality?". In this section I am going to provide examples of use cases with context before we get down to codes and demos and how-to instructions in the next parts. Again, if this is not of interest to you, and you just want to see the examples in action and demo videos, jump ahead and see the next parts, otherwise keep reading.
 
 There are a few GitHub accounts that I tend to keep going back to either because I am looking for some new tool or functionality I need or because I am trying to learn from their code, implementation and general approach. Before making consult-gh, my workflow for this was:
@@ -708,9 +724,11 @@ Wouldn't it be great if I could do all of that inside Emacs to begin with? For e
 If your answer to those questions is yes or any of what I said rings a bell, then you will likely be interested in consult-gh and what I am about to show you in the next sections.
 
 **** Features and Demo
+
 In this section, I will show you examples of using consult-gh to interact with GitHub from within Emacs. The goal is to show the basic features and explain how things work and then provide examples of meaningful workflows that are more efficiently done with consult-gh than opening a browser or using other tools. Please note that I do not intend to go through all the details of installation, customization, configuration etc. here. Instead, I focus on showing the functionality. For instructions please refer to the documentation on the official [[https://github.com/armindarvish/consult-gh][consult-gh]] page.
 
 ***** Searching Users/Organization
+
 In the previous section I mentioned an example of looking at [[https://github.com/alphapapa][alphapapa]]'s repositories. Let's see how that would work with consult-gh. As you will see in the video below, you can run the interactive command =consult-gh-orgs=, enter a GitHub username and see a list of their repositories. One nice feature is that you can also enter multiple usernames by using a crm-separator, and see all their repositories at the same time grouped by usernames.
 
 Then depending on configuration (see the next section for details), you can do a number of different actions. For example, you can choose to see a preview (a.k.a. the README file inside an Emacs buffer), or see the file contents inside Emacs. In the video below I have turned preview on and set the action to show the file contents. I'll show you how to do that in the next sections but for now here is a demo of how it looks.
@@ -722,9 +740,11 @@ Then depending on configuration (see the next section for details), you can do a
 In the video above, I show a few examples of searching user accounts to retrieve their repositories. I first show searching for single or multiple usernames and seeing previews of repos (a.k.a. *README* file) inside Emacs. Then I show the completion in minibuffer can make it faster to find relevant repos especially from users who have many repositories. Keep in mind that if loading a lot of repositories slows things down, you can always set the max number of results for repositories (per account not total) by setting =consult-gh-repo-maxnum=.
 
 ****** Looking at a Default List of Repositories
+
 You can also look at a default list of usernames to =consult-gh-default-orgs-list= and use =consult-gh-default-repos= to see their repositories. You can add any GitHub usernames to the list, but I use this to quickly open my own repos inside Emacs. Note that since we are using =gh= on the back-end, this can show private repositories of the account that is logged in as well.
 
 ***** Searching Repositories
+
 More often than looking for specific users, I look up specific packages (e.g. org-roam, lsp-mode, ox-hugo, ...) to check manuals and documentation. Similar to what I mentioned above, before consult-gh, I would have used Google and a browser, but now I use most of it in consult-gh. Let's go through an example to see the functionalities.
 
 Let's say I want to look at ox-hugo's documentation for [[https://www.armindarvish.com/en/post/building_an_efficient_blogging_workflow_in_emacs/][my blogging workflow]], or want to look at org-roam for my note-taking. In this case, I can use the interactive command =consult-gh-search-repos= and enter a search term.  When I search for =ox-hugo=, I get a number of hits, and then I can choose the one I am looking for.
@@ -732,6 +752,7 @@ Let's say I want to look at ox-hugo's documentation for [[https://www.armindarvi
 Now, let's go through some useful features and how to use them:
 
 ****** Previewing Repos
+
 By default, previews are off because previewing a repo requires downloading the README file and that can be slow depending on your environment and network speed, etc. But in my config, I have turned consult-gh's previews on. I have also set the preview-mode to ='org-mode=. By default, this is set to ='markdown= to preserve the contents since most README files are =.md= format, but I convert it to org-mode because this makes it much easier for me to see source-blocks, etc. and evaluate them inside Emacs.
 
 #+begin_src emacs-lisp
@@ -753,6 +774,7 @@ Here is a video to show the preview on demand functionality.
 #+end_export
 
 ****** The Default Action and Some Options
+
 Now if I hit enter to select a repo, then the action function that is bound to the variable =consult-gh-repo-action= is run. By default, this is bound to the function =consult-gh--repo-browse-url-action= which opens the GitHub page in the browser, but you can change the default function to other functions provided such as browsing files, cloning, forking, browsing issues or some other custom function. Personally, I have changed it to =consult-gh--repo-browse-files-action= which allows me to browse the files inside Emacs. Here is my config:
 
 #+begin_src emacs-lisp
@@ -768,6 +790,7 @@ There are other actions that are provided by default, and you can use them as de
 #+end_export
 
 ****** Embark Integration
+
 In addition to the default action, you can use alternative actions by using [[https://github.com/oantolin/embark][embark]]. The [[https://github.com/armindarvish/consult-gh/blob/main/consult-gh-embark.el][consult-gh-embark.el]] file provide some example of how to do this. Here is an example showing how to bound =c= to embark action for cloning the repo:
 
 #+begin_src emacs-lisp
@@ -794,6 +817,7 @@ In the video below, you can see examples of using embark integration.
 
 
 ***** Finding Files
+
 The next example is using =consult-gh-find-file=. This is a quicker way to see files if you already know the name of the repository. For example, you can enter =minad/vertico= and browse the contents. Similarly to what was mentioned for repos, you can also run different functions on files. By default, consult-gh opens the file URL on GitHub when you select it, but you can configure it to open the file in Emacs. This makes an API call and downloads the file contents, so it may be slow for large files but in my tests so far the speed has been great even for some large files.
 
 Here is a configuration to set consult-gh to open files inside Emacs.
@@ -810,6 +834,7 @@ As mentioned above, previewing a file will also fetch the contents, and therefor
 #+end_export
 
 ***** Searching Issues
+
 In addition to repos and files, you can also browse issues with =consult-gh-search-issues=. You first asked enter a search term for issues (and you can pass an empty string if you want to see all issues of specific repos), then you are asked to enter name of repos (in =user/repo= format for example =armindarvish/consult-gh=). You can pass an empty string to this and consult-gh will search for issues in any repo. Furthermore, you can set the =consult-gh--issues-state-to-show= to =open=, =closed= or =all= to change the issues that are shown. Similar to what was mentioned for repos and files, you can then run different actions on issues. By default, the action is set to =consult-gh--issue-browse-url-action= that opens the URL in a browser, but you can also change that to =consult-gh--issue-view-action= to see the issue inside an Emacs buffer.
 
 Here is a demo:
@@ -819,9 +844,11 @@ Here is a demo:
 #+end_export
 
 ***** Taking it to the Next Level
+
 The examples above showed uses that are common for many users on a daily basis. But there are a lot more you can potentially do by using consult-gh.
 
 ****** Working with Multiple Repos All at Once
+
 Moreover the integration with embark allows some more complex functionalities such as working on multiple repos or files. For example, if you want to clone a bunch of different repos, instead of navigating to GitHub and getting the links and running =git clone= commands, you can just search multiple accounts with =consult-gh-orgs= or multiple repos with =consult-gh-search-repos= using =consult-gh-crm-separator= and then clone all of them at once.
 
 Let's say I want to look at all the repos by alphapapa and clone a few of them that are related to org-mode. Now since alphapapa has over 700 repositories in his account, I first need to increase the maximum number of results I normally get:
@@ -840,6 +867,7 @@ Then I can run =consult-gh-orgs= and look for =alphapapa=. This takes some time 
 With this setting consult-gh just clones the repositories with the repo's default name under ="~/code"= folder. Browsing GitHub in the browser or using =gh= in the command line will never be this fast!
 
 ****** Actions on Multiple Files (e.g. Comparing Files)
+
 In addition to viewing files, you can also select multiple files by using =embark-select= and run a function on multiple files, for example if you want to download a selection of files without cloning the whole repository. In addition, you can use a crm-separator and search for multiple repos (or the same repo multiple times and select different branches) and then compare files (for example with =ediff= or [[https://github.com/justbur/emacs-vdiff][emacs-vdiff]]). This can be done without cloning the repo or even permanently saving the file on your local machine (by default consult-gh loads previews by downloading files in the system's temp directory). Similarly, you can use embark-select and embark-act-all to run commands on multiple files possibly even from different repos or from different branches of the same repo.
 
 The video below demos some potentially interesting use cases.
@@ -848,6 +876,7 @@ The video below demos some potentially interesting use cases.
 #+end_export
 
 ****** Extending Functionality with Custom Functions
+
 Advanced users who don't mind writing a few lines of code to build custom workflows can further expand on the built-in functionalities by mixing different functions and actions. For example, let's say you want to add the same file (e.g. a new LICENSE) to multiple repos. You can create a custom function that clones the repo, adds a file, commits the changes and pushes to the remote. With the right packages already installed, this will only be a few lines of code in elisp. Then you make an embark action similar to examples provided in [[https://github.com/armindarvish/consult-gh/blob/main/consult-gh-embark.el][consult-gh-embark.el]]. Now you can search GitHub, select any repo (or multiple ones) and run this command on them! Isn't that neat?
 
 In fact let me just try to write the code for that specific example with the simplest implementation right now:
@@ -884,6 +913,7 @@ In fact let me just try to write the code for that specific example with the sim
 That is 30 lines of code (and could possibly be optimized since I just wrote it in 5 minutes) that allows me to do something quite complex. Of course in Emacs, there might be other better ways to achieve this specific task, but this shows you how you can quickly build custom workflows with consult-gh.
 
 **** Future Ideas
+
 There are a few other ideas that I have in mind and I may implement them in the future as time allows and would welcome anybody that would like to contribute to these or potentially other interesting ideas:
 
 1. I would like to provide a simple interface for multiple profiles. This should be easily achievable using environment variables like GH-CONFIG-DIR, but I still need to decide what would be the right way of implementing it. Should this be a global variable in consult-gh or shall we define local per buffer variables, etc.
@@ -893,6 +923,7 @@ There are a few other ideas that I have in mind and I may implement them in the 
 3. The =gh= command in the terminal provides additional arguments to further filter search results for example to filter issues by date or tags, etc. This is not yet implemented in consult-gh. I think it can be added by some minimal effort if I enable extra arguments in some of the calls to gh (that I can of course turn into a rabbit hole that takes weeks, but I think it'd be doable at the end anyway). However, I am not yet convinced that this will add much value. I think having too many options can negatively affect the user-friendliness and efficiency of the package. There is always going to be some use-cases for which jumping to the browser would be a better option after all. I'd be interested to hear counterarguments if any though especially if there are ideas for clean and simple interface that allows using such options with an intuitive interface.
 
 **** Links
+
 - YouTube Playlist: [[https://www.youtube.com/playlist?list=PLLKxLZdx_YyZdW4CidqbVPJjyo396Y1cx]]
 - GitHub Repository: [[https://github.com/armindarvish/consult-gh]]
 
@@ -922,26 +953,33 @@ image:
 In this post, I will show you how you can easily create a ChatGPT app on your system using the existing packages for ChatGPT in Emacs and call it from anywhere on your system. If you are on a system where you don't have an app (like macOS or Linux) and don't like to using the browser, this might be a good way of using ChatGPT plus the fact that you can integrate this with all sorts of other things you can do inside Emacs.
 
 **** ChatGPT Clients in Emacs
+
 There are a number of packages for ChatGPT client inside Emacs and I have tested a few of them so far. In my opinion, Karthik Chikmagalur's [[https://github.com/karthink/gptel][gptel]] is the best one both in terms of functionality and ease-of-use and also in terms of implementation and staying true to Emacs way of doing things. Therefore, if you are not interested in testing things out, just go ahead and use gptel and you can skip the rest of this section. There is a good (but long) live stream by David Wilson on System Crafters channel if you want to see gptel in action: [[https://www.youtube.com/watch?v=JImYEdqVQR8][Crafting the Future: AI Assistants in Emacs - System Crafters Live! - YouTube]].
 
 If you want to know more about different packages, here are some notes:
 
 ***** GPTel
+
 As I said above [[https://github.com/karthink/gptel][gptel]] is the best client I have tested so far. It is simple, does not have weird dependencies or authentication process, and provides an emacs-like experience (e.g. works in any buffer, does not create a million different buffers, ...) It is fast and async, and installation is straightforward since it is on MELPA. The code itself is also clean and easy to read, if you want to tinker with it and create your own custom functions or macros.
 
 ***** emacs-aichat
-[[https://github.com/xhcoding/emacs-aichat][emacs-aichat]] works as expected but is not as clean in implementation as gptel. It does offer the option to use Microsoft's BingAI instead of ChatGPT but otherwise is not as good as gptel. It uses [[https://github.com/ahyatt/emacs-websocket][emacs-websocket]] and [[https://github.com/chuntaro/emacs-async-await][emacs-async-await]] which adds extra dependencies and the way the code is implemented there are many layers of functions and macros calling each other even though at the end it is using =url-asynchronous= to make calls to APIs. There are duplicates of similar functionalities for BingAI v.s. OpenAI's ChatGPT and different ways to do authentication or setup for them. As a result the code is complicated to read and debugging (which is expected with experimental packages like this) or building on top of it is not as easy. That said the author is quite responsive and has been improving things frequently.
+
+emacs-aichat]] works as expected but is not as clean in implementation as gptel. It does offer the option to use Microsoft's BingAI instead of ChatGPT but otherwise is not as good as gptel. It uses [[https://github.com/ahyatt/emacs-websocket][emacs-websocket]] and [[https://github.com/chuntaro/emacs-async-await][emacs-async-await]] which adds extra dependencies and the way the code is implemented there are many layers of functions and macros calling each other even though at the end it is using =url-asynchronous= to make calls to APIs. There are duplicates of similar functionalities for BingAI v.s. OpenAI's ChatGPT and different ways to do authentication or setup for them. As a result the code is complicated to read and debugging (which is expected with experimental packages like this) or building on top of it is not as easy. That said the author is quite responsive and has been improving things frequently.
 
 ***** openai and chatgpt
+
 You can take a look at [[https://github.com/emacs-openai/openai][openai]] and [[https://github.com/emacs-openai/chatgpt][chatgpt]], and other related packages by Jen-Chieh Shen.  [[https://github.com/emacs-openai/openai][openai]] provides low-level calls to OpenAI API and [[https://github.com/emacs-openai/chatgpt][chatgpt]] builds on top of that for using the ChatGPT. The author has also other packages for other OpenAI services. I think the implementation is very neat and everything is done in a modular way, so this is a good reference if you want to learn and perhaps even build your own ChatGPT client inside Emacs. That said, I personally don't like the interface of the [[https://github.com/emacs-openai/chatgpt][chatgpt]] package. It opens up new buffers for inserting queries and does not play well with evil-mode. The gimmicky UI elements like spinners and so on seem unnecessary. They do not provide extra functionalities and are not pretty enough to add value to the user experience either. I think if you spend enough time configuring the package and trimming things up, this can be a decent ChatGPT client, perhaps with more features than some other packages I've tried, but I prefer a simpler interface that are faster and more user-friendly.
 
 ***** org-ai
+
 [[https://github.com/rksm/org-ai][org-ai]] takes a different approach to interacting with ChatGPT (and in this case also DALL-E) and that is by using source blocks inside Emacs org-mode. I tried it shortly and decided that I personally prefer other approaches. The reason is inserting ChatGPT responses inside an org source block means that the code blocks in ChatGPT responses are now nested inside another code block which is not useful. I probably would have preferred if the response was returned as result (similar to [[https://github.com/suonlight/ob-chatgpt][ob-chatgpt]] below). Also, I don't think a conversation with AI using natural language really belongs in a source block (which is really designed for coding). But that's just my personal opinion. I can see how some people may prefer this over other approaches. You can try it yourself and see if it fits your use case.
 
 ***** ChatGPT.el and ob-chatgpt
+
 Josh Cho's [[https://github.com/joshcho/ChatGPT.el][ChatGPT.el]] is perhaps the worst approach among the ones I have tried. The implementation is unnecessarily complicated. It uses python and [[https://github.com/mmabrouk/chatgpt-wrapper][chatgpt-wrapper]] under the hood to interface with OpenAI API and all it really does is to run a =shell-command= that does =pip install chatgpt-wrapper=. The authentication process uses an external browser and is very clunky and often requires re-authentication because it is using chatgpt-wrapper under the hood which runs python scripts. In addition, there is Minh Nguyen-Hue's [[https://github.com/suonlight/ob-chatgpt][ob-chatgpt]] which is built on ChatGPT.el but uses org-babel source blocks instead. Since it is using ChatGPT.el, it has all the issues of ChatGPT.el as well.
 
 **** Configuring GPTel
+
 Install [[https://github.com/karthink/gptel][gptel]] following the official documents, then all you have to do is to set up your API key by setting =gptel-api-key= and you are good to go. You can call the interactive command gptel by =M-x gptel= and you will jump to a ChatGPT buffer where you can type your prompts and submit them by =C-c RET=. If you have access to *GPT 4.0*, you can set that up by setting =gptel-model=. You can also use =org-mode= instead of =markdown-mode= by setting =gptel-default-mode= but *be aware that this converts the response to org-mode by simple regex replacement and often creates mistakes and bugs*. For example, I have noticed random *=* signs in elisp codes because the conversion replaces *`* with *=* to convert inline code from markdown to org-mode, and sometimes it makes a mistake and does that inside a code block.
 
 Here is an example code for installing gptel using =use-package=:
@@ -958,6 +996,7 @@ Here is an example code for installing gptel using =use-package=:
 Note that I am using auth-source to store my OpenAI's API key so I don't need to put it in my config. Refer to [[https://github.com/karthink/gptel#usage][gptel documents]] for more info on authentication.
 
 **** Creating a Custom Function to Call gptel
+
 Now that we have gptel installed and running, you can go ahead and create an interactive command to call gptel. We can then use this command to call =gptel= from outside Emacs with emacsclient. Here is a sample function that creates a new frame and runs gptel.
 
 #+begin_src emacs-lisp
@@ -987,12 +1026,15 @@ Now that we have gptel installed and running, you can go ahead and create an int
 Note how I set the window-system to =ns= (this is for macOS or Linux) and set the frame size and position in pixels by changing =width=, =height=, =top=, =left=, etc. when calling =make-frame=. Refer to Emacs help on =make-frame= or the manual on [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Frame-Parameters.html#Frame-Parameters][Frame Parameters]].
 
 **** Setup your Emacs Server
+
 From inside Emacs, you CNA simply run =server-start= to start an Emacs server, and then you can run =emacsclient= from terminal. If you want to run the server as *daemon* in the background, look at [[https://www.emacswiki.org/emacs/EmacsAsDaemon][EmacsWiki: Emacs As Daemon]]. If you are on macOS, this [[https://briansunter.com/blog/emacs-daemon-macos][link]] can provide some more details in addition to EmacsWiki article.
 
 **** Create a script to call Emacsclient
+
 Once you have the server set up and running, you can call emacsclient and run your interactive command to create a new frame and start gptel.
 
 ***** macOS
+
  On macOS, you can do this by writing an apple script and call it from spotlight search similar to this article for org-capture: [[https://macowners.club/posts/org-capture-from-everywhere-macos/][Org capture from everywhere in macOS | macOS & (open-source) Software]]. Simply, open *Script Editor* and make a new *Application* with content similar to the following code. Make sure you adjust the path to your emacsclient and also the name of the interactive command you are calling. Note how I use =select-frame-set-input-focus= to make sure the window is focused.
 
  #+begin_src apples
@@ -1011,6 +1053,7 @@ Save the file as *Application* in your default applications folder and name it s
 Then call the spotlight search (bound to =⌘ SPC= by default) and search for your new application (e.g. =myai=). When you run it, it should create a new Emacs frame, and you can start chatting with GPT right away.
 
 ***** KDE Plasma
+
 You can do something similar in KDE Plasma. You can create a custom shell script with the following content:
 #+begin_src shell
 #!/bin/bash
@@ -1020,10 +1063,12 @@ emacsclient -e \"(progn (select-frame-set-input-focus (selected-frame)) (ad/ai-f
 Save the script in a convenient location such as =~/.local/bin/myai= and make sure to make it executable by using =chmod u+x ~/.local/bin/myai= . Then call the =KDERunner= (bound to =Alt SPC= by default) and search for your shell script.
 
 ***** Other Systems
+
 I have not tried this on other systems, but you can similarly make shell scripts to call emacsclient and run similar searches on most systems (windows button on Windows, unity search on, etc.) and you will have a ChatGPT app.
 
 
 **** Screenshot
+
 That's it. Now go get a cup of coffee and start a conversation with our future overlords. Make sure you are nice to them!
 
 Here is a screen shot of my ChatGPT app on macOS:
@@ -1125,6 +1170,7 @@ for better look and feels if that's what you are looking for.
 
 **** Before Getting Started
 ***** Ask yourself why you should make a dashboard and is it worth the time?
+
 Before we start talking about creating a dashboard, take a step back and ask yourself if this is useful to you? and how would it improve your day-to-day workflow. Personally, the Dashboard is a great tool for me to see an overview/summary of what I am currently working on (different projects, blog posts, ...) and choose the next task. It helps me stay focused on the tasks that are of priority and organize my workflow around them. I can of course use an org file with tasks in it to organize everything I do, but whenever I tried something like that it grew and became very messy quickly and then it required too much overhead to maintain and eventually was abandoned. The dashboard, on the other hand keeps things simple and clean and cannot be too crowded and as a result helps me focus on what matters the most. I still use org-files for keeping all the details but I don't have to worry about maintaining them and keeping them clean as much anymore. In other words, a good dashboard keeps all the noise out of my immediate view and directs me to all the important signal. This has helped me stay away from the "never-ending spiral of tinkering with Emacs configs". I start my emacs in my dashboard and right away I can see the tasks/projects/... I am working on and instead of wandering to other distracting ideas, I will directly jump to important items I have to work on. Over time, I have made a habit of always returning to the dashboard, and look at the overview again before picking the next item and as a result I stay focused on getting things done.
 
 
@@ -1135,6 +1181,7 @@ The other question you may want to ask yourself is: "Is it worth it to spend tim
 That is, of course, not to say that I don't randomly explore packages and configs. I definitely do that every now and then to see new tools and approaches that may give me ideas for how to improve my workflow. Sometimes wandering around without any destination or directions in mind is the best way to find the most amazing least-explored destinations after all, but do that too often you will ensure you get lost! There is a balance to keep and trade-offs to make when building your own tools. My suggestion is to always start with the minimal working prototype and refine everything from there as the needs arise. Contrary to the popular beliefs, great products and tools are often the result of many years of evolution and not execution of a well-engineered genius plan! What I am about to show you here is the result of refining my own dashboard over several years, and it will likely go through many more iterations as my projects, workflows and etc. evolve over time. In fact a great advantage of building your own tools in Emacs is exactly the this point that they can evolve with you and transform with your project and your needs rather than by some popular trend or the latest fad around the corner.
 
 ***** Plan your Dashboard, or the first iteration of it anyway
+
 A dashboard is by nature a personalized/customized tool. It is supposed to present the *most important* information for the context in the *most efficient and concise* form. In a car, the dashboard shows you what is the most important indicators to watch for the task at hand, driving. In Emacs, however, the most important indicators depend on what it is that you are currently doing in Emacs. Before you build your dashboard, then, you need to review how you use Emacs and decide what is the context (use-cases, frequency, importance, ...) and choose the most important information/indicators that you want to see on your dashboard. The good thing about doing things in Emacs is that not only everything is customizable, but they are also dynamic. Your Dashboard can change based on time of the day, or your recent activities, or based on the context of what you're doing in other buffers, etc.
 
 Start by thinking through your workflow and organize what you do in Emacs into meaningful blocks or categories, and then ask yourself what your dashboard should contain for each of these and how should it present it to you. To me, a dashboard is part of a ="system of doing things"=. It focuses on tasks and projects, and organizes them in order of priorities for me. But, to you it might mean something else. May be you want to use it to see "a list of books" you are reading or you want to see "pictures of destinations" you want to visit or may be you want to keep "a list of values" you want to remember or "description of ideas/concepts" you want to think about, ...
@@ -1143,6 +1190,7 @@ One more thing to understand before we start coding is that an Emacs dashboard i
 
 ***** Setting up Emacs
 ****** Setting  packages
+
 In my own emacs config, I use [[https://github.com/radian-software/straight.el][straight.el]] and use a literate config file in org-mode. But for the sake of simplicity and keeping this post beginner-friendly, I am going to show you a minimal approach with built-in =package.el= and =use-package=. If you are an advanced user, and just want to see the dashboard config, jump ahead and look at the dashboard section. You should be able to copy the config for the dashboard package and adapt it with any package manager you use. If you are a beginner, I recommend starting with something simple to learn the basics before switching to more advanced package managements and configuration. The [[https://www.youtube.com/playlist?list=PLEoMzSkcN8oNmd98m_6FoaJseUsa6QGm2][Emacs From Scratch Series]] by David Wilson is probably a good place to start.
 
 Here is a minimal setup for package management using =use-package=:
@@ -1167,9 +1215,11 @@ Here is a minimal setup for package management using =use-package=:
 
 
 ****** General Layout, Font and Theme
+
 First things first, consider picking a layout, theme, font, etc. and find some settings you are going to stick with for a while. A dashboard is a place where you prioritize important information, topics, projects, tasks , ... and that often requires ui elements to present information in a concise format. For example using icons, or color-coding can help create patterns which helps building habits (e.g. focus on important info in red color, start with checking items with important icon, etc.) and that leads to an organized efficient workflows over time. Therefore, it is important to decide on the general appearance of your Emacs and find ui elements you like before you spend too much time on your dashboard's looks and feel.
 
 ******* Layout
+
 Start with different settings for toolbars and menus to find what is most appealing to you. Most advanced users would suggest turning all the toolbars off, since in Emacs you would mostly be using keyboards anyway, but at the beginning you may want to experiment with it and find out what works for you. There are also other universally recommended settings, like turning the bells off!
 
 #+begin_src emacs-lisp
@@ -1182,6 +1232,7 @@ Start with different settings for toolbars and menus to find what is most appeal
 #+end_src
 
 ******* Theme and Font
+
 A quick and simple starting point can be [[https://github.com/protesilaos/modus-themes][modus-themes]] that comes built-in with newer versions of Emacs. I personally like dark-themes better because they allow me to focus better and therefore would recommend =modus-vivendi= or one of the other dark alternatives. But if you like light themes, =modus-operandi= is also great. If those do not look appealing to you, you can try [[https://github.com/protesilaos/ef-themes][ef-themes]] by the same author. You can always customize the theme later, so as long as it generally looks good, that should serve fine as a starting point. For fonts, [[https://fonts.google.com/specimen/Fira+Code][Fira Code]] or [[https://fonts.google.com/specimen/Roboto+Mono][Roboto Mono]] can be a good starting point.
 
 #+begin_src emacs-lisp
@@ -1223,6 +1274,7 @@ Next, make sure you chose a good modeline. I personally like [[https://github.co
 
 
 ****** Consider installing some other packages
+
 Consider using other packages depending on your needs. There are a handful of packages that can be considered essential. These are the ones that will improve your emacs experience including setting up your configuration:
 
 1. Completion Framework: At some point you would need a completion package. The set of packages: [[https://github.com/minad/vertico][vertico]], [[https://github.com/minad/consult][consult]], [[https://github.com/minad/marginalia][marginalia]], [[https://github.com/minad/orderless][orderless]], and [[https://github.com/oantolin/embark][embark]] are great for completion. [[https://github.com/abo-abo/swiper][ivy]] and [[https://github.com/emacs-helm/helm][helm]] are other popular alternatives.
@@ -1234,6 +1286,7 @@ Consider using other packages depending on your needs. There are a handful of pa
 Importantly, you should think about packages/settings that allow creating better items in your dashboard.
 
 **** Making a Modern Dashboard
+
 Finally we are ready to dive into building a Dashboard. If you are new to Emacs, I recommend you use emacs for a few weeks or months and experiment with your settings for appearance, keybindings, etc. before thinking about building a dashboard.
 
 For the purpose of this post, I am going to use the fabulous [[https://github.com/emacs-dashboard/emacs-dashboard][emacs-dashboard]] package as it provides a bunch of useful elements right out of the box. you can install it by:
@@ -1253,6 +1306,7 @@ Out of the box, the Dashboard package provides several general segments but you 
 
 
 ***** Basic Configuration of the Dashboard
+
 Here is an overview of the sections, faces, etc. for reference. The labels that are underscored are the name of =faces= and the rest are the name of variables.
 
 #+attr_org: :width 800px :height nilpx
@@ -1263,6 +1317,7 @@ Here is an overview of the sections, faces, etc. for reference. The labels that 
 Note that when you load the dashboard by default some of these sections like the navigator buttons may not be there, but after you configure your dashboard this is pretty much everything you can have, and everything here is customizable.
 
 ****** Changing Colors and Faces
+
 You can change the color of the banner or the text by changing the relevant faces (see the picture above). In the code below I am changing the faces for =dashboard-banner-logo-title= and the =dashboard-text-banner=.
 #+begin_src emacs-lisp
  (set-face-attribute 'dashboard-banner-logo-title
@@ -1281,6 +1336,7 @@ You can change the color of the banner or the text by changing the relevant face
 One good way of configuring faces, is to use =:inherit= property and link the faces to other faces that most themes customize like =font-lock= faces. That way, if you switch themes, your dashboard looks changes accordingly. Personally I have my own customized theme and almost never switch to another theme, therefore I directly set the faces to what matches my default theme.
 
 ****** Set the Logo
+
 The logo is one of the main features of my own dashboard. I like to have some pictures that blends nicely with the background to make the look appealing to me. This comes at the cost of some real state, so I can see fewer items in my dashboard without scrolling, but I like my dashboard to look nice and inspiring so that every time I open the dashboard it gives me a refreshing energetic feeling for the next task otherwise if it is just a boring list of things to do, I will not be so willing to go back to it. Going back to my dashboard is also a short break time, so I like to have contents that make it a little bit more fun and take my attention away from just getting things done for a brief moment.
 
 For the logo, I usually use some artsy AI-generated colorful photo that I make on [[https://www.midjourney.com/][Midjourney]]. If you like to make your own photos, here are some tips:
@@ -1325,6 +1381,7 @@ Download one of the photos you like and set the =dashboard-startup-banner=:
 #+end_src
 
 ****** Set Sections
+
 Let's see how we can toggle certain sections on/off. Generally we will be using the variables =dawshboard-set-*= to turn sections on/off. Here is a script that turns all the sections on.
 
 #+begin_src emacs-lisp
@@ -1344,6 +1401,7 @@ Note that these are different from =dashboard-*= variables. The former variables
 #+end_src
 
 ****** Set the text below the log
+
 For the text below the logo, instead of using some fixed text, I like to use something more dynamic. For example, I like to have random inspiring quotes on my dashboard. When I am transitioning from one task to the next, I jump to my dashboard and take a break to read the quote and reflect on it, then I pick up the work for the next task. For  getting quotes, I use the package [[https://github.com/mubaris/motivate][motivate]]. It is a python-based package that gets motivational quotes in the command line. Follow the official instructions to install it. Then you can use =shell-command-to-string= to call it and get a quote as a string. You may then have to do some clean up with =replace-regexp-in-string=. Here is a snippet that gets the quote and cleans it up:
 
 #+begin_src emacs-lisp :results raw drawer
@@ -1479,6 +1537,7 @@ Before I show you how I build a dashboard, This  may seem unrelated, since dashb
 ****** footer
 
 ***** Making everything more dynamic
+
 Now that we covered the basic config of the dashboard, let's take things to the next level and make everything more dynamic. To do this, I am going to implement multiple concepts:
 
 1. Use Functions to Define Multiple Dashboards:
@@ -1491,6 +1550,7 @@ A great way of customizing Emacs, that allows you to create super-focused work f
 By combining 1 and 2 above, you can essentially build dynamic dashboards in any imaginable way you wish to.
 
 ****** A function to define the main dashboard.
+
 Let's pull together what we learned in the previous section and put it in one function to load our main dashboard that shows work related projects:
 
 #+begin_src emacs-lisp
@@ -1553,6 +1613,7 @@ image:
 If you follow my posts, you probably have seen my previous post [[https://www.armindarvish.com/en/post/consult-gh_working_with_github_inside_emacs_in_2023_/][introducing consult-gh]]. Since I wrote that post, there were requests for some features (e.g. integration with [[https://github.com/magit/forge][magit/forge]]) that are all now implemented, and while I was working on that I started playing around with consult's [[https://github.com/minad/consult#asynchronous-search][async search feature]] and realized that this indeed enables a much more powerful interface for consult-gh. Therefore, I redesigned the whole package and reimplemented most functions from scratch. The results is now merged on the main branch of [[https://github.com/armindarvish/consult-gh][consult-gh]], and in this post I am going to show you some of the main improvements.
 
 **** async search
+
 As noted on the comments on [[https://www.reddit.com/r/emacsporn/comments/14p42xq/comment/jqii09k/?context=3][this reddit post]], the previous interface for searching was subpar. It required the user to enter a search term, hit return and then see the results. If the results was not what the user wanted, he had to rerun the M-x command  or key-binding and start form scratch. If the user made a typo, he would see a message saying no results were found without knowing that a typo was made. Using consult-async solves all of that. It dynamically updates the completion table as the user is typing.
 The screenshot below shows the async search and dynamic updates in action:
 
@@ -1561,6 +1622,7 @@ The screenshot below shows the async search and dynamic updates in action:
 #+attr_html: :width 800px :height nilpx
 [[file:~/tmp/code/consult-gh/screenshots/consult-gh-search-repos.gif]]
 **** passing command line arguments
+
 Another advantage of using consult-async machienry is that the user can also pass other command-line arguments from within the emacs minibuffer. In case of consult-gh, this would allow the user to adjust the queries on the fly. For example the user can simply pass a command-line argument by adding =-- --limit {number}= to the minibuffer to change the maximum number of results fetched.
 
 Note that the variables for setting limits (such as =consult-gh-repo-maxnum= and =consult-gh-issue-maxnum=) are still available to set the values globally but, per individual commands, the user can change the limit dynamically when needed. Other command line arguments (such as sort, ...) can also be passed similarly in the minibuffer. This also allows using the whole machinery of =gh=, especially [[https://docs.github.com/en/search-github/getting-started-with-searching-on-github/understanding-the-search-syntax][gh's search syntax]] to further filter the results.
@@ -1572,6 +1634,7 @@ For example, the screenshot below shows how to search issues and then use the ex
 [[file:~/tmp/code/consult-gh/screenshots/consult-gh-search-issues.gif]]
 
 **** searching codes
+
 In addition, consult-gh now allows searching codes from emacs minibuffer. This is far superior to using =gh= command line tool because not only it allows to preview/open the file containing the code, but also jumps to the code snippet in the file. Here is a screenshot of searching code in action:
 
 #+attr_org: :width 800px :height nilpx
@@ -1581,6 +1644,7 @@ In addition, consult-gh now allows searching codes from emacs minibuffer. This i
 
 
 **** Integration with magit/forge
+
 Consult-gh now supports integration with [[https://github.com/magit/forge][magit/forge]] for viewing/editing issues and pull requests as well. This can simplym be done by loading =consult-gh-forge= and setting the actions for issues and pull requests accordingly. Here is a minimal configuration setting using [[https://github.com/radian-software/straight.el][straight.el]]:
 
 #+begin_src emacs-lisp
@@ -1598,6 +1662,7 @@ Consult-gh now supports integration with [[https://github.com/magit/forge][magit
 #+end_src
 
 **** Transient menu
+
 In addition, consult-gh now offers a transient menu to quickly find the relevant commands or change settings. It can be accessed by running =M-x consult-gh= after loading consult-gh-transient module. Just make sure that the transient package is installed before loading consult-gh-transient. Here is a minimal setup script:
 
 #+begin_src emacs-lisp
@@ -1652,6 +1717,7 @@ categories: ["نرم افزار", "طراحی وب", "درباره"]
 #+end_src
 
 **** *در چند جمله*
+
 من اخیراً تصمیم گرفتم وبسایت قدیمی خود را بازطراحی و احیا کنم و در ادامه تصمیم گرفتم که از این پس نوشته های پراکنده خود را به صورت پست های وبلاگی در همین وبسایت منتشر کنم. به احتمال زیاد موضوعات پستها طیف متنوعی خواهند داشت اما سعی میکنم بیشتر به حوزه تخصص خودم به ویژه تکنولوژی سلامت بپردازم. همچنین دوست دارم تجربیات خودم را در استفاده از ابزارهای نرم افزاری به اشتراک بگذارم، به عنوان مثال پستهایی مثل "چگونه از emacs و ox-hugo برای نوشتن وبلاگ استفاده کنیم" یا "استفاده از NLP و python برای استخراج اطلاعات فنی از گوگل پتنت" و ...
 
 ****  *چطور همه چی شروع شد*
@@ -1671,6 +1737,7 @@ categories: ["نرم افزار", "طراحی وب", "درباره"]
 
 
 * Footnotes
+
 [fn:mywork] The only exception was the map widget
 
 [fn:کارخودم] البته به جز بعضی المانهای خاص مثل نقشه!
