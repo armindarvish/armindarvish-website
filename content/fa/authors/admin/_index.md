@@ -69,14 +69,14 @@ social:
     link: https://www.instagram.com/armidar/
     display:
       header: true
-  - icon: google-scholar # Alternatively, use `google-scholar` icon from `ai` icon pack
+  - icon: google-scholar
     icon_pack: ai
     link: https://scholar.google.com/citations?user=b5enisEAAAAJ&hl=en
   - icon: researchgate
     icon_pack: ai
     link: https://www.researchgate.net/profile/Armin-Darvish
   - icon: orcid
-    icon_pack: fab
+    icon_pack: ai
     link: https://orcid.org/0000-0002-9202-2316
     
 # Link to a PDF of your resume/CV.

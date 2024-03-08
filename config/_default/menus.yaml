@@ -25,7 +25,7 @@ main:
   - name: CV
     url: static/uploads/ArminDarvish_Resume.pdf
     new_tab: true
-    weight: 120  
+    weight: 120
   - name: Contact
     url: '#contact'
     weight: 130
