@@ -22,7 +22,7 @@ marketing:
     description: "Armin Darvish's personal and research profile."
     twitter: 'Armin__Darvish'
   analytics:
-    google_analytics: 'G-J930K63J65'
+    google_analytics: ''
     baidu_tongji: ''
     google_tag_manager: 'G-BBWLEMN5MM'
     microsoft_clarity: ''
