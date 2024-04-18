@@ -1788,13 +1788,13 @@ That said, there are areas where notmuch's minimalist approach (especially when 
 
 
 
-*** PUBLISH Web/Omni Search In Emacs with consult-web
-CLOSED: [2024-04-18 Thu 10:18]
+*** PUBLISH Web/Omni Search In Emacs with consult-web or Ditching the Browser's Default Search Engine
+CLOSED: [2024-04-18 Thu 10:32]
 :PROPERTIES:
 :EXPORT_HUGO_DRAFT: false
-:EXPORT_HUGO_SECTION_FRAG: Ditching_the_browser_default_search_engine_for_[[https://github.com/armindarvish/consult-web][consult-web]]
+:EXPORT_HUGO_SECTION_FRAG: Web_Omni_Search_In_Emacs_with_consult-web
 :EXPORT_FILE_NAME: index
-:TITLE:    Ditching the browser's default search engine for [[https://github.com/armindarvish/consult-web][consult-web]]
+:TITLE:    Web/Omni Search In Emacs with consult-web
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :subtitle how you can improve your search workflow using Emacs in 2024
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER+: :summary In this post, I will talk about web search and search engine tools and how to use emacs to create an efficient work flow with web search
 :END:
@@ -1802,8 +1802,8 @@ CLOSED: [2024-04-18 Thu 10:18]
 #+begin_src yaml :front_matter_extra t
 authors:
   - admin
-projects: [software, emacs]
-categories: []
+projects: [software]
+categories: ["software", "emacs", "web search"]
 featured: false
 commentable: true
 image:
