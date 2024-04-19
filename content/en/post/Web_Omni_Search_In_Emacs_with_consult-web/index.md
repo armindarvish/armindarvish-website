@@ -1,8 +1,8 @@
 ---
 title: "Web/Omni Search In Emacs with consult-web or Ditching the Browser's Default Search Engine"
 author: ["Armin Darvish"]
-date: 2024-04-18T19:32:00-07:00
-lastmod: 2024-04-18T15:24:36-07:00
+date: 2024-04-18T17:00:00-07:00
+lastmod: 2024-04-18T17:16:38-07:00
 draft: false
 weight: 3010
 subtitle: "how you can improve your search workflow using Emacs in 2024"

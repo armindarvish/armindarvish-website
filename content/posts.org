@@ -1789,7 +1789,7 @@ That said, there are areas where notmuch's minimalist approach (especially when 
 
 
 *** PUBLISH Web/Omni Search In Emacs with consult-web or Ditching the Browser's Default Search Engine
-CLOSED: [2024-04-18 Thu 19:32]
+CLOSED: [2024-04-18 Thu 17:00]
 :PROPERTIES:
 :EXPORT_HUGO_DRAFT: false
 :EXPORT_HUGO_SECTION_FRAG: Web_Omni_Search_In_Emacs_with_consult-web
