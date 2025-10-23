@@ -1,8 +1,8 @@
 ---
 title: "Web/Omni Search In Emacs with consult-web or Ditching the Browser's Default Search Engine"
 author: ["Armin Darvish"]
-date: 2024-04-18T17:00:00-07:00
-lastmod: 2024-04-18T17:16:38-07:00
+date: 2025-10-22T23:10:00-07:00
+lastmod: 2025-10-22T23:10:49-07:00
 draft: false
 weight: 3010
 subtitle: "how you can improve your search workflow using Emacs in 2024"
@@ -49,7 +49,7 @@ Now all that said, let me be clear that I do not subscribe to the mentality that
 
 For this reason, I am trying to change my own personal habits by ditching the source of the problem, the browser and its address bar, as much as possible. I made [consult-web](https://github.com/armindarvish/consult-web), so I can directly and easily fetch results from many sources (whichever I like to, but hopefully original sources) by calling their APIs (even if they charge me a little bit of money for using their APIs). Whenever possible, I would rather directly get the information from the content creator if they provide it to me in a way that is convenient and does not need to compromise too much in efficiency or time. Of course for practical reasons, I would still need to rely on a search engine for lots of other things and for that I am trying to support smaller search engines that are seemingly independent from Google like [Brave Search](https://search.brave.com) so that I don't solely rely on Google for every piece of information I need.
 
-If you have followed my previous posts, I have already written about some other Emacs packages I made (like [consult-gh](https://www.npr.org/2023/09/12/1198558372/doj-google-monopoly-antitrust-trial-search-engine) and [consult-mu](https://www.armindarvish.com/post/improve_your_mu4e_workflow_with_consult-mu/)) as well as other work flows in emacs, which all have been toward building an integrated system of packages and tools that decrease my dependence on the web browser. [consult-web](https://github.com/armindarvish/consult-web) is yet another piece of this puzzle. It allows me to quickly get information from different web sources (search engines, encyclopedias, public databases, ...) as well as local sources such as my org and org-roam notes and run actions on the candidates through [embark](https://github.com/oantolin/embark) actions. As a result, I can quickly find ad-free information on any topic and use a combination of emacs packages and my own elisp hacks to get work done efficiently and with the least amount of distraction. In fact after using consult-web for a few weeks, I can tell you that, at least for my use-case, consult-web has been much more efficient than using the browser. This is mainly due to the coherent flow inside emacs and the consistency of key bindings and environment as well as the lack of distraction (ads or contents being constantly shoved in my face). While the seemingly polished, professionally developed, software tools like the web browser might look better and feel more natural, after getting used to it, consult-web has been proven much more better than I originally anticipated. It allows me to customize things to match my specific needs and integrate different pieces of my tasks into one coherent flow by combining multiple Emacs packages and embark actions. In the next section, I will share two examples of this to show you how I use consult-web in real everyday scenarios.
+If you have followed my previous posts, I have already written about some other Emacs packages I made (like  [consult-gh](https://github.com/armindarvish/consult-gh) and [consult-mu](https://www.armindarvish.com/post/improve_your_mu4e_workflow_with_consult-mu/)) as well as other work flows in emacs, which all have been toward building an integrated system of packages and tools that decrease my dependence on the web browser. [consult-web](https://github.com/armindarvish/consult-web) is yet another piece of this puzzle. It allows me to quickly get information from different web sources (search engines, encyclopedias, public databases, ...) as well as local sources such as my org and org-roam notes and run actions on the candidates through [embark](https://github.com/oantolin/embark) actions. As a result, I can quickly find ad-free information on any topic and use a combination of emacs packages and my own elisp hacks to get work done efficiently and with the least amount of distraction. In fact after using consult-web for a few weeks, I can tell you that, at least for my use-case, consult-web has been much more efficient than using the browser. This is mainly due to the coherent flow inside emacs and the consistency of key bindings and environment as well as the lack of distraction (ads or contents being constantly shoved in my face). While the seemingly polished, professionally developed, software tools like the web browser might look better and feel more natural, after getting used to it, consult-web has been proven much more better than I originally anticipated. It allows me to customize things to match my specific needs and integrate different pieces of my tasks into one coherent flow by combining multiple Emacs packages and embark actions. In the next section, I will share two examples of this to show you how I use consult-web in real everyday scenarios.
 
 
 ## Part 2: Examples or "enough with your nonsense philosophical arguments, show me the real world examples!" {#part-2-examples-or-enough-with-your-nonsense-philosophical-arguments-show-me-the-real-world-examples}
@@ -71,20 +71,20 @@ Recently, I was looking for a way to add YouTube videos and subscriptions to my 
 
 In fact, let me show you a screenshot of that right here as I am writing this post in Emacs:
 
-{{< figure src="/ox-hugo/youtube-elfeed-omni.gif" width="800px" height="nilpx" >}}
+{{< figure src="~/Desktop/youtube-elfeed-omni.gif" width="800px" height="nilpx" >}}
 
 As you can see, in this case I did not have any previous notes, so I only got responses from Brave and [gptel](https://github.com/karthink/gptel) AI assistant.
 
 1.  Then I look at consult-web results and explore different candidates inside Emacs using consult-preview. In this case, the top two results are the ones I was mostly interested in, but I decided to take a look at what gptel (a.k.a. the AI chatbot) had to say about the topic because that might give me some interesting starting point hopefully with references if I use the right AI backend) already. In the screenshot below, I move the cursor to that option in the minibuffer and use consult-preview to see the response from the AI chatbot:
 
-{{< figure src="/ox-hugo/youtube-elfeed-gptel.gif" width="800px" height="nilpx" >}}
+{{< figure src="~/Desktop/youtube-elfeed-gptel.gif" width="800px" height="nilpx" >}}
 
 That answer looked interesting, but I quickly realized that it was **mostly AI hallucination** (but not entirely!) The function `elfeed-summarize` and the variable `elfeed-show-summary` do not exist (at least in my version of Elfeed). However, the part about adding a YouTube feed to Elfeed does work. So the simplest solution could just be to add the YouTube channel as a feed as suggested by the AI hallucination. But that would not add the transcripts and other things I wanted.
 
 For a better solution, I had to go back to the old-school way and use reliable human sources like [irreal's blog post](https://irreal.org/blog/?p=8950%20) and read through actual GitHub documentation for [elfeed-tube](https://github.com/karthink/elfeed-tube).
 In the screenshot below, I move the cursor back to the candidate for the blog post and use consult-preview again to see the page in [xwidget-webkit](https://www.gnu.org/software/emacs/manual/html_node/emacs/Embedded-WebKit-Widgets).
 
-{{< figure src="/ox-hugo/youtube-elfeed-irreal.gif" width="800px" height="nilpx" >}}
+{{< figure src="~/Desktop/youtube-elfeed-irreal.gif" width="800px" height="nilpx" >}}
 
 As you see, Irreal's post had links to two other sources, but since I am not sure if I can trust some random websites I do not know, instead of opening them inside Emacs, in this case I decided to jump to the browser using embark actions to look at those sources. The first one did not exist anymore, but the second one had some useful tips and tricks and showed adding YouTube feeds to Elfeed. However it did not really cover getting transcripts form YouTube either. Using the browser for this viewing of web pages is fine because in this case I immediately jump back to Emacs, and I do that because now that I have consult-web, it's actually easier to continue from Emacs rather than staying in the browser and redoing the search in the browser.
 
@@ -118,7 +118,7 @@ Next I look at the [elfeed-tube package by karthink](https://github.com/karthink
 
 From consult-gh, I can read the README file directly in an org buffer, which means I can fold/unfold headings and focus on the part I am interested in or copy/execute code directly from this org file!
 
-{{< figure src="/ox-hugo/youtube-elfeed-consult-gh.gif" width="800px" height="nilpx" >}}
+{{< figure src="~/Desktop/youtube-elfeed-consult-gh.gif" width="800px" height="nilpx" >}}
 
 At this point I am done with what I set out to do. Overall, I managed to quickly find the package I was looking for and got the instructions on how to install and set it up all within Emacs with minimum distraction and rabbit holes. From experience, I can tell you that had I done this in the browser I would have ended up opening a million tabs and getting lost in all sorts of distracting web pages because that's what one does in the browser. Without the ability to save the results neatly in an embark collect or embark live buffer, you end up opening lots of tabs, then spending/wasting lots of time going through them, and at some point you get lost in them. The problem is that a lot of that is simply by design. The browser shows you websites that are designed to just keep you online so they can feed you more advertisements or content and not to give you the information you need in the quickest and most efficient way, and I personally feel that our browsers themselves are also deigned to enable and amplify this effect rather than to prevent it.
 
@@ -131,17 +131,17 @@ With consult-web, I could resolve both issues. I decided to go back to using Pub
 
 1.  I use `consult-web-scholar` to do a wide search in PubMed, Scopus as well as my Org Roam notes since I keep some notes on papers I read there as well. I have also added gptel to my scholar sources since sometimes it helps to get a general description on certain topics from AI chatbots. Here is a screenshot of searching for nanopores (my main topic back in my PhD days):
 
-{{< figure src="/ox-hugo/consult-web-scholar-search.gif" width="800px" height="nilpx" >}}
+{{< figure src="~/Desktop/consult-web-scholar-search.gif" width="800px" height="nilpx" >}}
 
 As you can see I can move around and quickly look at some of the results using consult-preview, and I can also increase the number of results I fetch form PubMed and Scopus. I yet have to implement some more complex filtering features in consult-web (e.g. filter by date, journal, etc.), but it'll do for now.
 
 1.  In case of academic publications, I then usually use `embark-export` to save everything in one buffer, so I can then slowly go over each paper and read and decide whether I want to take a deeper look at it or not. If at some point I am tired or have to leave this, I can all the links using embark actions with `embark-act-all` into an org file and come back to it later (I demonstrated this in the YouTube video [here](https://youtu.be/7pDfyqBZwvo?t=4892)) so I won't lose the results and everything remians organized.
 
-{{< figure src="/ox-hugo/consult-web-scholar-embark-export.gif" width="800px" height="nilpx" >}}
+{{< figure src="~/Desktop/consult-web-scholar-embark-export.gif" width="800px" height="nilpx" >}}
 
 In the embark export buffer, I can hit enter to open the link in an external browser. Usually I would be doing this on a wide screen with browser and Emacs window next to each other, or even more conveniently in two emacs buffers (one for the browser and one for the embark-export) in windows next to each other, but here I just jump back and forth:
 
-{{< figure src="/ox-hugo/consult-web-scholar-embark-export-buffer.gif" width="800px" height="nilpx" >}}
+{{< figure src="~/Desktop/consult-web-scholar-embark-export-buffer.gif" width="800px" height="nilpx" >}}
 
 I can then run embark actions on a candidate for example to add an entry to my Read List so I can go over the paper in more depth later. The Read List in this case is an org agenda file with ToDo headings, and the capture function looks like this:
 
@@ -201,7 +201,7 @@ This is mostly a reminder for me to read this paper at some point in the near fu
 
 Then I can use [citar](https://github.com/emacs-citar/citar), which uses the same bibliography file as the one I use with zotra, along with [citar-org-roam](https://github.com/emacs-citar/citar-org-roam) to add notes on the paper in my org-roam collection. This way I have a nice collection of all the papers I have read and if a paper is not in this collection, I know I have not read it in depth yet. I also have detailed notes on each paper I spend time on so I can later come back to it when needed. Furthermore, I can use [org-roam-ui](https://github.com/org-roam/org-roam-ui), and organize my notes to find connections between papers and topics that help me with finding new areas of interests and coming up with novel innovative ideas for further research. Here is a screen shot:
 
-{{< figure src="/ox-hugo/consult-web-scholar-add-notes.gif" width="800px" height="nilpx" >}}
+{{< figure src="~/Desktop/consult-web-scholar-add-notes.gif" width="800px" height="nilpx" >}}
 
 
 ## Closing Thoughts {#closing-thoughts}
